@@ -8,6 +8,7 @@ import { VinesListComponent } from './List/vines-list/vines-list.component';
 import { TagComponent } from './tag/tag.component';
 import { TagListComponent } from './List/tag-list/tag-list.component';
 import { TextComponent } from './generics/text/text.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TextComponent } from './generics/text/text.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Vine } from 'src/app/vine/vine.type';
 import { v4 as uuid } from 'uuid';
 
@@ -7,8 +7,12 @@ import { v4 as uuid } from 'uuid';
   templateUrl: './vines-list.component.html',
   styleUrls: ['./vines-list.component.scss']
 })
-export class VinesListComponent {
-  list:Vine[] = []
+export class VinesListComponent implements OnInit {
+  list:Vine[] = [];
+
+  ngOnInit(): void {
+    this.list = [{ id: uuid() }, { id: uuid() }]
+  }
 
   handleAddVine() {
     this.list = [...this.list, {

@@ -9,5 +9,6 @@ export class VineComponent {
   clicked = false;
   onClick() {
     this.clicked = !this.clicked
+    console.log(this.clicked);
   }
 }
