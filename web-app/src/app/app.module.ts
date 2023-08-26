@@ -9,6 +9,8 @@ import { TagComponent } from './tag/tag.component';
 import { TagListComponent } from './List/tag-list/tag-list.component';
 import { TextComponent } from './generics/text/text.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { NavigatorItemComponent } from './navigator/navigator-item/navigator-item.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     TagComponent,
     TagListComponent,
     TextComponent,
+    NavigatorComponent,
+    NavigatorItemComponent,
   ],
   imports: [
     BrowserModule,
