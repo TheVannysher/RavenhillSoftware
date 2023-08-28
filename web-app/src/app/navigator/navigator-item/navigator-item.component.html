@@ -1,5 +1,9 @@
-<div [ngClass]="active ? 'bg-slate-50' : ''" class="w-16 h-16 flex justify-center items-center text-blue-500 rounded-full p-2">
-    <a routerLink="/vines" routerLinkActive="active" ariaCurrentWhenActive="page">
-        <img class="rotate-[25deg]" src="../assets/icons/nav/grapes.svg" alt="" srcset="">
-    </a>
+<div (click)="handleOnClick()"
+    class="
+        w-16 h-16 flex justify-center items-center text-blue-500 rounded-full p-2
+        shadow-blue-900
+        transition-all duration-500
+        z-10
+    ">
+    <ng-icon *ngIf="route && route.data" [ngClass]="active ? 'text-black' : 'text-slate-50'" class="transition-all duration-500 z-10" [name]="route.data['icon']" size="24"></ng-icon>
 </div>
