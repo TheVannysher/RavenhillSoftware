@@ -1,7 +1,9 @@
+import { TaskboardComponent } from './taskboard/taskboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes as NGRoutes } from '@angular/router';
 import { ROUTES_PATH } from 'src/lib/enum/routes';
 import { VinesListComponent } from './List/vines-list/vines-list.component';
+import { ProfileComponent } from './profile/profile.component';
 import { TagComponent } from './tag/tag.component';
 import { VineComponent } from './vine/vine.component';
 
@@ -15,7 +17,7 @@ export interface Routes extends NGRoutes {
 }
 
 const routes: Routes = [
-  { path: '', component: VinesListComponent, data: { icon: 'featherFeather', name: ROUTES_PATH.vines } },
+  { path: '', redirectTo: ROUTES_PATH.vines, pathMatch: 'full', data: { icon: 'featherFeather', name: ROUTES_PATH.vines } },
   {
     path: ROUTES_PATH.vines,
     component: VinesListComponent,
@@ -24,8 +26,8 @@ const routes: Routes = [
     ],
     data: { icon: 'featherFeather', name: ROUTES_PATH.vines }
   },
-  { path: ROUTES_PATH.user_profile, component: VineComponent, data: { icon: 'featherUser' , name: ROUTES_PATH.user_profile } },
-  { path: ROUTES_PATH.work_order, component: VineComponent, data: { icon: 'featherCheckCircle', name: ROUTES_PATH.work_order } },
+  { path: ROUTES_PATH.profile, component: ProfileComponent, data: { icon: 'featherUser' , name: ROUTES_PATH.profile } },
+  { path: ROUTES_PATH.taskboard, component: TaskboardComponent, data: { icon: 'featherCheckCircle', name: ROUTES_PATH.taskboard } },
   { path: '**', component: TagComponent }
 ];
 

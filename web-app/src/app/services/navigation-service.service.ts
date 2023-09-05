@@ -1,14 +1,8 @@
+import { BOTTOM_NAV_ROUTES } from './../../lib/enum/routes';
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ROUTES_PATH } from 'src/lib/enum/routes';
 import settings from 'src/lib/settings/settings';
-
-// order matters
-const BOTTOM_NAV_ROUTES = [
-  ROUTES_PATH.user_profile,
-  ROUTES_PATH.vines,
-  ROUTES_PATH.work_order,
-];
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +12,9 @@ export class NavigationServiceService {
   constructor(private router: Router) { }
 
   currentRouteData() {
-    const pathNameWithoutFowardSlash = this.router.url;
-    console.log(pathNameWithoutFowardSlash);
+    const pathName = window.location.pathname;
+    const currentRoute = pathName == '/' ? ROUTES_PATH.vines : pathName.split('/')[1]
+    return this.router.config.find((route) => route.path == currentRoute) || undefined;
   }
 
   getNavigatorRoutes(): Route[] {

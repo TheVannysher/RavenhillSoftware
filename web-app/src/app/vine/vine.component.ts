@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Vine } from './vine.type';
 
 @Component({
   selector: 'app-vine',
@@ -6,9 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./vine.component.scss']
 })
 export class VineComponent {
-  clicked = false;
+  expanded = false;
+  @Input({ required: true }) item: Vine;
+  editing:boolean = false;
+  status: string = '';
+
+  constructor() {}
+
   onClick() {
-    this.clicked = !this.clicked
-    console.log(this.clicked);
+    this.expanded = !this.expanded
+    console.log('expanding');
+  }
+
+  toggleEdit() {
+    this.editing = !this.editing;
+    this.expanded = !this.expanded;
   }
 }

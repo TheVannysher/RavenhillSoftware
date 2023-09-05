@@ -8,15 +8,13 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./vines-list.component.scss']
 })
 export class VinesListComponent implements OnInit {
-  list:Vine[] = [];
+  vineList:Vine[] = [];
 
   ngOnInit(): void {
-    this.list = [{ id: uuid() }, { id: uuid() }]
+    this.vineList = [{ id: 'R1V1CA' }, { id: 'R1V2CA' }]
   }
 
   handleAddVine() {
-    this.list = [...this.list, {
-      id: uuid(),
-    }]
+    console.log('add')
   }
 }

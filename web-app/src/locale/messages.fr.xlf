@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3107309378193995698" datatype="html">
+        <source>Grape variety: </source>
+        <target>Cépage: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3325180562659478330" datatype="html">
+        <source>name here</source>
+        <target>nom ici</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3270294234938174430" datatype="html">
+        <source>last maintenance date: </source>
+        <target>Dernier entretien: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4485192879976768429" datatype="html">
+        <source>last maintenance type: </source>
+        <target>Type du dernière entretien: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7405913033204540791" datatype="html">
+        <source>spray</source>
+        <target>pesticide </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5165149962364449107" datatype="html">
+        <source>Grapes Qty: </source>
+        <target>Qté de Grapes: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5817350616201369494" datatype="html">
+        <source>Color: </source>
+        <target>Couleur:  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="119581980963263815" datatype="html">
+        <source>Green</source>
+        <target>Vert</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/vine/vine.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -7,18 +7,8 @@ const red = '#ff0000';
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
 })
-export class TagComponent implements OnInit {
+export class TagComponent {
   @Input() color: string = '';
-  title: string = '';
-  style = {}
-  
-  constructor() {}
-
-  ngOnInit(): void {
-    this.style = {
-      color: this.color,
-      backgroundColor: `${this.color}80`,
-      border: `1px solid ${this.color}`
-    }
-  }
+  @Input() title: string | undefined;
+  @Input() icon: string | undefined;
 }

@@ -1,23 +1,58 @@
-<div class="" (click)="onClick()">
-    <div class="">
-        <div class=""></div>
-        <div class="">
-            <p>Vine id</p>
+
+<div
+    class="bg-white transition-all duration-300 flex flex-col mx-2 mb-2 w-auto h-auto p-2 border-neutral-200 border overflow-hidden shadow-md shadow-neutral-300 dark:bg-neutral-700 dark:shadow-none"
+    [ngClass]="editing ? '': ''"
+>
+    <div class="text-neutral-950 dark:text-neutral-100 flex justify-between mb-2 h-4">
+        <div (click)="toggleEdit()" class="w-4 ml-1 cursor-pointer group">
+            <ng-icon [name]="editing ? 'featherX': 'featherEdit'" class="text-neutral-500 group-hover:text-blue-600"></ng-icon>
+        </div>
+        <div class="flex items-center gap-1">
+            <app-tag title="Harvest due" color="bg-red-500"></app-tag>
+            <app-tag title="this is a realy long text for a simple tag" color="bg-green-500" icon="featherCheck"></app-tag>
         </div>
     </div>
-    <div class="content-container">
-        <ul class="content-list">
-            <li class="content-list-item"><span>status: </span>harvested</li>
-            <li class="content-list-item"><span>type: </span>green</li>
-            <li class="content-list-item"><span>last maintenance: </span>date here</li>
-            <li class="content-list-item"><span>last harvested: </span>date here</li>
-            <li class="content-list-item"><span>Qty of grapes: </span>5</li>
-        </ul>
-        <div class="vine-notes-container">
-            Notes
+    <div class="text-neutral-950 flex justify-center h4">
+        <p class="font-bold">{{item.id}}</p>
+    </div>
+    <div class="flex flex-col">
+        <div class="my-1 h-4 w-full flex justify-between">
+            <p i18n class="text-neutral-400">Grape variety: </p>
+            <p i18n class="text-neutral-400">name</p>
         </div>
-        <div class="tag-container">
-            <p>i am a tag</p>
+        <div class="my-1 h-4 w-full flex justify-between">
+            <p i18n class="text-neutral-400">last maintenance date: </p>
+            <p class="text-neutral-400">{{"2023-09-08" | date}}</p>
         </div>
+    </div>
+    <!-- when in the list -->
+    <div *ngIf="!editing" [ngClass]="expanded ? 'h-48' : ''" class="flex justify-start items-center flex-col h-0 transition-all duration-300 ease-out overflow-hidden">
+        <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 ease-out">
+            <p i18n class="text-neutral-400">last maintenance type: </p>
+            <p i18n class="text-neutral-400">spray</p>
+        </div>
+        <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 delay-300 ease-out">
+            <p i18n class="text-neutral-400">Grapes Qty: </p>
+            <p class="text-neutral-400">5</p>
+        </div>
+        <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 delay-300 ease-out">
+            <p i18n class="text-neutral-400">Color: </p>
+            <p i18n class="text-neutral-400">Green</p>
+        </div>
+        <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-auto my-1': 'opacity-0 -translate-y-2'" class="flex justify-start flex-col h-0 w-full transition-all duration-300 delay-300 ease-linear">
+            <p class="text-neutral-800 font-bold">Notes: </p>
+            <div *ngIf="expanded" class="overflow-x-hidden overflow-y-scroll max-h-24">
+                <p class="text-neutral-400">
+                    Aut voluptates et ea ut debitis minus qui. Quod odit ipsam saepe porro vero. Dolorum officia corrupti nulla et aliquid a maxime.
+                    Aut voluptates et ea ut debitis minus qui. Quod odit ipsam saepe porro vero. Dolorum officia corrupti nulla et aliquid a maxime.
+                    Aut voluptates et ea ut debitis minus qui. Quod odit ipsam saepe porro vero. Dolorum officia corrupti nulla et aliquid a maxime.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!editing" (click)="onClick()" class="flex justify-center w-full h-4 overflow-hidden bg-white z-10">
+        <ng-icon [ngClass]="expanded ? 'rotate-180' : ''" class="transition-all duration-300 ease-out" name="featherChevronDown"></ng-icon>
     </div>
 </div>
+<app-vine-update (handleOnClose)="toggleEdit()" *ngIf="editing" [open]="editing" [item]="item"></app-vine-update>
+

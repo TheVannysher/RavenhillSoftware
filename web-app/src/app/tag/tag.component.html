@@ -1,3 +1,5 @@
-<div class="tag-container" [ngStyle]="style">
-    <p>{{title}}</p>
+<div class="h-4 rounded-full {{color}} px-3 flex justify-center gap-1 items-center relative group">
+    <p *ngIf="title != undefined" class="max-w-[5rem] w-auto truncate text-white text-xs overflow-hidden cursor-default">{{title}}</p>
+    <ng-icon *ngIf="icon != undefined" [name]="icon" color="white"></ng-icon>
+    <span class="tooltip group-hover:scale-100">allo</span>
 </div>

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnChanges {
     const pathName = window.location.pathname;
     const currentRoute = pathName == '/' ? ROUTES_PATH.vines : pathName.split('/')[1]
     this.showBottomNav = Object.values(ROUTES_PATH).includes(currentRoute as ROUTES_PATH);
-    console.log(this.showBottomNav);
+    console.log(currentRoute);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

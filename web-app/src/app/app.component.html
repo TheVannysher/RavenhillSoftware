@@ -1,6 +1,4 @@
-<div>
-    <div class="page-content">
-        <router-outlet></router-outlet>
-    </div>
-   <app-navigator *ngIf="showBottomNav"></app-navigator>
+<div class="w-screen overflow-hidden dark:bg-neutral-800 h-screen">
+    <router-outlet></router-outlet>
+    <app-navigator *ngIf="showBottomNav"></app-navigator>
 </div>

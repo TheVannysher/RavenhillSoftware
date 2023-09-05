@@ -1,13 +1,13 @@
 export enum ROUTES_PATH {
-    user_profile = 'profile',
+    profile = 'profile',
     vines = 'vines',
-    work_order = 'work',
+    taskboard = 'taskboard',
 }
 
 
 // order matters
 export const BOTTOM_NAV_ROUTES = [
-    ROUTES_PATH.user_profile,
+    ROUTES_PATH.profile,
     ROUTES_PATH.vines,
-    ROUTES_PATH.work_order,
+    ROUTES_PATH.taskboard,
 ]

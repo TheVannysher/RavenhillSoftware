@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { VineComponent } from './vine/vine.component';
 import { VinesListComponent } from './List/vines-list/vines-list.component';
 import { TagComponent } from './tag/tag.component';
-import { TagListComponent } from './List/tag-list/tag-list.component';
 import { TextComponent } from './generics/text/text.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigatorComponent } from './navigator/navigator.component';
@@ -15,6 +14,16 @@ import { NavigatorItemComponent } from './navigator/navigator-item/navigator-ite
 import { NgIconsModule } from '@ng-icons/core';
 import icons from './icons';
 import { NavigationServiceService } from './services/navigation-service.service';
+import { VineUpdateComponent } from './vine/vine-update/vine-update.component';
+import { VineCreateComponent } from './vine/vine-create/vine-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
+import { TaskboardComponent } from './taskboard/taskboard.component';
+
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
+import { MatButtonModule } from '@angular/material/button'
+import { MatBadgeModule } from '@angular/material/badge'
 
 @NgModule({
   declarations: [
@@ -22,16 +31,24 @@ import { NavigationServiceService } from './services/navigation-service.service'
     VineComponent,
     VinesListComponent,
     TagComponent,
-    TagListComponent,
     TextComponent,
     NavigatorComponent,
     NavigatorItemComponent,
+    VineUpdateComponent,
+    VineCreateComponent,
+    ProfileComponent,
+    TaskboardComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatBadgeModule,
     NgIconsModule.withIcons({ ...icons }),
   ],
   providers: [
