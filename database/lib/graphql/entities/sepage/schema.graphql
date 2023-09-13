@@ -1,0 +1,25 @@
+type Sepage {
+    id: String!
+    name: String!
+    images: [String]
+    details: String
+    harvestPeriode: Periode
+}
+
+type SepageInput {
+    name: String
+    images: [String]
+    details: String
+    harvestPeriode: Periode
+}
+
+extend type Query {
+    getSepage(id: String!): Sepage
+    getAllSepage: [Sepage] 
+}
+
+extend type Mutation {
+    createSepage(params: SepageInput!): Sepage
+    updateSepage(params: SepageInput!): Sepage
+    deleteSepage(id: String!): Boolean
+}

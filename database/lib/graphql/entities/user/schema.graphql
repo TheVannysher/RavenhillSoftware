@@ -16,10 +16,10 @@ input RegisterInput {
 }
 
 extend type Query {
-    login(params: LoginInput!): boolean
-    logout(): boolean
+    login(params: LoginInput!): Boolean
+    logout: Boolean
 }
 
 extend type Mutation {
-    register(params: RegisterInput!): boolean
+    register(params: RegisterInput!): Boolean
 }
