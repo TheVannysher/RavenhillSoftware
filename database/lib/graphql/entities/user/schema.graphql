@@ -1,0 +1,25 @@
+type User {
+    id: String!
+    username: String!
+    password: String!
+}
+
+input LoginInput {
+    username: String!,
+    password: String!,
+}
+
+input RegisterInput {
+    username: String!,
+    password: String!,
+    confirmPassword: String!,
+}
+
+extend type Query {
+    login(params: LoginInput!): boolean
+    logout(): boolean
+}
+
+extend type Mutation {
+    register(params: RegisterInput!): boolean
+}
