@@ -16,7 +16,7 @@ input CreateBulkVineInput {
 
 extend type Query {
     getVine(id: String!): Vine
-    getAllVine: [Vine]
+    getAllVines: [Vine]
 }
 
 extend type Mutation {

@@ -1,5 +1,7 @@
 import resolvers from './resolvers';
+import typeDef from './schema.graphql';
 
-export default [
-    ...resolvers,
-]
+export default {
+    resolvers,
+    typeDef,
+}

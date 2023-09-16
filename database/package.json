@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.9.3",
-    "firebase": "^10.3.1",
     "firebase-admin": "^11.10.1",
     "firebase-functions": "^4.4.1",
     "graphql": "^16.8.0",

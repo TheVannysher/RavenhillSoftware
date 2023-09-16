@@ -6,7 +6,10 @@ const config: CodegenConfig = {
   schema: "**/*.graphql",
   generates: {
     "../types/graphql.ts": {
-      plugins: ["typescript", "typescript-resolvers"]
+      plugins: ["typescript", "typescript-resolvers"],
+      config: {
+        useIndexSignature: true,
+      },
     },
     "./types/graphql.d.ts": {
       plugins: ["typescript-graphql-files-modules"]
