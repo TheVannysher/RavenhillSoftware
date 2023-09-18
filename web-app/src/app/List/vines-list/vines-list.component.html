@@ -1,10 +1,11 @@
-<div class="test">
-    <div class="add-button">
-        <button (click)="handleAddVine()">add</button>
-    </div>
-    <div class="vine-list">
-        <div class="list-container">
-            <app-vine *ngFor="let item of vineList" [item]="item"></app-vine>
+<div class="h-[100%] overflow-y-scroll overflow-x-hidden">
+    <div class="rowContainer" *ngFor="let row of rowList">
+        <div class="rowHeader">
+            <span>row 1</span>
+        </div>
+        <app-vine *ngFor="let item of row.vineList" [item]="item"></app-vine>
+        <div class="flex justify-end">
+            <button class="text-white capitalize text-center py-1 px-4 rounded-full bg-blue-500 shadow-md hover:shadow-none transition-all duration-100" (click)="toggleCreateVineModal()">add</button>
         </div>
     </div>
 </div>

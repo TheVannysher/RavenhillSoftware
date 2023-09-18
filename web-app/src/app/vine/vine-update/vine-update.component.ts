@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Vine } from '../vine.type';
+import { Vine } from 'types/graphql';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 

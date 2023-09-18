@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Vine } from './vine.type';
+import { Vine } from 'types/graphql'
 
 @Component({
   selector: 'app-vine',
@@ -8,7 +8,7 @@ import { Vine } from './vine.type';
 })
 export class VineComponent {
   expanded = false;
-  @Input({ required: true }) item: Vine;
+  @Input({ required: true }) item: any;
   editing:boolean = false;
   status: string = '';
 

@@ -1,5 +1,4 @@
 import dev from "./dev";
-import 'dotenv/config';
 
 const setting = {
     dev,
