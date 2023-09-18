@@ -1,0 +1,27 @@
+type Vine {
+    id: String!,
+    notes: String,
+    sepage: Sepage,
+}
+
+input VineInput {
+    notes: String,
+    sepage: Sepage,
+}
+
+input CreateBulkVineInput {
+    sepage: Sepage,
+    quantity: Int,
+}
+
+extend type Query {
+    getVine(id: String!): Vine
+    getAllVines: [Vine]
+}
+
+extend type Mutation {
+    createVine(params: VineInput!): Vine
+    createBulkVine(params: CreateBulkVineInput!): [Vine]
+    updateVine(params: VineInput!): Vine
+    deleteVine(id: String!): Boolean
+}
