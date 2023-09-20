@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { ROUTES_PATH } from 'src/lib/enum/routes';
+import { BOTTOM_NAV_ROUTES, ROUTES_PATH } from 'src/lib/enum/routes';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,14 @@ import { ROUTES_PATH } from 'src/lib/enum/routes';
 export class AppComponent implements OnInit, OnChanges {
   showBottomNav: boolean = false;
   
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit() {
-    const pathName = window.location.pathname;
+    const pathName = this.router.url;
     const currentRoute = pathName == '/' ? ROUTES_PATH.vines : pathName.split('/')[1]
-    this.showBottomNav = Object.values(ROUTES_PATH).includes(currentRoute as ROUTES_PATH);
-    console.log(currentRoute);
+    this.showBottomNav = BOTTOM_NAV_ROUTES.includes(currentRoute as ROUTES_PATH);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

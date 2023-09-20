@@ -1,4 +1,0 @@
-type Periode {
-    start: String!
-    end: String!
-}

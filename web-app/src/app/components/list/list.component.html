@@ -1,0 +1,6 @@
+<div class="h-[100%] overflow-y-scroll overflow-x-hidden">
+    <app-card-wrapper *ngFor="let row of rowList | async" title="Row {{ row.rowNumber }}">
+        <app-vine *ngFor="let item of row.vineList" [item]="item">
+        </app-vine>
+    </app-card-wrapper>
+</div>

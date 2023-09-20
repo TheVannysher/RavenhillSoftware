@@ -1,16 +1,23 @@
 {
-  "hosting": {
-    "public": "dist/web-app",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/fr-CA/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "public": "dist/web-app",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/fr-CA/index.html"
+        }
+      ]
+    },
+    {
+      "target": "web-app",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
 }

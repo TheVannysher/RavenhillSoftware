@@ -18,8 +18,7 @@ export class NavigationServiceService {
   }
 
   getNavigatorRoutes(): Route[] {
-    const routes = BOTTOM_NAV_ROUTES.map((name) => this.router.config.find((route) => route.path == name)!);  
-    console.log("Routes: ", routes);
+    const routes = BOTTOM_NAV_ROUTES.map((name) => this.router.config.find((route) => route.path == name)!);
     return routes;
   }
 }

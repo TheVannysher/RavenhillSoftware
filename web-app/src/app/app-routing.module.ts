@@ -1,11 +1,11 @@
-import { TaskboardComponent } from './taskboard/taskboard.component';
+import { TaskboardComponent } from './components/taskboard/taskboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes as NGRoutes } from '@angular/router';
 import { ROUTES_PATH } from 'src/lib/enum/routes';
-import { VinesListComponent } from './List/vines-list/vines-list.component';
-import { ProfileComponent } from './profile/profile.component';
-import { TagComponent } from './tag/tag.component';
-import { VineComponent } from './vine/vine.component';
+import { VinesListComponent } from './components/list/list.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { TagComponent } from './components/tag/tag.component';
+import { VineComponent } from './components/vine/vine.component';
 
 export interface RouteData {
   icon: string,
