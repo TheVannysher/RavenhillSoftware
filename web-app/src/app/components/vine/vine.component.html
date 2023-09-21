@@ -7,9 +7,7 @@
         <div (click)="toggleEdit()" class="w-6 h-6 mx-1 cursor-pointer group flex justify-center items-center">
             <ng-icon [name]="editing ? 'featherX': 'featherEdit'" class="text-neutral-500 group-hover:text-blue-600"></ng-icon>
         </div>
-        <!-- <app-tag-section [tags]="status"></app-tag-section> -->
-        {{tag | async | json}}
-        <app-tag *ngIf="tag | async" [title]="tag | async"></app-tag>
+        <app-tag-section [tags]="tags"></app-tag-section>
     </div>
     <div class="cardContent">
         <div class="text-neutral-950 flex justify-center h4">
@@ -18,7 +16,7 @@
         <div class="flex flex-col">
             <div class="my-1 h-4 w-full flex justify-between">
                 <p i18n class="text-neutral-400">Grape variety: </p>
-                <p i18n class="text-neutral-400">{{item.sepageId}}</p>
+                <p i18n class="text-neutral-400">{{(cepage | async)?.name}}</p>
             </div>
             <div class="my-1 h-4 w-full flex justify-between">
                 <p i18n class="text-neutral-400">last maintenance date: </p>

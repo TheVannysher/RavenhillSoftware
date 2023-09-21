@@ -1,0 +1,26 @@
+<div class="h-[100%] w-screen">
+    <app-card-wrapper title="actions">
+        <div class="flex flex-wrap justify-center gap-1">
+            <app-card class="w-44" (onClick)="openModal('createVine')">
+                <div class="cardContent flex justify-center">
+                    add new vine
+                </div>
+            </app-card>
+            <app-card class="w-44" (onClick)="openModal('createBulkVines')">
+                <div class="cardContent flex justify-center">
+                    add new vines (bulk)
+                </div>
+            </app-card>
+            <app-card class="w-44" (onClick)="openModal('createCepage')">
+                <div class="cardContent flex justify-center">
+                    add new variety
+                </div>
+            </app-card>
+        </div>
+    </app-card-wrapper>
+    <app-card-wrapper [expandable]="true" *ngFor="let row of rowList | async" title="Row {{ row.rowNumber }}">
+        <app-vine *ngFor="let item of row.vineList" [item]="item">
+        </app-vine>
+    </app-card-wrapper>
+</div>
+

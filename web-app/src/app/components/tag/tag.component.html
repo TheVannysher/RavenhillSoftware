@@ -1,8 +1,10 @@
 <div
     class="h-4 rounded-full px-3 flex justify-center gap-1 items-center relative group"
-    [ngClass]="color ? color : 'bg-blue-500'"
+    [ngClass]="tag.color ? tag.color : 'bg-blue-500'"
 >
-    <p *ngIf="title != undefined" class="max-w-[5rem] w-auto truncate text-white text-xs overflow-hidden cursor-default">{{title}}</p>
-    <ng-icon *ngIf="icon != undefined" [name]="icon" color="white"></ng-icon>
+    <p *ngIf="tag.title != undefined" class="max-w-[5.5rem] w-auto truncate text-white text-xs overflow-hidden cursor-default">
+        {{tag.title}}
+    </p>
+    <ng-icon *ngIf="tag.icon != undefined" [name]="tag.icon" color="white"></ng-icon>
     <span class="tooltip group-hover:scale-100">allo</span>
 </div>

@@ -28,6 +28,7 @@ export class NavigatorComponent implements OnInit{
   routeAnimationState: string = '';
   @Input() currentRoute:Route | undefined;
   navigatorItems:Route[] = [];
+  inversedColor: boolean;
 
   constructor(
     private router: Router,
@@ -39,11 +40,21 @@ export class NavigatorComponent implements OnInit{
     this.navigatorItems = this.navigation.getNavigatorRoutes();
     this.currentRoute = currentRouteData;
     this.routeAnimationState = currentRouteData?.path || '';
+    if (currentRouteData?.path === ROUTES_PATH['profile']) {
+      this.inversedColor = true;
+    } else {
+      this.inversedColor = false;
+    }
   }
 
   handleOnClick(value:Route) {
     this.router.navigate([value.path]);
     this.currentRoute = value;
     this.routeAnimationState = value.path!;
+    if (value.path === ROUTES_PATH['profile']) {
+      this.inversedColor = true;
+    } else {
+      this.inversedColor = false;
+    }
   }
 }

@@ -5,5 +5,10 @@
         transition-all duration-500
         z-10
     ">
-    <ng-icon *ngIf="route && route.data" [ngClass]="active ? 'text-black' : 'text-slate-50'" class="transition-all duration-500 z-10" [name]="route.data['icon']" size="24"></ng-icon>
+    <ng-icon *ngIf="route && route.data"
+        [ngClass]="(inversedColor && !active) || (!inversedColor && active) ? 'text-black' : 'text-slate-50'"
+        class="transition-all duration-500 z-10"
+        [name]="route.data['icon']"
+        size="24">
+    </ng-icon>
 </div>

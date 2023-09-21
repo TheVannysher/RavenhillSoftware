@@ -1,7 +1,7 @@
 import { map, Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { collection, Firestore, collectionData } from '@angular/fire/firestore';
-import { Vine, VineRow } from 'types/vine';
+import { Vine, VineRow } from 'src/types/vine';
 
 @Injectable({
   providedIn: 'root'

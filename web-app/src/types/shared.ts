@@ -1,6 +1,8 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface Periode {
-    start: Date,
-    end: Date,
+    start: Timestamp,
+    end: Timestamp,
 }
 
 export type Frequency = 'daily' | 'weekly' | 'biweekly' | 'monthly'

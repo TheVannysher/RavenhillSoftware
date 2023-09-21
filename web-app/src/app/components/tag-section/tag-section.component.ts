@@ -1,4 +1,5 @@
-import { Tag } from './../../../../../types/tag';
+import { Observable } from 'rxjs';
+import { Tag } from '../../../types/tag';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -7,5 +8,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tag-section.component.scss']
 })
 export class TagSectionComponent {
-  @Input() tags: Tag[];
+  @Input() tags: Observable<Tag[]>;
 }

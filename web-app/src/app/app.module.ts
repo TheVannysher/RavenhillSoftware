@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VineComponent } from './components/vine/vine.component';
-import { VinesListComponent } from './components/list/list.component';
 import { TagComponent } from './components/tag/tag.component';
 import { TextComponent } from './generics/text/text.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,12 +25,15 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { TagSectionComponent } from './components/tag-section/tag-section.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { CreateVineModalComponent } from './components/create-vine-modal/create-vine-modal.component';
+import { CreateVinesBulkModalComponent } from './components/create-vines-bulk-modal/create-vines-bulk-modal.component';
+import { CreateCepageModalComponent } from './components/create-cepage-modal/create-cepage-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VineComponent,
-    VinesListComponent,
     TagComponent,
     TextComponent,
     NavigatorComponent,
@@ -42,6 +44,10 @@ import { TagSectionComponent } from './components/tag-section/tag-section.compon
     CardComponent,
     ButtonIconComponent,
     TagSectionComponent,
+    DashboardComponent,
+    CreateVineModalComponent,
+    CreateVinesBulkModalComponent,
+    CreateCepageModalComponent,
   ],
   imports: [
     AppRoutingModule,

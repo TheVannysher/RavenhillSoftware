@@ -2,7 +2,7 @@ export interface Vine {
     id: string
     notes?: string
     row: string
-    sepageId: string
+    cepageId: string
     lastMaintenance?: string
 }
 

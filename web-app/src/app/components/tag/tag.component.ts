@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { Tag } from 'types/tag';
 import { Component, Input, OnInit } from '@angular/core';
 
 const red = '#ff0000';
@@ -8,7 +10,5 @@ const red = '#ff0000';
   styleUrls: ['./tag.component.scss'],
 })
 export class TagComponent {
-  @Input() color?: string;
-  @Input() title: string | null;
-  @Input() icon?: string;
+  @Input() tag: Tag;
 }

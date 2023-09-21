@@ -2,10 +2,10 @@ import { TaskboardComponent } from './components/taskboard/taskboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes as NGRoutes } from '@angular/router';
 import { ROUTES_PATH } from 'src/lib/enum/routes';
-import { VinesListComponent } from './components/list/list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TagComponent } from './components/tag/tag.component';
 import { VineComponent } from './components/vine/vine.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 export interface RouteData {
   icon: string,
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: '', redirectTo: ROUTES_PATH.vines, pathMatch: 'full', data: { icon: 'featherFeather', name: ROUTES_PATH.vines } },
   {
     path: ROUTES_PATH.vines,
-    component: VinesListComponent,
+    component: DashboardComponent,
     children: [
       { path: ':id', component: VineComponent }
     ],

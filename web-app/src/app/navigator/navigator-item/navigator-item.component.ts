@@ -12,6 +12,7 @@ export class NavigatorItemComponent {
   @Input() active: boolean = false;
   @Input() route: Route | undefined;
   @Output() routeChange: EventEmitter<Route> = new EventEmitter();
+  @Input() inversedColor: boolean;
 
   handleOnClick() {
     this.routeChange.emit(this.route);
