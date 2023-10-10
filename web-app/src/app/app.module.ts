@@ -33,6 +33,8 @@ import MatModules from './matModules';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
 import { InputComponent } from './generics/form/fields/input/input.component';
 import { CenteredSpinnerComponent } from './generics/loading/centered-spinner/centered-spinner.component';
+import { VineFormComponent } from './modules/dashboard/vine-form/vine-form.component';
+import { SepageFormComponent } from './modules/dashboard/sepage-form/sepage-form.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { CenteredSpinnerComponent } from './generics/loading/centered-spinner/ce
     NotfoundComponent,
     InputComponent,
     CenteredSpinnerComponent,
+    VineFormComponent,
+    SepageFormComponent,
   ],
   imports: [
     AppRoutingModule,
