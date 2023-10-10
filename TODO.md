@@ -1,9 +1,11 @@
 ## Authentication 🔐
 ### Authentication service 🛠️
-    [ ] signin with firebase
-    [ ] logout with firebase
+    [X] signin with firebase
+    [X] logout with firebase
     [ ] persistent state with userId
-    [ ] protected routes
+    [ ] protected routes (Guards)
+        [X] authGuard
+        [ ] rolesGuard
 
 ## Forms 📝
     [ ] create generics fields
