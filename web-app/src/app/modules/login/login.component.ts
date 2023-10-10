@@ -11,7 +11,6 @@ type LoginFormData = { email: string, password: string } | null;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   private authService: AuthService = inject(AuthService);
