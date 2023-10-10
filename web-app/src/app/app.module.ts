@@ -14,7 +14,7 @@ import { NgIconsModule } from '@ng-icons/core';
 import icons from './icons';
 import { NavigationServiceService } from './services/navigation-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './modules/profile/profile.component';
 import { TaskboardComponent } from './components/taskboard/taskboard.component';
 
 import { CardWrapperComponent } from './components/card-wrapper/card-wrapper.component';
@@ -27,8 +27,12 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { TagSectionComponent } from './components/tag-section/tag-section.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { CreateVineModalComponent } from './components/create-vine-modal/create-vine-modal.component';
-import { CreateVinesBulkModalComponent } from './components/create-vines-bulk-modal/create-vines-bulk-modal.component';
-import { CreateCepageModalComponent } from './components/create-cepage-modal/create-cepage-modal.component';
+import { CreateSepageModalComponent } from './components/create-sepage-modal/create-sepage-modal.component';
+import { LoginComponent } from './modules/login/login.component';
+import MatModules from './matModules';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
+import { InputComponent } from './generics/form/fields/input/input.component';
+import { CenteredSpinnerComponent } from './generics/loading/centered-spinner/centered-spinner.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +50,11 @@ import { CreateCepageModalComponent } from './components/create-cepage-modal/cre
     TagSectionComponent,
     DashboardComponent,
     CreateVineModalComponent,
-    CreateVinesBulkModalComponent,
-    CreateCepageModalComponent,
+    CreateSepageModalComponent,
+    LoginComponent,
+    NotfoundComponent,
+    InputComponent,
+    CenteredSpinnerComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -55,6 +62,7 @@ import { CreateCepageModalComponent } from './components/create-cepage-modal/cre
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ...MatModules,
     NgIconsModule.withIcons({ ...icons }),
     provideFirebaseApp(() => initializeApp(settings.firebase)),
     provideAuth(() => getAuth()),

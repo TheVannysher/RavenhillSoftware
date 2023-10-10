@@ -2,10 +2,13 @@ import { TaskboardComponent } from './components/taskboard/taskboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes as NGRoutes } from '@angular/router';
 import { ROUTES_PATH } from 'src/lib/enum/routes';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './modules/profile/profile.component';
 import { TagComponent } from './components/tag/tag.component';
 import { VineComponent } from './components/vine/vine.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { LoginComponent } from './modules/login/login.component';
+import { authGuard } from './guards/auth/auth.guard';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 export interface RouteData {
   icon: string,
@@ -17,18 +20,38 @@ export interface Routes extends NGRoutes {
 }
 
 const routes: Routes = [
-  { path: '', redirectTo: ROUTES_PATH.vines, pathMatch: 'full', data: { icon: 'featherFeather', name: ROUTES_PATH.vines } },
+  {
+    path: '',
+    redirectTo: ROUTES_PATH.login,
+    pathMatch: 'full',
+  },
+  {
+    path: ROUTES_PATH.login,
+    component: LoginComponent,
+    data: { icon: 'featherFeather', name: ROUTES_PATH.login }
+  },
   {
     path: ROUTES_PATH.vines,
     component: DashboardComponent,
+    canActivate: [authGuard],
     children: [
       { path: ':id', component: VineComponent }
     ],
     data: { icon: 'featherFeather', name: ROUTES_PATH.vines }
   },
-  { path: ROUTES_PATH.profile, component: ProfileComponent, data: { icon: 'featherUser' , name: ROUTES_PATH.profile } },
-  { path: ROUTES_PATH.taskboard, component: TaskboardComponent, data: { icon: 'featherCheckCircle', name: ROUTES_PATH.taskboard } },
-  { path: '**', component: TagComponent }
+  {
+    path: ROUTES_PATH.profile,
+    component: ProfileComponent,
+    canActivate: [authGuard],
+    data: { icon: 'featherUser' , name: ROUTES_PATH.profile }
+  },
+  {
+    path: ROUTES_PATH.taskboard,
+    component: TaskboardComponent,
+    canActivate: [authGuard],
+    data: { icon: 'featherCheckCircle', name: ROUTES_PATH.taskboard }
+  },
+  { path: '**', component: NotfoundComponent }
 ];
 
 @NgModule({

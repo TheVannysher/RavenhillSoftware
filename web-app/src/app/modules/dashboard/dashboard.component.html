@@ -1,17 +1,20 @@
 <div class="h-[100%] w-screen">
     <app-card-wrapper title="actions">
         <div class="flex flex-wrap justify-center gap-1">
-            <app-card class="w-44" (onClick)="openModal('createVine')">
-                <div class="cardContent flex justify-center">
-                    add new vine
+            <app-card class="max-w-[16rem]" (onClick)="openModal('createVine')">
+                <div class="cardContent flex justify-center items-center">
+                    <p class="mr-2">
+                        add new vine
+                    </p>
+                    <ng-icon name="featherPlus" color="black"></ng-icon>
                 </div>
             </app-card>
-            <app-card class="w-44" (onClick)="openModal('createBulkVines')">
+            <app-card class="max-w-[16rem]" (onClick)="openModal('createBulkVines')">
                 <div class="cardContent flex justify-center">
                     add new vines (bulk)
                 </div>
             </app-card>
-            <app-card class="w-44" (onClick)="openModal('createCepage')">
+            <app-card class="max-w-[16rem]" (onClick)="openModal('createSepage')">
                 <div class="cardContent flex justify-center">
                     add new variety
                 </div>

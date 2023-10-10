@@ -1,26 +1,22 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, EventType } from '@angular/router';
 import { BOTTOM_NAV_ROUTES, ROUTES_PATH } from 'src/lib/enum/routes';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.components.scss'],
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   showBottomNav: boolean = false;
-  
-  constructor(
-    private router: Router,
-  ) {}
+  router:Router = inject(Router);
 
   ngOnInit() {
-    const pathName = this.router.url;
-    const currentRoute = pathName == '/' ? ROUTES_PATH.vines : pathName.split('/')[1]
-    this.showBottomNav = BOTTOM_NAV_ROUTES.includes(currentRoute as ROUTES_PATH);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('router: ', this.router);
+    console.log(this.router.events.subscribe((e) => {
+      if (e.type == EventType.NavigationEnd) {
+        const { url } = e;
+        this.showBottomNav = BOTTOM_NAV_ROUTES.includes(url.split('/')[1] as ROUTES_PATH);
+      } 
+    }));
   }
 }

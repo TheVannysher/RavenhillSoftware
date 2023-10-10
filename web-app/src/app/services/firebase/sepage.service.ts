@@ -1,22 +1,22 @@
 import { Observable } from 'rxjs';
 import { collection, doc, docData, Firestore, collectionData } from '@angular/fire/firestore';
 import { Injectable, inject } from '@angular/core';
-import { Cepage } from 'types/cepage';
+import { Sepage } from 'types/sepage';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CepageService {
+export class SepageService {
   private collectionPath = 'cepages'
   store:Firestore = inject(Firestore);
   
-  getCepage(id: string): Observable<Cepage> {
+  getSepage(id: string): Observable<Sepage> {
     const docInstance = doc(this.store, `${this.collectionPath}/${id}`);
-    return docData(docInstance) as Observable<Cepage>;
+    return docData(docInstance) as Observable<Sepage>;
   }
 
-  getAllCepage(): Observable<Cepage[]> {
+  getAllSepage(): Observable<Sepage[]> {
     const collectionInstance = collection(this.store , this.collectionPath);
-    return collectionData(collectionInstance) as Observable<Cepage[]>; 
+    return collectionData(collectionInstance) as Observable<Sepage[]>; 
   }
 }

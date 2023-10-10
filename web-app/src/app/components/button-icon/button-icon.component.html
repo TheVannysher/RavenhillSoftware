@@ -1,3 +1,29 @@
-<div (click)="handleOnClick()" class="w-4 ml-1 cursor-pointer group">
-    <ng-icon [name]="name" class="text-neutral-500 group-hover:text-blue-600"></ng-icon>
-</div>
+<button
+    (click)="handleOnClick()"
+    class="
+        w-full h-full flex justify-center items-center cursor-pointer group
+        transition-all
+        duration-150
+        rounded-sm
+        {{bgColor ? 'bg-[{{bgColor}}] border border-[{{bgColor}}]' : 'bg-blue-500 border border-blue-500'}}
+        {{hoverBgColor? 'group-hover:text-[{{hoverBgColor}}]' : 'hover:bg-white'}}
+        {{color ? 'text-[{{color}}]' : 'text-white'}}
+        {{hoverColor? 'group-hover:text-[{{hoverColor}}]' : 'hover:text-blue-500'}}
+        {{disabled ? 'opacity-50 pointer-events-none' : ''}}
+    "
+    [disabled]="disabled"
+>
+    <p class="group-hover:mx-2 transition-all duration-150">
+        {{label}}
+    </p>
+    <ng-icon [name]="loading ? 'featherLoader' : name" class="
+        transition-all
+        duration-150
+        mx-1
+        group-hover:mx-2
+        {{color ? 'text-[{{color}}]' : 'text-white'}}
+        {{hoverColor? 'group-hover:text-[{{hoverColor}}]' : 'group-hover:text-blue-500'}}
+        {{loading ? 'motion-reduce:hidden animate-spin' : ''}}
+        "
+    ></ng-icon>
+</button>

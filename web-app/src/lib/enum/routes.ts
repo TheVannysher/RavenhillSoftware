@@ -2,6 +2,7 @@ export enum ROUTES_PATH {
     profile = 'profile',
     vines = 'vines',
     taskboard = 'taskboard',
+    login = 'login'
 }
 
 

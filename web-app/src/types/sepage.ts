@@ -1,6 +1,6 @@
 import { Frequency, Periode } from "./shared";
 
-export interface Cepage {
+export interface Sepage {
     id: string,
     name: string,
     notes: string,

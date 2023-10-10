@@ -1,19 +1,20 @@
-## This is my TODO list
+## Authentication 🔐
+### Authentication service 🛠️
+    [ ] signin with firebase
+    [ ] logout with firebase
+    [ ] persistent state with userId
+    [ ] protected routes
 
+## Forms 📝
+    [ ] create generics fields
+        [X] input
+### auth form 🛠️
+    [ ] login
+        [X] styling basic form
+        [ ] use Validators to style de fields
+    [ ] register
+### management forms ⚙️
+    [ ] vines
+    [ ] variety
+    [ ] task
 
-*Global*
-[ ] - delete confirmation modal
-[ ] - redo components structure
-[ ] - eslint
-[ ] - aliases
-[ ] - typing
-
-*Navigator*
-[X] - replace placeholder icons
-[X] - make icons button for other pages
-[X] - animations in the navigator
-
-*vine list*
-[ ] - update/create form
-    [ ] - modal
-[ ] - Rows

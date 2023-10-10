@@ -55,10 +55,10 @@
         <mxCell id="eMWOTyy-4TdcQPcHBGhE-19" value="VineDocument" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="600" y="390" width="190" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="eMWOTyy-4TdcQPcHBGhE-20" value="Id (Row#_Vine#_CepageName)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="eMWOTyy-4TdcQPcHBGhE-19" vertex="1">
+        <mxCell id="eMWOTyy-4TdcQPcHBGhE-20" value="Id (Row#_Vine#_SepageName)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="eMWOTyy-4TdcQPcHBGhE-19" vertex="1">
           <mxGeometry y="30" width="190" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="eMWOTyy-4TdcQPcHBGhE-21" value="CepageId" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="eMWOTyy-4TdcQPcHBGhE-19" vertex="1">
+        <mxCell id="eMWOTyy-4TdcQPcHBGhE-21" value="SepageId" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="eMWOTyy-4TdcQPcHBGhE-19" vertex="1">
           <mxGeometry y="60" width="190" height="30" as="geometry" />
         </mxCell>
         <mxCell id="eMWOTyy-4TdcQPcHBGhE-26" value="Notes" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="eMWOTyy-4TdcQPcHBGhE-19" vertex="1">
@@ -109,7 +109,7 @@
         <mxCell id="eMWOTyy-4TdcQPcHBGhE-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eMWOTyy-4TdcQPcHBGhE-43" target="eMWOTyy-4TdcQPcHBGhE-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eMWOTyy-4TdcQPcHBGhE-54" value="CepageDocument" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="eMWOTyy-4TdcQPcHBGhE-54" value="SepageDocument" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="890" y="210" width="140" height="210" as="geometry" />
         </mxCell>
         <mxCell id="eMWOTyy-4TdcQPcHBGhE-55" value="Id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="eMWOTyy-4TdcQPcHBGhE-54" vertex="1">
