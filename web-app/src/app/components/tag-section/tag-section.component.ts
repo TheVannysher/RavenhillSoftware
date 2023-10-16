@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './tag-section.component.html',
 })
 export class TagSectionComponent {
-  @Input() tags: Observable<Tag[]>;
+  @Input() tags: Observable<Tag[] | null>;
 }

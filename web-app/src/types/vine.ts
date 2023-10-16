@@ -1,9 +1,18 @@
+import { DocumentReference } from '@angular/fire/firestore';
+import { Variety } from 'types/variety';
+import { Observable } from 'rxjs';
+import VigorEnum from "src/lib/enum/vigor"
+
 export interface Vine {
     id: string
-    notes?: string
-    row: string
-    cepageId: string
+    clusters: number,
+    buds: number,
+    brix: string,
+    collar: boolean,
+    vigor: VigorEnum,
+    row: string,
     lastMaintenance?: string
+    varietyRef: DocumentReference
 }
 
 export interface VineRow {

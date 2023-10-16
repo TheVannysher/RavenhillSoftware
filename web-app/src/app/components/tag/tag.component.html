@@ -1,6 +1,6 @@
 <div
     class="h-4 rounded-full px-3 flex justify-center gap-1 items-center relative group"
-    [ngClass]="tag.color ? tag.color : 'bg-blue-500'"
+    [ngClass]="tag.color ? 'bg-[{{tag.color}}]' : 'bg-blue-500'"
 >
     <p *ngIf="tag.title != undefined" class="max-w-[5.5rem] w-auto truncate text-white text-xs overflow-hidden cursor-default">
         {{tag.title}}

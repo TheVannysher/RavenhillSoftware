@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SepageService } from './sepage.service';
+import { VarietyService } from './variety.service';
 
-describe('SepageService', () => {
-  let service: SepageService;
+describe('VarietyService', () => {
+  let service: VarietyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SepageService);
+    service = TestBed.inject(VarietyService);
   });
 
   it('should be created', () => {

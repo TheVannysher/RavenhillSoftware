@@ -1,11 +1,12 @@
-import { SepageService } from '../../services/firebase/sepage.service';
+import { VinesService } from 'src/app/services/firebase/vines.service';
+import { VarietyService } from '../../services/firebase/variety.service';
 import { Observable } from 'rxjs';
 import { Component, Input } from '@angular/core';
-import { TasksService } from 'src/app/services/firebase/tasks.service';
 import { Vine } from 'src/types/vine'
 import { Tag } from 'types/tag';
-import { Sepage } from 'types/sepage';
+import { Variety } from 'types/variety';
 import { OnInit } from '@angular/core';
+import { docData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-vine',
@@ -15,19 +16,18 @@ export class VineComponent implements OnInit {
   expanded = false;
   @Input({ required: true }) item: Vine;
   editing:boolean = false;
-  cepage: Observable<Sepage>;
-  tags: Observable<Tag[]>;
+  variety: Observable<Variety>;
+  tags: Observable<Tag[] | null>;
 
   constructor(
-    private taskService: TasksService,
-    private cepageService: SepageService
-  ) {
-    this.tags = taskService.getTagForTask("sfkzU0IAloHlGFw5bcEG");
-  }
+    private vineService: VinesService,
+    private varietyService: VarietyService,
+  ) {}
 
   ngOnInit():void {
     if (this.item) {
-      this.cepage = this.cepageService.getSepage(this.item.cepageId);
+      this.variety = this.varietyService.getVarietyByReference(this.item.varietyRef);
+      this.tags = this.vineService.getTagForVine(this.item);
     }
   }
 

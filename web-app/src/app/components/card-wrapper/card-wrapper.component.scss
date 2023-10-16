@@ -2,8 +2,8 @@
     --color: #00000020;
     border-radius: 1rem;
     border: 0.2rem solid var(--color);
-    margin: 1rem;
-    padding: 1rem;
+    margin: 1rem 0.5rem;
+    padding: 0.85rem;
     position: relative;
     
     .wrapper-content {
@@ -16,7 +16,7 @@
     top: -1rem;
     left: 1.2rem;
     background-color: white;
-    padding: 0.2rem;
+    padding: 0.125rem;
 
     span {
         font-weight: bold;

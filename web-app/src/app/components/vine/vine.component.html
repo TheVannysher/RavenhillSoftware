@@ -10,40 +10,46 @@
         <app-tag-section [tags]="tags"></app-tag-section>
     </div>
     <div class="cardContent">
-        <div class="text-neutral-950 flex justify-center h4">
-            <p class="font-bold">{{item.id}}</p>
-        </div>
         <div class="flex flex-col">
             <div class="my-1 h-4 w-full flex justify-between">
-                <p i18n class="text-neutral-400">Grape variety: </p>
-                <p i18n class="text-neutral-400">{{(cepage | async)?.name}}</p>
+                <p i18n class="text-neutral-400">Variety: </p>
+                <p i18n class="text-neutral-400">{{(variety | async)?.name}}</p>
+            </div>
+            <div class="my-1 h-4 w-full flex justify-between">
+                <p i18n class="text-neutral-400">Vigor(L/M/H): </p>
+                <p i18n class="text-neutral-400">DEAD</p>
             </div>
             <div class="my-1 h-4 w-full flex justify-between">
                 <p i18n class="text-neutral-400">last maintenance date: </p>
                 <p class="text-neutral-400">{{item.lastMaintenance}}</p>
             </div>
+            <div class="my-1 h-4 w-full flex justify-between">
+                <p i18n class="text-neutral-400">last maintenance type: </p>
+                <p class="text-neutral-400">spray</p>
+            </div>
         </div>
         <div *ngIf="!editing" [ngClass]="expanded ? 'h-48' : ''" class="flex justify-start items-center flex-col h-0 transition-all duration-300 ease-out overflow-hidden">
-            <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 ease-out">
-                <p i18n class="text-neutral-400">last maintenance type: </p>
-                <p i18n class="text-neutral-400">spray</p>
+            <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 delay-300 ease-out">
+                <p i18n class="text-neutral-400">clusters: </p>
+                <p class="text-neutral-400">{{item.clusters | number}}</p>
             </div>
             <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 delay-300 ease-out">
-                <p i18n class="text-neutral-400">Grapes Qty: </p>
-                <p class="text-neutral-400">5</p>
+                <p i18n class="text-neutral-400">Buds/cane: </p>
+                <p i18n class="text-neutral-400">{{item.buds | number}}</p>
             </div>
             <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 delay-300 ease-out">
-                <p i18n class="text-neutral-400">Color: </p>
-                <p i18n class="text-neutral-400">Green</p>
+                <p i18n class="text-neutral-400">Brix: </p>
+                <p i18n class="text-neutral-400">{{item.brix}}</p>
             </div>
+            <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-4 my-1': 'opacity-0 -translate-y-2'" class="flex justify-between h-0 w-full transition-all duration-300 delay-300 ease-out">
+                <p i18n class="text-neutral-400">Collar(Y/N): </p>
+                <p i18n class="text-neutral-400">{{item.collar ? 'Yes' : 'No'}}</p>
+            </div>
+            <!-- WIP -- TO USE FOR PICTURE -->
             <div [ngClass]="expanded ? 'opacity-100 translate-y-0 h-auto my-1': 'opacity-0 -translate-y-2'" class="flex justify-start flex-col h-0 w-full transition-all duration-300 delay-300 ease-linear">
-                <p class="text-neutral-800 font-bold">Notes: </p>
-                <div *ngIf="expanded" class="overflow-x-hidden overflow-y-scroll max-h-24">
-                    <p class="text-neutral-400">
-                        Aut voluptates et ea ut debitis minus qui. Quod odit ipsam saepe porro vero. Dolorum officia corrupti nulla et aliquid a maxime.
-                        Aut voluptates et ea ut debitis minus qui. Quod odit ipsam saepe porro vero. Dolorum officia corrupti nulla et aliquid a maxime.
-                        Aut voluptates et ea ut debitis minus qui. Quod odit ipsam saepe porro vero. Dolorum officia corrupti nulla et aliquid a maxime.
-                    </p>
+                <p class="text-neutral-800 font-bold">Picture: </p>
+                <div *ngIf="expanded" class="overflow-x-hidden overflow-y-scroll max-h-24 justify-center items-center flex">
+                    <p class="text-center text-neutral-500">WIP</p>
                 </div>
             </div>
         </div>
