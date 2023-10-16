@@ -20,12 +20,12 @@
     [ ] variety
     [ ] task
 
-### Unit tests 🧪
+## Unit tests 🧪
 
 ## Dashboard
 ### UI
-[ ] Vine LastMaintenance display
-    [ ] fetch task if lastMaintenance is existing on vine object
-[ ] get tags for vines
-    [ ] if vigor == DEAD, add tag DEAD to vine tags
-    [ ] if lastMaintenance if still ongoing, display in maintenance tag
+    [ ] Vine LastMaintenance display
+        [ ] fetch task if lastMaintenance is existing on vine object
+    [ ] get tags for vines
+        [ ] if vigor == DEAD, add tag DEAD to vine tags
+        [ ] if lastMaintenance if still ongoing, display in maintenance tag
