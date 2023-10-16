@@ -1,11 +1,9 @@
 <div class="flex justify-center items-center w-screen h-screen">
-    <!-- for loading animation <p class="motion-reduce:hidden animate-spin">test</p> -->
     <app-centered-spinner
         *ngIf="loading"
         [loading]="loading"
         size="128"
     >
-
     </app-centered-spinner>
     <div *ngIf="!loading" class="flex justify-center items-center flex-col w-96">
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="w-[100%]">

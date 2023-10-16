@@ -42,8 +42,10 @@ testem.log
 Thumbs.db
 
 ./src/lib/settings/dev.ts
+
 # Firebase
 .firebase
+.firebase/*
 *-debug.log
 .runtimeconfig.json
 src/environments/environment.ts
