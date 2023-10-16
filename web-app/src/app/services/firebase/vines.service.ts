@@ -49,24 +49,9 @@ export class VinesService {
   }
 
   getTagForVine(vine: Vine): Observable<Tag[] | null> {
-    console.log('id: ', vine.lastMaintenance);
     const docRef = doc(this.store, `${this.collectionPath}/${vine.lastMaintenance}`);
-    if (vine.lastMaintenance) {
-      const ob = this.taskService.getById(vine.lastMaintenance);
-      const res = ob.pipe(
-        map((doc) => {
-          const taskEnd = doc.periode.end.toDate()
-          const taskStart = doc.periode.start.toDate()
-          const today = new Date();
-          let tags:Tag[] = []
-          if (taskEnd > today && taskStart < today) {
-            tags.push(VINE_BAGDES['maintenance']);
-          }
-          return tags;
-        })
-      )
-      return res;
-    }
+    // TODO: call getTagsForTask in task service
+    // combine tags for task with tags for  
     return of(null);
   }
 }

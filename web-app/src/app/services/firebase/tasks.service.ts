@@ -19,7 +19,6 @@ export class TasksService {
   }
 
   getTagForTask(id: string): Observable<Tag[]> {
-    console.log('id: ', id);
     const docRef = doc(this.store, `${this.collectionPath}/${id}`);
     const ob = docData(docRef) as Observable<Task>;
     const res = ob.pipe(
