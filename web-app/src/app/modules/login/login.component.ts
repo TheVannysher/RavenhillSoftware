@@ -1,9 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { map } from 'rxjs';
-import { AuthService } from 'src/app/services/firebase/auth/auth.service';
-import { ROUTES_PATH } from 'src/lib/enum/routes';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import AuthService from 'src/app/services/firebase/auth/auth.service';
+import { ROUTES_PATH } from 'src/lib/enum/routes';
 import * as tailwindColors from 'tailwindcss/colors';
 
 type LoginFormData = { email: string, password: string } | null;
@@ -14,16 +13,23 @@ type LoginFormData = { email: string, password: string } | null;
 })
 export default class LoginComponent implements OnInit {
   private authService: AuthService = inject(AuthService);
+
   private router: Router = inject(Router);
+
   private fb: FormBuilder = inject(FormBuilder);
+
   formData: LoginFormData = null;
-  loading: boolean = true;
-  submitLoading: boolean = false;
+
+  loading = true;
+
+  submitLoading = false;
+
   colors = tailwindColors;
+
   loginForm: FormGroup;
 
   ngOnInit() {
-    this.authService.isLoggedIn().subscribe((isLoggedIn) => {
+    this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
       if (isLoggedIn) {
         this.router.navigate([ROUTES_PATH.vines]);
       } else {
@@ -41,9 +47,10 @@ export default class LoginComponent implements OnInit {
     });
     this.loginForm.valueChanges.subscribe((value: LoginFormData) => {
       this.formData = value;
-    })
+    });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   validation(newValue: string) {
     if (newValue === '') {
       return true;
@@ -54,7 +61,7 @@ export default class LoginComponent implements OnInit {
   async onSubmit() {
     this.submitLoading = true;
     if (this.formData != null) {
-      console.log(this.formData)
+      console.log(this.formData);
       try {
         // login using firbase
         const { email, password } = this.formData;

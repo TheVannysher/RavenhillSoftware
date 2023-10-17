@@ -14,8 +14,6 @@ import AppRoutingModule from './app-routing.module';
 import ButtonIconComponent from './components/button-icon/button-icon.component';
 import CardComponent from './components/card/card.component';
 import CardWrapperComponent from './components/card-wrapper/card-wrapper.component';
-import CreateSepageModalComponent from './components/create-sepage-modal/create-sepage-modal.component';
-import CreateVineModalComponent from './components/create-vine-modal/create-vine-modal.component';
 import TagComponent from './components/tag/tag.component';
 import TagSectionComponent from './components/tag-section/tag-section.component';
 import TaskboardComponent from './components/taskboard/taskboard.component';
@@ -25,8 +23,6 @@ import CenteredSpinnerComponent from './generics/loading/centered-spinner/center
 import icons from './icons';
 import MatModules from './matModules';
 import DashboardComponent from './modules/dashboard/dashboard.component';
-import SepageFormComponent from './modules/dashboard/sepage-form/sepage-form.component';
-import VineFormComponent from './modules/dashboard/vine-form/vine-form.component';
 import LoginComponent from './modules/login/login.component';
 import NotfoundComponent from './modules/notfound/notfound.component';
 import ProfileComponent from './modules/profile/profile.component';
@@ -37,25 +33,21 @@ import NavigationServiceService from './services/navigation-service.service';
 @NgModule({
   declarations: [
     AppComponent,
+    ButtonIconComponent,
     CardComponent,
     CardWrapperComponent,
-    CreateVineModalComponent,
     DashboardComponent,
     NavigatorComponent,
     NavigatorItemComponent,
     TagComponent,
     TaskboardComponent,
     ProfileComponent,
-    ButtonIconComponent,
     TagSectionComponent,
-    CreateSepageModalComponent,
     LoginComponent,
     NotfoundComponent,
     InputComponent,
     CenteredSpinnerComponent,
     VineComponent,
-    VineFormComponent,
-    SepageFormComponent,
   ],
   imports: [
     AppRoutingModule,
