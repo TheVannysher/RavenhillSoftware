@@ -1,17 +1,20 @@
-import { VINE_BAGDES } from './../../../lib/enum/tags';
-import { Task } from 'src/types/task';
+import { inject, Injectable } from '@angular/core';
+import {
+  doc, docData, Firestore,
+} from '@angular/fire/firestore';
 import { map, Observable } from 'rxjs';
-import { Injectable, inject } from '@angular/core';
-import { doc, docData, DocumentReference, Firestore } from '@angular/fire/firestore';
+import { Task } from 'src/types/task';
 import { Tag } from 'types/tag';
 
+import VINE_BAGDES from '../../../lib/enum/tags';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export default class TasksService {
-  private collectionPath = 'tasks'
+  private collectionPath = 'tasks';
+
   store: Firestore = inject(Firestore);
-  constructor() { }
 
   getById(id: string): Observable<Task> {
     const docRef = doc(this.store, id);
@@ -22,17 +25,17 @@ export default class TasksService {
     const docRef = doc(this.store, `${this.collectionPath}/${id}`);
     const ob = docData(docRef) as Observable<Task>;
     const res = ob.pipe(
-      map((doc) => {
-        const taskEnd = doc.periode.end.toDate()
-        const taskStart = doc.periode.start.toDate()
+      map((document) => {
+        const taskEnd = document.periode.end.toDate();
+        const taskStart = document.periode.start.toDate();
         const today = new Date();
-        let tags: Tag[] = []
+        const tags: Tag[] = [];
         if (taskEnd > today && taskStart < today) {
           tags.push(VINE_BAGDES['maintenance']);
         }
         return tags;
-      })
-    )
+      }),
+    );
     return res;
   }
 }

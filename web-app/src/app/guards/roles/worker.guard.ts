@@ -1,8 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 import { CanActivateFn } from '@angular/router';
 
-// TODO: 
+// TODO:
 // RolesService
 
-export const workerGuard: CanActivateFn = (route, state) => {
-  return true;
-};
+export const workerGuard: CanActivateFn = () => true;

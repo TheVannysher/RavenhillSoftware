@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CenteredSpinnerComponent } from './centered-spinner.component';
+import CenteredSpinnerComponent from './centered-spinner.component';
 
 describe('CenteredSpinnerComponent', () => {
   let component: CenteredSpinnerComponent;
@@ -8,7 +8,7 @@ describe('CenteredSpinnerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CenteredSpinnerComponent]
+      declarations: [CenteredSpinnerComponent],
     });
     fixture = TestBed.createComponent(CenteredSpinnerComponent);
     component = fixture.componentInstance;

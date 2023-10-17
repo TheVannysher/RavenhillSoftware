@@ -2,10 +2,10 @@
 import { Tag } from 'types/tag';
 
 const VINE_BAGDES: { [key: string]: Tag } = {
-  maintenance: {
+  'maintenance': {
     title: 'in maintenance',
   },
-  maintenance_due: {
+  'maintenance_due': {
     title: 'maintenance due',
   },
   'DEAD': {

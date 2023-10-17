@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateVineModalComponent } from './create-vine-modal.component';
+import CreateVineModalComponent from './create-vine-modal.component';
 
 describe('CreateVineModalComponent', () => {
   let component: CreateVineModalComponent;
@@ -8,7 +8,7 @@ describe('CreateVineModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateVineModalComponent]
+      declarations: [CreateVineModalComponent],
     });
     fixture = TestBed.createComponent(CreateVineModalComponent);
     component = fixture.componentInstance;

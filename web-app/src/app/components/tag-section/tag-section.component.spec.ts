@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TagSectionComponent } from './tag-section.component';
+import TagSectionComponent from './tag-section.component';
 
 describe('TagSectionComponent', () => {
   let component: TagSectionComponent;
@@ -8,7 +8,7 @@ describe('TagSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TagSectionComponent]
+      declarations: [TagSectionComponent],
     });
     fixture = TestBed.createComponent(TagSectionComponent);
     component = fixture.componentInstance;

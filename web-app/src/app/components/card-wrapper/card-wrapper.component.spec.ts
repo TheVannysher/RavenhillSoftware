@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardWrapperComponent } from './card-wrapper.component';
+import CardWrapperComponent from './card-wrapper.component';
 
 describe('CardWrapperComponent', () => {
   let component: CardWrapperComponent;
@@ -8,7 +8,7 @@ describe('CardWrapperComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CardWrapperComponent]
+      declarations: [CardWrapperComponent],
     });
     fixture = TestBed.createComponent(CardWrapperComponent);
     component = fixture.componentInstance;
