@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-create-cepage-modal',
   templateUrl: './create-sepage-modal.component.html',
 })
-export class CreateSepageModalComponent {
+export default class CreateSepageModalComponent {
 
 }

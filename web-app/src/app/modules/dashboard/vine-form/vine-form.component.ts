@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './vine-form.component.html',
   styleUrls: ['./vine-form.component.scss']
 })
-export class VineFormComponent {
+export default class VineFormComponent {
 
 }

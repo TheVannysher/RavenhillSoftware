@@ -1,22 +1,26 @@
-import { TasksService } from 'src/app/services/firebase/tasks.service';
+import { inject, Injectable } from '@angular/core';
+import {
+  collection, collectionData, doc, docData, Firestore,
+} from '@angular/fire/firestore';
 import { map, Observable, of } from 'rxjs';
-import { Injectable, inject } from '@angular/core';
-import { collection, Firestore, collectionData, doc, docData } from '@angular/fire/firestore';
+import TasksService from 'src/app/services/firebase/tasks.service';
+// import VINE_BAGDES from 'src/lib/enum/tags';
 import { Vine, VineRow } from 'src/types/vine';
 import { Tag } from 'types/tag';
-import { Task } from 'types/task';
-import { VINE_BAGDES } from 'src/lib/enum/tags';
+// import { Task } from 'types/task';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class VinesService {
-  private collectionPath = "vines";
+export default class VinesService {
+  private collectionPath = 'vines';
+
   private taskService = inject(TasksService);
+
   store: Firestore = inject(Firestore);
 
   getVineById(id: string): Observable<Vine> {
-    const document = doc(this.store, `${this.collectionPath}/${id}`)
+    const document = doc(this.store, `${this.collectionPath}/${id}`);
     return docData(document, {
       idField: 'id',
     }) as Observable<Vine>;
@@ -32,26 +36,26 @@ export class VinesService {
           if (n[current.row]) {
             n[current.row] = {
               ...n[current.row],
-              vineList : [...n[current.row].vineList , current]
+              vineList: [...n[current.row].vineList, current],
             };
           } else {
             const newValue = {
               rowNumber: current.row,
               vineList: [current],
-            }
-            n[current.row] = newValue
+            };
+            n[current.row] = newValue;
           }
           return n;
         }, {});
         return Object.values(newValues);
-      })
-     )
+      }),
+    );
   }
 
   getTagForVine(vine: Vine): Observable<Tag[] | null> {
-    const docRef = doc(this.store, `${this.collectionPath}/${vine.lastMaintenance}`);
+    doc(this.store, `${this.collectionPath}/${vine.lastMaintenance}`);
     // TODO: call getTagsForTask in task service
-    // combine tags for task with tags for  
+    // combine tags for task with tags for
     return of(null);
   }
 }

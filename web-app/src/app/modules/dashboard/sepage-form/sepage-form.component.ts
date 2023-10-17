@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './sepage-form.component.html',
   styleUrls: ['./sepage-form.component.scss']
 })
-export class SepageFormComponent {
+export default class SepageFormComponent {
 
 }

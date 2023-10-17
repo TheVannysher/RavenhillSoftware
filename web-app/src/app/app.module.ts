@@ -1,62 +1,59 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { VineComponent } from './components/vine/vine.component';
-import { TagComponent } from './components/tag/tag.component';
-import { TextComponent } from './generics/text/text.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NavigatorComponent } from './navigator/navigator.component';
-import { NavigatorItemComponent } from './navigator/navigator-item/navigator-item.component';
 import { NgIconsModule } from '@ng-icons/core';
-import icons from './icons';
-import { NavigationServiceService } from './services/navigation-service.service';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileComponent } from './modules/profile/profile.component';
-import { TaskboardComponent } from './components/taskboard/taskboard.component';
-
-import { CardWrapperComponent } from './components/card-wrapper/card-wrapper.component';
-import { CardComponent } from './components/card/card.component';
-import { ButtonIconComponent } from './components/button-icon/button-icon.component';
 import settings from 'src/lib/settings/settings';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { TagSectionComponent } from './components/tag-section/tag-section.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { CreateVineModalComponent } from './components/create-vine-modal/create-vine-modal.component';
-import { CreateSepageModalComponent } from './components/create-sepage-modal/create-sepage-modal.component';
-import { LoginComponent } from './modules/login/login.component';
+
+import AppComponent from './app.component';
+import AppRoutingModule from './app-routing.module';
+import ButtonIconComponent from './components/button-icon/button-icon.component';
+import CardComponent from './components/card/card.component';
+import CardWrapperComponent from './components/card-wrapper/card-wrapper.component';
+import CreateSepageModalComponent from './components/create-sepage-modal/create-sepage-modal.component';
+import CreateVineModalComponent from './components/create-vine-modal/create-vine-modal.component';
+import TagComponent from './components/tag/tag.component';
+import TagSectionComponent from './components/tag-section/tag-section.component';
+import TaskboardComponent from './components/taskboard/taskboard.component';
+import VineComponent from './components/vine/vine.component';
+import InputComponent from './generics/form/fields/input/input.component';
+import CenteredSpinnerComponent from './generics/loading/centered-spinner/centered-spinner.component';
+import icons from './icons';
 import MatModules from './matModules';
-import { NotfoundComponent } from './modules/notfound/notfound.component';
-import { InputComponent } from './generics/form/fields/input/input.component';
-import { CenteredSpinnerComponent } from './generics/loading/centered-spinner/centered-spinner.component';
-import { VineFormComponent } from './modules/dashboard/vine-form/vine-form.component';
-import { SepageFormComponent } from './modules/dashboard/sepage-form/sepage-form.component';
+import DashboardComponent from './modules/dashboard/dashboard.component';
+import SepageFormComponent from './modules/dashboard/sepage-form/sepage-form.component';
+import VineFormComponent from './modules/dashboard/vine-form/vine-form.component';
+import LoginComponent from './modules/login/login.component';
+import NotfoundComponent from './modules/notfound/notfound.component';
+import ProfileComponent from './modules/profile/profile.component';
+import NavigatorComponent from './navigator/navigator.component';
+import NavigatorItemComponent from './navigator/navigator-item/navigator-item.component';
+import NavigationServiceService from './services/navigation-service.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VineComponent,
-    TagComponent,
-    TextComponent,
+    CardComponent,
+    CardWrapperComponent,
+    CreateVineModalComponent,
+    DashboardComponent,
     NavigatorComponent,
     NavigatorItemComponent,
-    ProfileComponent,
+    TagComponent,
     TaskboardComponent,
-    CardWrapperComponent,
-    CardComponent,
+    ProfileComponent,
     ButtonIconComponent,
     TagSectionComponent,
-    DashboardComponent,
-    CreateVineModalComponent,
     CreateSepageModalComponent,
     LoginComponent,
     NotfoundComponent,
     InputComponent,
     CenteredSpinnerComponent,
+    VineComponent,
     VineFormComponent,
     SepageFormComponent,
   ],
@@ -75,6 +72,6 @@ import { SepageFormComponent } from './modules/dashboard/sepage-form/sepage-form
   providers: [
     NavigationServiceService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export default class AppModule { }

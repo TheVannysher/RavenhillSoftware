@@ -13,7 +13,7 @@ import LOGIN_STATUS from 'src/lib/enum/loginStatus';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export default class AuthService {
 
   private FirebaseAuth: Auth = inject(Auth);
   private authState: Observable<User | null> = authState(this.FirebaseAuth)
@@ -28,7 +28,7 @@ export class AuthService {
       return 'there was an issue registering the user';
     }
   }
-  
+
   async login(email: string, password: string): Promise<string | User> {
     try {
       const { user } = await signInWithEmailAndPassword(this.FirebaseAuth, email, password);
@@ -39,12 +39,12 @@ export class AuthService {
       return 'login failed';
     }
   }
-  
+
   async logout(): Promise<string | void> {
     try {
       await signOut(this.FirebaseAuth);
       localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_OUT)
-    } catch(error) {
+    } catch (error) {
       console.error(error);
       return 'error while login out the user';
     }

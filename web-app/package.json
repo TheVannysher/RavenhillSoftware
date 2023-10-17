@@ -8,7 +8,7 @@
     "deploy:dev": "ng build && firebase deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +27,6 @@
     "@ng-icons/feather-icons": "^25.2.0",
     "@types/uuid": "^9.0.2",
     "dotenv": "^16.3.1",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
     "firebase": "^9.23.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -49,9 +48,11 @@
     "@typescript-eslint/parser": "5.62.0",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.47.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.1",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

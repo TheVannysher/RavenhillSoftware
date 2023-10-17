@@ -7,8 +7,8 @@ import { Route } from '@angular/router';
   templateUrl: './navigator-item.component.html',
   styleUrls: ['./navigator-item.component.scss'],
 })
-export class NavigatorItemComponent {
- 
+export default class NavigatorItemComponent {
+
   @Input() active: boolean = false;
   @Input() route: Route | undefined;
   @Output() routeChange: EventEmitter<Route> = new EventEmitter();

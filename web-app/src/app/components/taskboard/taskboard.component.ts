@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-taskboard',
   templateUrl: './taskboard.component.html',
 })
-export class TaskboardComponent {
+export default class TaskboardComponent {
 
 }

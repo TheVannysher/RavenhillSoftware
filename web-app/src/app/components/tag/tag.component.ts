@@ -9,6 +9,6 @@ const red = '#ff0000';
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
 })
-export class TagComponent {
+export default class TagComponent {
   @Input() tag: Tag;
 }

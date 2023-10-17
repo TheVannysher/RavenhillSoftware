@@ -1,14 +1,14 @@
-import { TaskboardComponent } from './components/taskboard/taskboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes as NGRoutes } from '@angular/router';
 import { ROUTES_PATH } from 'src/lib/enum/routes';
-import { ProfileComponent } from './modules/profile/profile.component';
-import { TagComponent } from './components/tag/tag.component';
-import { VineComponent } from './components/vine/vine.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { LoginComponent } from './modules/login/login.component';
+
+import TaskboardComponent from './components/taskboard/taskboard.component';
+import VineComponent from './components/vine/vine.component';
 import { authGuard } from './guards/auth/auth.guard';
-import { NotfoundComponent } from './modules/notfound/notfound.component';
+import DashboardComponent from './modules/dashboard/dashboard.component';
+import LoginComponent from './modules/login/login.component';
+import NotfoundComponent from './modules/notfound/notfound.component';
+import ProfileComponent from './modules/profile/profile.component';
 
 export interface RouteData {
   icon: string,
@@ -28,34 +28,34 @@ const routes: Routes = [
   {
     path: ROUTES_PATH.login,
     component: LoginComponent,
-    data: { icon: 'featherFeather', name: ROUTES_PATH.login }
+    data: { icon: 'featherFeather', name: ROUTES_PATH.login },
   },
   {
     path: ROUTES_PATH.vines,
     component: DashboardComponent,
     canActivate: [authGuard],
     children: [
-      { path: ':id', component: VineComponent }
+      { path: ':id', component: VineComponent },
     ],
-    data: { icon: 'featherFeather', name: ROUTES_PATH.vines }
+    data: { icon: 'featherFeather', name: ROUTES_PATH.vines },
   },
   {
     path: ROUTES_PATH.profile,
     component: ProfileComponent,
     canActivate: [authGuard],
-    data: { icon: 'featherUser' , name: ROUTES_PATH.profile }
+    data: { icon: 'featherUser', name: ROUTES_PATH.profile },
   },
   {
     path: ROUTES_PATH.taskboard,
     component: TaskboardComponent,
     canActivate: [authGuard],
-    data: { icon: 'featherCheckCircle', name: ROUTES_PATH.taskboard }
+    data: { icon: 'featherCheckCircle', name: ROUTES_PATH.taskboard },
   },
-  { path: '**', component: NotfoundComponent }
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export default class AppRoutingModule { }

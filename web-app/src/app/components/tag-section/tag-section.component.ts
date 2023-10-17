@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   selector: 'app-tag-section',
   templateUrl: './tag-section.component.html',
 })
-export class TagSectionComponent {
+export default class TagSectionComponent {
   @Input() tags: Observable<Tag[] | null>;
 }

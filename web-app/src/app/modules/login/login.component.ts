@@ -12,9 +12,9 @@ type LoginFormData = { email: string, password: string } | null;
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent implements OnInit {
+export default class LoginComponent implements OnInit {
   private authService: AuthService = inject(AuthService);
-  private router:Router = inject(Router);
+  private router: Router = inject(Router);
   private fb: FormBuilder = inject(FormBuilder);
   formData: LoginFormData = null;
   loading: boolean = true;
@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  validation(newValue:string) {
-    if(newValue === '') {
+  validation(newValue: string) {
+    if (newValue === '') {
       return true;
     }
     return false;

@@ -1,13 +1,9 @@
-{
-  "root": true,
+module.exports = {
   "ignorePatterns": [
     "projects/**/*"
   ],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -16,32 +12,42 @@
         "airbnb",
         "airbnb-typescript"
       ],
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "tsconfigRootDir": __dirname,
+        "project": [
+          "tsconfig.(app|spec).json"
+        ]
+      },
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-selector": [
           "error",
           {
-            "type": "element",
             "prefix": "app",
-            "style": "kebab-case"
+            "style": "kebab-case",
+            "type": "element",
           }
-        ]
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "camelCase",
+            "type": "attribute",
+          }
+        ],
+        "linebreak-style": "off",
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
       "extends": [
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
+      ],
+      "files": [
+        "*.html"
       ],
       "rules": {}
     }
@@ -50,17 +56,30 @@
     "import",
     "simple-import-sort"
   ],
+  "root": true,
   "rules": {
-    "import/no-unresolved": "error",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
     "import/first": "error",
     "import/newline-after-import": "error",
-    "import/no-duplicates": "error"
+    "import/no-duplicates": "error",
+    "import/no-unresolved": "error",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": true,
+        "minKeys": 3,
+        "natural": false,
+      }
+    ]
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {

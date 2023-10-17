@@ -5,8 +5,8 @@ import { AuthService } from 'src/app/services/firebase/auth/auth.service';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent {
-  private authService:AuthService = inject(AuthService);
+export default class ProfileComponent {
+  private authService: AuthService = inject(AuthService);
   handleLogout() {
     console.log('logging out...')
     this.authService.logout();

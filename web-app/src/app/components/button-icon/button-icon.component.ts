@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'app-button-icon',
   templateUrl: './button-icon.component.html',
 })
-export class ButtonIconComponent {
+export default class ButtonIconComponent {
   @Input({ required: true }) name: string;
   @Output() onClick: EventEmitter<void> = new EventEmitter();
   @Input() label?: string;

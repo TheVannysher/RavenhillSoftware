@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './card-wrapper.component.html',
   styleUrls: ['./card-wrapper.component.scss']
 })
-export class CardWrapperComponent {
+export default class CardWrapperComponent {
   @Input({ required: false }) title: string;
   @Input({ required: false }) expandable: boolean;
   expanded: boolean = false;

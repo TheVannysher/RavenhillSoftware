@@ -8,7 +8,7 @@ import { Tag } from 'types/tag';
 @Injectable({
   providedIn: 'root'
 })
-export class TasksService {
+export default class TasksService {
   private collectionPath = 'tasks'
   store: Firestore = inject(Firestore);
   constructor() { }
@@ -26,7 +26,7 @@ export class TasksService {
         const taskEnd = doc.periode.end.toDate()
         const taskStart = doc.periode.start.toDate()
         const today = new Date();
-        let tags:Tag[] = []
+        let tags: Tag[] = []
         if (taskEnd > today && taskStart < today) {
           tags.push(VINE_BAGDES['maintenance']);
         }

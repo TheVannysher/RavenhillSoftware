@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-create-vine-modal',
   templateUrl: './create-vine-modal.component.html',
 })
-export class CreateVineModalComponent {
+export default class CreateVineModalComponent {
 
 }

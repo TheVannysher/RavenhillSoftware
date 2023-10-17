@@ -10,7 +10,7 @@ import { FormGroup, FormGroupName } from '@angular/forms';
   selector: 'app-input',
   templateUrl: './input.component.html',
 })
-export class InputComponent {
+export default class InputComponent {
   @Input({ required: true }) controlName: string;
   @Input() value?: string = '';
   @Input() placeholder?: string = '';
