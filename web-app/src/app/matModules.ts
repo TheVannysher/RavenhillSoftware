@@ -1,7 +1,7 @@
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { MatInputModule } from "@angular/material/input";
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export default [
-    MatProgressSpinnerModule,
-    MatInputModule,
+  MatProgressSpinnerModule,
+  MatInputModule,
 ];

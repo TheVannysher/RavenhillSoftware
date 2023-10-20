@@ -1,5 +1,5 @@
 export interface Tag {
-    title: string,
-    icon?: string,
-    color?: string,
+  title: string,
+  icon?: string,
+  color?: string,
 }

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import {
+  Component, EventEmitter, Input, Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-button-icon',
@@ -7,17 +8,26 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export default class ButtonIconComponent {
   @Input({ required: true }) name: string;
-  @Output() onClick: EventEmitter<void> = new EventEmitter();
+
+  @Output() handleClick: EventEmitter<void> = new EventEmitter();
+
   @Input() label?: string;
+
   @Input() color?: string;
+
   @Input() bgColor?: string;
+
   @Input() hoverColor?: string;
+
   @Input() hoverBgColor?: string;
+
   @Input() iconSize?: number | string;
+
   @Input() disabled?: boolean;
+
   @Input() loading?: boolean;
 
   handleOnClick() {
-    this.onClick.emit();
+    this.handleClick.emit();
   }
 }

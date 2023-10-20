@@ -1,6 +1,6 @@
 // get your firebase config in the firbase console
 // for help, visit firebase documentation
-export const environment = {
+export default {
   firebase: {
     projectId: '<YOUR INFO HERE>',
     appId: '<YOUR INFO HERE>',

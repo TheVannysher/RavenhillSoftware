@@ -3,18 +3,18 @@ import {
 } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { ROUTES_PATH } from 'src/lib/enum/routes';
+import { RoutesPaths } from 'src/lib/enum/routes';
 
 import NavigationServiceService from '../services/navigation-service.service';
 
 const slideAnimation = trigger('routeAnimation', [
-  state(ROUTES_PATH.profile, style({
+  state(RoutesPaths.PROFILE, style({
     transform: 'translate(0)',
   })),
-  state(ROUTES_PATH.vines, style({
+  state(RoutesPaths.DASHBOARD, style({
     transform: 'translate(5rem)',
   })),
-  state(ROUTES_PATH.taskboard, style({
+  state(RoutesPaths.TASKBOARD, style({
     transform: 'translate(10rem)',
   })),
 ]);
@@ -45,7 +45,7 @@ export default class NavigatorComponent implements OnInit {
     const currentRouteData = this.navigation.currentRouteData();
     this.currentRoute = currentRouteData;
     this.routeAnimationState = currentRouteData?.path || '';
-    if (currentRouteData?.path === ROUTES_PATH.profile) {
+    if (currentRouteData?.path === RoutesPaths.PROFILE) {
       this.inversedColor = true;
     } else {
       this.inversedColor = false;
@@ -56,7 +56,7 @@ export default class NavigatorComponent implements OnInit {
     this.router.navigate([value.path]);
     this.currentRoute = value;
     this.routeAnimationState = value.path!;
-    if (value.path === ROUTES_PATH.profile) {
+    if (value.path === RoutesPaths.PROFILE) {
       this.inversedColor = true;
     } else {
       this.inversedColor = false;

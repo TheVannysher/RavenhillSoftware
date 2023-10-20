@@ -1,5 +1,4 @@
-<div
-    class="bg-white
+<div class="bg-white
     transition-all
     duration-300
     flex flex-col
@@ -10,11 +9,12 @@
     border-neutral-200 border
     overflow-hidden
     shadow-md shadow-neutral-300
-    dark:bg-neutral-700 dark:shadow-none"
->
-    <ng-content select="div.cardHeader"></ng-content>
-    <ng-content select="div.cardContent"></ng-content>
-    <div *ngIf="expandable" (click)="handleOnClick()" class="flex justify-center w-full h-4 overflow-hidden bg-white z-10">
-        <ng-icon [ngClass]="expanded ? 'rotate-180' : ''" class="transition-all duration-300 ease-out" name="featherChevronDown"></ng-icon>
-    </div>
+    dark:bg-neutral-700 dark:shadow-none">
+  <ng-content select="div.cardHeader"></ng-content>
+  <ng-content select="div.cardContent"></ng-content>
+  <div *ngIf="expandable" aria-hidden="true" (click)="handleOnClick()"
+    class="flex justify-center w-full h-4 overflow-hidden bg-white z-10">
+    <ng-icon [ngClass]="expanded ? 'rotate-180' : ''" class="transition-all duration-300 ease-out"
+      name="featherChevronDown"></ng-icon>
+  </div>
 </div>

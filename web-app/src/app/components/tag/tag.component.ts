@@ -1,8 +1,5 @@
-import { Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { Tag } from 'types/tag';
-import { Component, Input, OnInit } from '@angular/core';
-
-const red = '#ff0000';
 
 @Component({
   selector: 'app-tag',

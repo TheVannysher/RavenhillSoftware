@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes as NGRoutes } from '@angular/router';
-import { ROUTES_PATH } from 'src/lib/enum/routes';
+import { RoutesPaths } from 'src/lib/enum/routes';
 
 import TaskboardComponent from './components/taskboard/taskboard.component';
 import VineComponent from './components/vine/vine.component';
@@ -12,7 +12,7 @@ import ProfileComponent from './modules/profile/profile.component';
 
 export interface RouteData {
   icon: string,
-  name: ROUTES_PATH,
+  name: RoutesPaths,
 }
 
 export interface Routes extends NGRoutes {
@@ -22,34 +22,34 @@ export interface Routes extends NGRoutes {
 const routes: Routes = [
   {
     path: '',
-    redirectTo: ROUTES_PATH.login,
+    redirectTo: RoutesPaths.LOGIN,
     pathMatch: 'full',
   },
   {
-    path: ROUTES_PATH.login,
+    path: RoutesPaths.LOGIN,
     component: LoginComponent,
-    data: { icon: 'featherFeather', name: ROUTES_PATH.login },
+    data: { icon: 'featherFeather', name: RoutesPaths.LOGIN },
   },
   {
-    path: ROUTES_PATH.vines,
+    path: RoutesPaths.DASHBOARD,
     component: DashboardComponent,
     canActivate: [authGuard],
     children: [
       { path: ':id', component: VineComponent },
     ],
-    data: { icon: 'featherFeather', name: ROUTES_PATH.vines },
+    data: { icon: 'featherFeather', name: RoutesPaths.DASHBOARD },
   },
   {
-    path: ROUTES_PATH.profile,
+    path: RoutesPaths.PROFILE,
     component: ProfileComponent,
     canActivate: [authGuard],
-    data: { icon: 'featherUser', name: ROUTES_PATH.profile },
+    data: { icon: 'featherUser', name: RoutesPaths.PROFILE },
   },
   {
-    path: ROUTES_PATH.taskboard,
+    path: RoutesPaths.TASKBOARD,
     component: TaskboardComponent,
     canActivate: [authGuard],
-    data: { icon: 'featherCheckCircle', name: ROUTES_PATH.taskboard },
+    data: { icon: 'featherCheckCircle', name: RoutesPaths.TASKBOARD },
   },
   { path: '**', component: NotfoundComponent },
 ];

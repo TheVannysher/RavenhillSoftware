@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { EventType, Router } from '@angular/router';
-import { BOTTOM_NAV_ROUTES, ROUTES_PATH } from 'src/lib/enum/routes';
+import { BOTTOM_NAV_ROUTES, RoutesPaths } from 'src/lib/enum/routes';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export default class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((e) => {
       if (e.type === EventType.NavigationEnd) {
-        const { url } = e; this.showBottomNav = BOTTOM_NAV_ROUTES.includes(url.split('/')[1] as ROUTES_PATH);
+        const { url } = e; this.showBottomNav = BOTTOM_NAV_ROUTES.includes(url.split('/')[1] as RoutesPaths);
       }
     });
   }

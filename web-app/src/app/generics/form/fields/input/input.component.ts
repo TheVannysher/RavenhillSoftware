@@ -1,10 +1,8 @@
 import {
   Component,
-  EventEmitter,
   Input,
-  Output,
 } from '@angular/core';
-import { FormGroup, FormGroupName } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -12,13 +10,20 @@ import { FormGroup, FormGroupName } from '@angular/forms';
 })
 export default class InputComponent {
   @Input({ required: true }) controlName: string;
+
   @Input() value?: string = '';
+
   @Input() placeholder?: string = '';
-  @Input({ required: true }) lable: string = 'label';
+
+  @Input({ required: true }) lable = 'label';
+
   @Input() type?: string = 'text';
+
   @Input({ required: true }) formGroup: FormGroup;
-  invalid: boolean = false;
-  focused: boolean = false;
+
+  invalid = false;
+
+  focused = false;
 
   get formControlStatus() {
     return this.formGroup.get(this.controlName)!;

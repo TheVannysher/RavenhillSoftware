@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import AuthService from 'src/app/services/firebase/auth/auth.service';
-import { ROUTES_PATH } from 'src/lib/enum/routes';
+import { RoutesPaths } from 'src/lib/enum/routes';
 import * as tailwindColors from 'tailwindcss/colors';
 
 type LoginFormData = { email: string, password: string } | null;
@@ -31,7 +31,7 @@ export default class LoginComponent implements OnInit {
   ngOnInit() {
     this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
       if (isLoggedIn) {
-        this.router.navigate([ROUTES_PATH.vines]);
+        this.router.navigate([RoutesPaths.DASHBOARD]);
       } else {
         this.loading = false;
       }
@@ -66,7 +66,7 @@ export default class LoginComponent implements OnInit {
         // login using firbase
         const { email, password } = this.formData;
         await this.authService.login(email, password);
-        this.router.navigate([ROUTES_PATH.vines]);
+        this.router.navigate([RoutesPaths.DASHBOARD]);
       } catch (error) {
         console.error(error);
       }

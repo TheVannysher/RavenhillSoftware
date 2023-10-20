@@ -6,5 +6,6 @@ import { Component, Input } from '@angular/core';
 })
 export default class CenteredSpinnerComponent {
   @Input({ required: true }) loading: boolean;
-  @Input() size: string = '16';
+
+  @Input() size = '16';
 }

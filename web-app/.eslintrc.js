@@ -1,6 +1,8 @@
 module.exports = {
   "ignorePatterns": [
-    "projects/**/*"
+    "projects/**/*",
+    "**/dist/*",
+    "**/.*"
   ],
   "overrides": [
     {
@@ -18,7 +20,8 @@ module.exports = {
       "parserOptions": {
         "tsconfigRootDir": __dirname,
         "project": [
-          "tsconfig.(app|spec).json"
+          "tsconfig.(app|spec).json",
+          "tsconfig.json",
         ]
       },
       "rules": {

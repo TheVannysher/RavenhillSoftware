@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  darkMode: true,
   content: [
     "./src/**/*.{html,js}",
   ],
+  darkMode: true,
+  mode: 'jit',
+  plugins: [],
   theme: {
     extend: {},
   },
-  plugins: [],
 }
 

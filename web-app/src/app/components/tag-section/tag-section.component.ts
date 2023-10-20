@@ -1,6 +1,7 @@
-import { Observable } from 'rxjs';
-import { Tag } from '../../../types/tag';
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { Tag } from '../../../types/tag';
 
 @Component({
   selector: 'app-tag-section',

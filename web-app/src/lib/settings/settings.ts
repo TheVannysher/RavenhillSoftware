@@ -1,7 +1,7 @@
-import dev from "./dev";
+import dev from './dev';
 
 const setting = {
-    dev,
+  dev,
 };
 
-export default setting['dev'];
+export default setting.dev;

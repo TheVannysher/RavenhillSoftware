@@ -1,14 +1,13 @@
-export enum ROUTES_PATH {
-    profile = 'profile',
-    vines = 'vines',
-    taskboard = 'taskboard',
-    login = 'login'
+export enum RoutesPaths {
+  PROFILE = 'profile',
+  DASHBOARD = 'dashboard',
+  TASKBOARD = 'taskboard',
+  LOGIN = 'login',
 }
-
 
 // order matters
 export const BOTTOM_NAV_ROUTES = [
-    ROUTES_PATH.profile,
-    ROUTES_PATH.vines,
-    ROUTES_PATH.taskboard,
-]
+  RoutesPaths.PROFILE,
+  RoutesPaths.DASHBOARD,
+  RoutesPaths.TASKBOARD,
+];

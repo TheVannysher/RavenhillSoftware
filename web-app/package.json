@@ -8,7 +8,7 @@
     "deploy:dev": "ng build && firebase deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix"
+    "lint": "tsc --noEmit && eslint . --ext js,ts --quiet --fix"
   },
   "private": true,
   "dependencies": {
