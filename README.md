@@ -12,4 +12,3 @@ I'll do my best to add documents to outline the project scope in the `doc` folde
 Everything you need for the web-client is in `web-app`. 
 It is a simple angular application that interact directly with a firestore database as of right now.
 once it is functionnal, the next step will be to integrate an api that acts as a middle man between the client and the database.
-

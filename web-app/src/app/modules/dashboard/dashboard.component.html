@@ -1,0 +1,24 @@
+<div class="h-[100%] w-screen">
+    <app-card-wrapper title="actions">
+        <div class="flex flex-wrap justify-center gap-1">
+            <app-card class="max-w-[18rem]" (onClick)="openModal('createVine')">
+                <div class="cardContent flex justify-center items-center">
+                    <p class="mr-2">
+                        add new vine
+                    </p>
+                    <ng-icon name="featherPlus" color="black"></ng-icon>
+                </div>
+            </app-card>
+            <app-card class="max-w-[16rem]" (onClick)="openModal('createSepage')">
+                <div class="cardContent flex justify-center">
+                    add new variety
+                </div>
+            </app-card>
+        </div>
+    </app-card-wrapper>
+    <app-card-wrapper [expandable]="true" *ngFor="let row of rowList | async" title="Row {{ row.rowNumber }}">
+        <app-vine *ngFor="let item of row.vineList" [item]="item">
+        </app-vine>
+    </app-card-wrapper>
+</div>
+

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "rossvineyards"
+  },
+  "targets": {
+    "rossvineyards": {
+      "hosting": {
+        "web-app": [
+          "rossvineyards"
+        ]
+      }
+    }
+  }
+}
