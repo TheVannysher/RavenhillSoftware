@@ -61,7 +61,6 @@ export default class LoginComponent implements OnInit {
   async onSubmit() {
     this.submitLoading = true;
     if (this.formData != null) {
-      console.log(this.formData);
       try {
         // login using firbase
         const { email, password } = this.formData;

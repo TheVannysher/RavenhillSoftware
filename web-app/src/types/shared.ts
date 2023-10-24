@@ -6,3 +6,9 @@ export interface Periode {
 }
 
 export type Frequency = 'daily' | 'weekly' | 'biweekly' | 'monthly';
+
+export interface RouteData {
+  icon: string,
+  path: string,
+  navigatorPosition: string,
+}

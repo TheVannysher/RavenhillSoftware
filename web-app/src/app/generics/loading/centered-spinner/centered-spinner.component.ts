@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './centered-spinner.component.html',
 })
 export default class CenteredSpinnerComponent {
-  @Input({ required: true }) loading: boolean;
-
   @Input() size = '16';
+
+  @Input() color = 'black';
 }

@@ -5,7 +5,6 @@ export enum RoutesPaths {
   LOGIN = 'login',
 }
 
-// order matters
 export const BOTTOM_NAV_ROUTES = [
   RoutesPaths.PROFILE,
   RoutesPaths.DASHBOARD,

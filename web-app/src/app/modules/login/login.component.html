@@ -1,34 +1,15 @@
 <div class="flex justify-center items-center w-screen h-screen">
-    <app-centered-spinner
-        *ngIf="loading"
-        [loading]="loading"
-        size="128"
-    >
-    </app-centered-spinner>
-    <div *ngIf="!loading" class="flex justify-center items-center flex-col w-96">
-        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="w-[100%]">
-            <app-input
-                placeholder="your login email"
-                lable="email"
-                controlName="email"
-                [formGroup]="loginForm"
-            ></app-input>
-            <app-input
-                placeholder="your password"
-                type="password"
-                controlName="password"
-                lable="password"
-                [formGroup]="loginForm"
-            ></app-input>
-            <div class="h-8">
-                <app-button-icon
-                    name="featherLogIn"
-                    label="login"
-                    [disabled]="loginForm.invalid"
-                    [loading]="submitLoading"
-                >
-                </app-button-icon>
-            </div>
-        </form>
-    </div>
+  <app-centered-spinner *ngIf="loading" size="128">
+  </app-centered-spinner>
+  <div *ngIf="!loading" class="flex justify-center items-center flex-col w-96">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="w-[100%]">
+      <app-input placeholder="your login email" lable="email" controlName="email" [formGroup]="loginForm"></app-input>
+      <app-input placeholder="your password" type="password" controlName="password" lable="password"
+        [formGroup]="loginForm"></app-input>
+      <div class="h-8">
+        <app-button-icon name="featherLogIn" label="login" [disabled]="loginForm.invalid" [loading]="submitLoading">
+        </app-button-icon>
+      </div>
+    </form>
+  </div>
 </div>

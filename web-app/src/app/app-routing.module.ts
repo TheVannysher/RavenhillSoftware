@@ -28,7 +28,6 @@ const routes: Routes = [
   {
     path: RoutesPaths.LOGIN,
     component: LoginComponent,
-    data: { icon: 'featherFeather', name: RoutesPaths.LOGIN },
   },
   {
     path: RoutesPaths.DASHBOARD,
@@ -37,19 +36,19 @@ const routes: Routes = [
     children: [
       { path: ':id', component: VineComponent },
     ],
-    data: { icon: 'featherFeather', name: RoutesPaths.DASHBOARD },
+    data: { icon: 'featherFeather', name: RoutesPaths.DASHBOARD, navigatorPosition: 1 },
   },
   {
     path: RoutesPaths.PROFILE,
     component: ProfileComponent,
     canActivate: [authGuard],
-    data: { icon: 'featherUser', name: RoutesPaths.PROFILE },
+    data: { icon: 'featherUser', name: RoutesPaths.PROFILE, navigatorPosition: 0 },
   },
   {
     path: RoutesPaths.TASKBOARD,
     component: TaskboardComponent,
     canActivate: [authGuard],
-    data: { icon: 'featherCheckCircle', name: RoutesPaths.TASKBOARD },
+    data: { icon: 'featherCheckCircle', name: RoutesPaths.TASKBOARD, navigatorPosition: 2 },
   },
   { path: '**', component: NotfoundComponent },
 ];

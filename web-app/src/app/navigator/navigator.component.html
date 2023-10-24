@@ -1,22 +1,16 @@
 <div class="flex justify-center h-24 align-middle items-center w-full z-50">
-    <div
-        [ngClass]="inversedColor? 'bg-neutral-50 shadow-blue-800': 'bg-blue-500 shadow-neutral-400'"
-        class="flex justify-between gap-4 rounded-full p-2  shadow-xl relative"
-    >
-        <div class="absolute inset-0 p-2 rounded-full overflow-hidden flex">
-            <div
-                [ngClass]="inversedColor? 'bg-blue-600 shadow-blue-200' : 'bg-neutral-50 shadow-blue-200'"
-                class="w-16 h-16 rounded-full shadow-md  transition-all duration-500 ease-out"
-                [@routeAnimation]="routeAnimationState"
-                >
-            </div>
-        </div>
-        <app-navigator-item
-            *ngFor="let item of navigatorItems"
-            [active]="item === currentRoute"
-            [inversedColor]="inversedColor"
-            [route]="item"
-            (routeChange)="handleOnClick(item)"
-            ></app-navigator-item>
+  <div [ngClass]="inversedColor? 'bg-neutral-50 shadow-blue-800': 'bg-blue-500 shadow-neutral-400'"
+    class="rounded-full p-2 shadow-xl relative overflow-hidden">
+    <div class="absolute inset-0 p-2 rounded-full overflow-hidden flex">
+      <div [ngClass]="inversedColor? 'bg-blue-600 shadow-blue-200' : 'bg-neutral-50 shadow-blue-200'"
+        class="w-16 h-16 rounded-full shadow-md  transition-all duration-500 ease-out"
+        [@routeAnimation]="routeAnimationState">
+      </div>
     </div>
+    <div *ngIf="!loading" class="flex justify-between gap-4">
+      <app-navigator-item *ngFor="let item of navigatorItems" [active]="item === currentRoute"
+        [inversedColor]="inversedColor" [route]="item" (routeChange)="handleOnClick(item)"></app-navigator-item>
+    </div>
+    <app-centered-spinner *ngIf="loading" size="24" color="white"></app-centered-spinner>
+  </div>
 </div>

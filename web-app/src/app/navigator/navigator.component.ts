@@ -36,20 +36,15 @@ export default class NavigatorComponent implements OnInit {
 
   inversedColor: boolean;
 
+  loading: boolean;
+
   constructor(
     private router: Router,
     private navigation: NavigationServiceService,
   ) { }
 
   ngOnInit() {
-    const currentRouteData = this.navigation.currentRouteData();
-    this.currentRoute = currentRouteData;
-    this.routeAnimationState = currentRouteData?.path || '';
-    if (currentRouteData?.path === RoutesPaths.PROFILE) {
-      this.inversedColor = true;
-    } else {
-      this.inversedColor = false;
-    }
+    this.loadNavigator();
   }
 
   handleOnClick(value: Route) {
@@ -57,6 +52,26 @@ export default class NavigatorComponent implements OnInit {
     this.currentRoute = value;
     this.routeAnimationState = value.path!;
     if (value.path === RoutesPaths.PROFILE) {
+      this.inversedColor = true;
+    } else {
+      this.inversedColor = false;
+    }
+  }
+
+  loadNavigator() {
+    this.loading = true;
+    this.navigatorItems = this.navigation.getBottomNavigatorRoutes();
+    const currentRouteData = this.navigation.currentRouteData();
+    if (currentRouteData) {
+      this.inversedColors(currentRouteData);
+      this.currentRoute = currentRouteData;
+      this.routeAnimationState = currentRouteData?.path || '';
+    }
+    this.loading = false;
+  }
+
+  inversedColors(currentData: Route) {
+    if (currentData.path === RoutesPaths.PROFILE) {
       this.inversedColor = true;
     } else {
       this.inversedColor = false;
