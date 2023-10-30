@@ -1,6 +1,4 @@
-<button
-    (click)="handleOnClick()"
-    class="
+<button (click)="handleOnClick()" class="
         w-full h-full flex justify-center items-center cursor-pointer group
         transition-all
         duration-150
@@ -10,13 +8,11 @@
         {{color ? 'text-[{{color}}]' : 'text-white'}}
         {{hoverColor? 'group-hover:text-[{{hoverColor}}]' : 'hover:text-blue-500'}}
         {{disabled ? 'opacity-50 pointer-events-none' : ''}}
-    "
-    [disabled]="disabled"
->
-    <p class="group-hover:mx-2 transition-all duration-150">
-        {{label}}
-    </p>
-    <ng-icon [name]="loading ? 'featherLoader' : name" class="
+    " [disabled]="disabled">
+  <p class="group-hover:mx-2 transition-all duration-150">
+    {{label}}
+  </p>
+  <ng-icon [name]="loading ? 'featherLoader' : name" class="
         transition-all
         duration-150
         mx-1
@@ -24,6 +20,5 @@
         {{color ? 'text-[{{color}}]' : 'text-white'}}
         {{hoverColor? 'group-hover:text-[{{hoverColor}}]' : 'group-hover:text-blue-500'}}
         {{loading ? 'motion-reduce:hidden animate-spin' : ''}}
-        "
-    ></ng-icon>
+        "></ng-icon>
 </button>

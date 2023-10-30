@@ -7,8 +7,9 @@ import {
   DocumentReference,
   Firestore,
   setDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Variety, VarietyInput } from 'types/variety';
 
 @Injectable({
@@ -34,24 +35,21 @@ export default class VarietyService {
     return collectionData(collectionInstance) as Observable<Variety[]>;
   }
 
-  async createVariety(newValue: VarietyInput) {
+  async createOrUpdateVariety(newValue: VarietyInput) {
     const collectionRef = collection(this.store, this.collectionPath);
-    const id = newValue.name?.substring(0, 4).toUpperCase();
+    const id = newValue.name?.replace(/\s/g, '').substring(0, 5).toUpperCase();
     try {
-      await setDoc(doc(collectionRef, id), { ...newValue });
+      const docRef = doc(collectionRef, id);
+      const exist = await firstValueFrom(docData(docRef));
+      if (exist) {
+        await updateDoc(docRef, { ...newValue });
+      } else {
+        await setDoc(docRef, { ...newValue });
+      }
+      return 'success';
     } catch (error) {
       console.error('Failed to add new Variety');
+      return 'error';
     }
-  }
-
-  async updateVariety(id: string, newValue: VarietyInput) {
-    const documentRef = doc(this.store, `${this.collectionPath}/${id}`);
-    console.log('documentREf: ', documentRef);
-
-    // try {
-    //   await setDoc(documentRef, { ...newValue });
-    // } catch (error) {
-    //   console.error('Failed to add new Variety');
-    // }
   }
 }

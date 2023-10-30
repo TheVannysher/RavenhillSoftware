@@ -20,6 +20,7 @@ import TaskboardComponent from './components/taskboard/taskboard.component';
 import VineComponent from './components/vine/vine.component';
 import InputComponent from './generics/form/fields/input/input.component';
 import TextareaComponent from './generics/form/fields/textarea/textarea.component';
+import FormBaseComponent from './generics/form/form-base/form-base.component';
 import CenteredSpinnerComponent from './generics/loading/centered-spinner/centered-spinner.component';
 import icons from './icons';
 import MatModules from './matModules';
@@ -52,6 +53,7 @@ import NavigationServiceService from './services/navigation-service.service';
     VineComponent,
     CreateAndUpdateVarietyComponent,
     TextareaComponent,
+    FormBaseComponent,
   ],
   imports: [
     AppRoutingModule,

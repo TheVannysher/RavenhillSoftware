@@ -1,4 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component, EventEmitter,
+  inject, OnInit, Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import VarietyService from 'src/app/services/firebase/variety.service';
 import { VarietyInput } from 'types/variety';
@@ -20,6 +23,10 @@ export default class CreateAndUpdateVarietyComponent implements OnInit {
 
   loading = false;
 
+  icon = 'featherLogIn';
+
+  @Output() handleSuccess: EventEmitter<void> = new EventEmitter();
+
   ngOnInit() {
     this.formGroup = this.fb.group({
       name: ['', [
@@ -32,11 +39,21 @@ export default class CreateAndUpdateVarietyComponent implements OnInit {
     });
   }
 
-  handleSubmit(event: SubmitEvent) {
+  async handleSubmit(event: SubmitEvent) {
     event.preventDefault();
     this.loading = true;
-    console.log('FormData: ', this.formData);
-    this.vs.createVariety(this.formData);
-    this.loading = false;
+    try {
+      if (this.formData) {
+        await this.vs.createOrUpdateVariety(this.formData);
+        this.loading = false;
+        this.icon = 'featherCheck';
+        this.handleSuccess.emit();
+      } else {
+        throw new Error('no form data');
+      }
+    } catch (error) {
+      this.loading = false;
+      this.icon = 'featherX';
+    }
   }
 }
