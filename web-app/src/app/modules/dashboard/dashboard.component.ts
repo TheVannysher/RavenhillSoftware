@@ -24,5 +24,6 @@ export default class DashboardComponent implements OnInit {
 
   openModal(modalToOpen: string) {
     this.openedModal = modalToOpen;
+    console.log('openedModal: ', this.openedModal);
   }
 }

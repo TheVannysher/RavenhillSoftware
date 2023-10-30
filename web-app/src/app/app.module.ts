@@ -19,9 +19,11 @@ import TagSectionComponent from './components/tag-section/tag-section.component'
 import TaskboardComponent from './components/taskboard/taskboard.component';
 import VineComponent from './components/vine/vine.component';
 import InputComponent from './generics/form/fields/input/input.component';
+import TextareaComponent from './generics/form/fields/textarea/textarea.component';
 import CenteredSpinnerComponent from './generics/loading/centered-spinner/centered-spinner.component';
 import icons from './icons';
 import MatModules from './matModules';
+import CreateAndUpdateVarietyComponent from './modules/dashboard/components/form/create-and-update-variety/create-and-update-variety.component';
 import DashboardComponent from './modules/dashboard/dashboard.component';
 import LoginComponent from './modules/login/login.component';
 import NotfoundComponent from './modules/notfound/notfound.component';
@@ -48,6 +50,8 @@ import NavigationServiceService from './services/navigation-service.service';
     InputComponent,
     CenteredSpinnerComponent,
     VineComponent,
+    CreateAndUpdateVarietyComponent,
+    TextareaComponent,
   ],
   imports: [
     AppRoutingModule,

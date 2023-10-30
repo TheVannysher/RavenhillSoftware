@@ -1,16 +1,14 @@
 import {
-  Component,
-  ElementRef,
-  Input,
-  ViewChild,
+  Component, ElementRef, Input, ViewChild,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
+  selector: 'app-textarea',
+  templateUrl: './textarea.component.html',
+  styleUrls: ['./textarea.component.scss'],
 })
-export default class InputComponent {
+export default class TextareaComponent {
   @Input({ required: true }) controlName: string;
 
   @Input() value?: string = '';
@@ -18,8 +16,6 @@ export default class InputComponent {
   @Input() placeholder?: string = '';
 
   @Input({ required: true }) label = 'label';
-
-  @Input() type?: string = 'text';
 
   @Input({ required: true }) formGroup: FormGroup;
 

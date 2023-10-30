@@ -1,9 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  collection, collectionData, doc, docData, DocumentReference, Firestore,
+  collection,
+  collectionData,
+  doc,
+  docData,
+  DocumentReference,
+  Firestore,
+  setDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Variety } from 'types/variety';
+import { Variety, VarietyInput } from 'types/variety';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +32,26 @@ export default class VarietyService {
   getAllVariety(): Observable<Variety[]> {
     const collectionInstance = collection(this.store, this.collectionPath);
     return collectionData(collectionInstance) as Observable<Variety[]>;
+  }
+
+  async createVariety(newValue: VarietyInput) {
+    const collectionRef = collection(this.store, this.collectionPath);
+    const id = newValue.name?.substring(0, 4).toUpperCase();
+    try {
+      await setDoc(doc(collectionRef, id), { ...newValue });
+    } catch (error) {
+      console.error('Failed to add new Variety');
+    }
+  }
+
+  async updateVariety(id: string, newValue: VarietyInput) {
+    const documentRef = doc(this.store, `${this.collectionPath}/${id}`);
+    console.log('documentREf: ', documentRef);
+
+    // try {
+    //   await setDoc(documentRef, { ...newValue });
+    // } catch (error) {
+    //   console.error('Failed to add new Variety');
+    // }
   }
 }
