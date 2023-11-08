@@ -27,6 +27,8 @@ export default class CreateAndUpdateVarietyComponent implements OnInit {
 
   @Output() handleSuccess: EventEmitter<void> = new EventEmitter();
 
+  @Output() handleCancel: EventEmitter<void> = new EventEmitter();
+
   ngOnInit() {
     this.formGroup = this.fb.group({
       name: ['', [
@@ -55,5 +57,9 @@ export default class CreateAndUpdateVarietyComponent implements OnInit {
       this.loading = false;
       this.icon = 'featherX';
     }
+  }
+
+  handleOnCancel() {
+    this.handleCancel.emit();
   }
 }

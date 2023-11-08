@@ -5,8 +5,12 @@
   <div>
     <app-textarea class="h-24" controlName="desc" label="description" [formGroup]="formGroup"></app-textarea>
   </div>
-  <div class="flex justify-end">
-    <div class="h-8 w-20">
+  <div class="flex justify-end gap-1">
+    <div>
+      <app-button-icon (handleClick)="handleOnCancel()" [loading]="loading" name="featherX"
+        label="Cancel"></app-button-icon>
+    </div>
+    <div>
       <app-button-icon [loading]="loading" [name]="icon" label="Create"></app-button-icon>
     </div>
   </div>

@@ -2,6 +2,7 @@ import {
   Component, EventEmitter, Input, Output,
 } from '@angular/core';
 
+const defaultColor = 'blue-500';
 @Component({
   selector: 'app-button-icon',
   templateUrl: './button-icon.component.html',
@@ -13,13 +14,13 @@ export default class ButtonIconComponent {
 
   @Input() label?: string;
 
-  @Input() color?: string;
+  @Input() color = 'white';
 
-  @Input() bgColor?: string;
+  @Input() bgColor = defaultColor;
 
-  @Input() hoverColor?: string;
+  @Input() hoverColor: string = defaultColor;
 
-  @Input() hoverBgColor?: string;
+  @Input() hoverBgColor = 'white';
 
   @Input() iconSize?: number | string;
 

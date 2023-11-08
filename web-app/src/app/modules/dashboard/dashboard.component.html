@@ -16,8 +16,8 @@
       </app-card>
     </div>
     <div class="w-full">
-      <app-create-and-update-variety *ngIf="openedModal === 'createVariety'"
-        (handleSuccess)="closeModal()"></app-create-and-update-variety>
+      <app-create-and-update-variety *ngIf="openedModal === 'createVariety'" (handleSuccess)="closeModal()"
+        (handleCancel)="closeModal()"></app-create-and-update-variety>
     </div>
   </app-card-wrapper>
   <app-card-wrapper [expandable]="true" *ngFor="let row of rowList | async" title="Row {{ row.rowNumber }}">
