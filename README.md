@@ -2,7 +2,7 @@
 
 Hello there, this is a personnal project I am building to learn and add to my portfolio.
 There is a lot to do and it is open source. I still have to figure out wich license I want to use.
-But in the mean time, help yourself. 
+But in the meantime, do or take whatever you need as long as it is not for commercial use. 
 
 The goal of this application is to manage a vineyards.
 There will be users with different roles for different types of tasks.
