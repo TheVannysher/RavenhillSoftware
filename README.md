@@ -1,4 +1,4 @@
-# RossVineyards
+# Ravenhill vineyard management app
 
 Hello there, this is a personnal project I am building to learn and add to my portfolio.
 There is a lot to do and it is open source. I still have to figure out wich license I want to use.
