@@ -5,7 +5,13 @@ There is a lot to do and it is open source. I still have to figure out wich lice
 But in the meantime, do or take whatever you need as long as it is not for commercial use. 
 
 The goal of this application is to manage a vineyards.
-There will be users with different roles for different types of tasks.
+Concepts:
+- tasks
+- users
+- vines
+  - variety
+- block (set of vines of the same variety in one yard)
+  
 I'll do my best to add documents to outline the project scope in the `doc` folder.
 
 
