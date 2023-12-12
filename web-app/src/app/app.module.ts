@@ -9,52 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgIconsModule } from '@ng-icons/core';
 import settings from 'src/lib/settings/settings';
 
-import AppComponent from './app.component';
-import AppRoutingModule from './app-routing.module';
-import ButtonIconComponent from './components/button-icon/button-icon.component';
-import CardComponent from './components/card/card.component';
-import CardWrapperComponent from './components/card-wrapper/card-wrapper.component';
-import TagComponent from './components/tag/tag.component';
-import TagSectionComponent from './components/tag-section/tag-section.component';
-import TaskboardComponent from './components/taskboard/taskboard.component';
-import VineComponent from './components/vine/vine.component';
-import InputComponent from './generics/form/fields/input/input.component';
-import TextareaComponent from './generics/form/fields/textarea/textarea.component';
-import FormBaseComponent from './generics/form/form-base/form-base.component';
-import CenteredSpinnerComponent from './generics/loading/centered-spinner/centered-spinner.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import icons from './icons';
 import MatModules from './matModules';
-import CreateAndUpdateVarietyComponent from './modules/dashboard/components/form/create-and-update-variety/create-and-update-variety.component';
-import DashboardComponent from './modules/dashboard/dashboard.component';
-import LoginComponent from './modules/login/login.component';
-import NotfoundComponent from './modules/notfound/notfound.component';
-import ProfileComponent from './modules/profile/profile.component';
-import NavigatorComponent from './navigator/navigator.component';
-import NavigatorItemComponent from './navigator/navigator-item/navigator-item.component';
-import NavigationServiceService from './services/navigation-service.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ButtonIconComponent,
-    CardComponent,
-    CardWrapperComponent,
-    DashboardComponent,
-    NavigatorComponent,
-    NavigatorItemComponent,
-    TagComponent,
-    TaskboardComponent,
-    ProfileComponent,
-    TagSectionComponent,
-    LoginComponent,
-    NotfoundComponent,
-    InputComponent,
-    CenteredSpinnerComponent,
-    VineComponent,
-    CreateAndUpdateVarietyComponent,
-    TextareaComponent,
-    FormBaseComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -67,9 +28,7 @@ import NavigationServiceService from './services/navigation-service.service';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [
-    NavigationServiceService,
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppModule { }
+export default class AppModule {}
