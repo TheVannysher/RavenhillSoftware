@@ -13,9 +13,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import icons from './icons';
 import MatModules from './matModules';
+import { NavigatorComponent } from './components/navigation/navigator/navigator.component';
+import { NavItemComponent } from './components/navigation/nav-item/nav-item.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavigatorComponent, NavItemComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
