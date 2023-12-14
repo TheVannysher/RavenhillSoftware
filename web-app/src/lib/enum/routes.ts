@@ -1,12 +1,11 @@
-export enum RoutesPaths {
-  PROFILE = 'profile',
-  DASHBOARD = 'dashboard',
-  TASKBOARD = 'taskboard',
-  LOGIN = 'login',
+export enum RoutesPath {
+  OVERVIEW = '/home/overview',
+  TASKBOARD = '/home/taskboard',
+  USER_PROFILE = '/home/profile',
 }
 
-export const BOTTOM_NAV_ROUTES = [
-  RoutesPaths.PROFILE,
-  RoutesPaths.DASHBOARD,
-  RoutesPaths.TASKBOARD,
-];
+export enum HomeRoutePaths {
+  OVERVIEW = 'overview',
+  TASKBOARD = 'taskboard',
+  USER_PROFILE = 'profile',
+}

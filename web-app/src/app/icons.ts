@@ -10,6 +10,7 @@ import {
   featherPlus,
   featherUser,
   featherX,
+  featherZap,
 } from '@ng-icons/feather-icons';
 
 export default {
@@ -24,4 +25,5 @@ export default {
   featherPlus,
   featherLogIn,
   featherLogOut,
+  featherZap,
 };

@@ -1,15 +1,10 @@
-import { Component, inject } from '@angular/core';
-import AuthService from 'src/app/services/firebase/auth/auth.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export default class ProfileComponent {
-  private authService: AuthService = inject(AuthService);
+export class ProfileComponent {
 
-  handleLogout() {
-    console.log('logging out...');
-    this.authService.logout();
-  }
 }
