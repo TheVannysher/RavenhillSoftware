@@ -54,6 +54,14 @@
   --clr-orange-red-900: #4E1603;
 
   --clr-primary: var(--clr-red-700);
+  --clr-border-default: hsla(0, 0, 0, 0.15);
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
 }
 
 
@@ -64,6 +72,34 @@
 body {
   font-family: var(--ff-default);
   font-size: var(--fs-default);
+  padding: 0;
+  margin: 0;
+}
 
-  color: hsla(hue, saturation, lightness, alpha);
+img {
+  display: block;
+  max-width: 100%;
+}
+
+img.logo {
+  display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+div.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
 }

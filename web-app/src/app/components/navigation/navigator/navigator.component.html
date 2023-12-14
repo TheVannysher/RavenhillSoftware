@@ -1,14 +1,16 @@
 <div class="navigator">
-  <div class="nav-item">
-    <svg></svg>
-    <div class="active-accent"></div>
-  </div>
-  <div class="nav-item">
-    <svg></svg>
-    <div class="active-accent"></div>
-  </div>
-  <div class="nav-item">
-    <svg></svg>
-    <div class="active-accent"></div>
+  <div class="content">
+    <a
+      [routerLink]="tab.path"
+      (click)="handleClick(tab.name)"
+      *ngFor="let tab of tabs"
+      class="nav-item"
+      [attr.data-active]="tab.name === currentTab">
+      <div class="nav-icon" >
+        <ng-icon *ngIf="tab.type === 'icon'" [name]="tab.src" size="2rem"></ng-icon>
+        <img *ngIf="tab.type === 'image'" [src]="tab.src" alt="">
+      </div>
+      <div class="active-accent"></div>
+    </a>
   </div>
 </div>

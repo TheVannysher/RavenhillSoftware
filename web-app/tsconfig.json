@@ -26,13 +26,15 @@
       "dom"
     ],
     "paths": {
-      "types/*": ["src/types/*"]
+      "types/*": ["src/types/*"],
+      "assets/*": ["src/assets/*"]
     }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "types": ["node"]
   },
 }

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigatorComponent } from './navigator.component';
+import { TaskboardComponent } from './taskboard.component';
 
-describe('NavigatorComponent', () => {
-  let component: NavigatorComponent;
-  let fixture: ComponentFixture<NavigatorComponent>;
+describe('TaskboardComponent', () => {
+  let component: TaskboardComponent;
+  let fixture: ComponentFixture<TaskboardComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigatorComponent],
+      declarations: [TaskboardComponent]
     });
-    fixture = TestBed.createComponent(NavigatorComponent);
+    fixture = TestBed.createComponent(TaskboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

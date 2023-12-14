@@ -11,13 +11,21 @@ import settings from 'src/lib/settings/settings';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavigatorComponent } from './components/navigation/navigator/navigator.component';
 import icons from './icons';
 import MatModules from './matModules';
-import { NavigatorComponent } from './components/navigation/navigator/navigator.component';
-import { NavItemComponent } from './components/navigation/nav-item/nav-item.component';
+import { OverviewComponent } from './modules/overview/overview.component';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { TaskboardComponent } from './modules/taskboard/taskboard.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigatorComponent, NavItemComponent],
+  declarations: [
+    AppComponent,
+    NavigatorComponent,
+    OverviewComponent,
+    TaskboardComponent,
+    ProfileComponent,
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,

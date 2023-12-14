@@ -1,5 +1,60 @@
 .navigator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: fit-content;
+  border: 1px solid hsla(0, 0, 0, 15%);
+  padding: 0.5rem;
+
+  position: absolute;
+  bottom: 0;
+  .content {
+    display: flex;
+    gap: var(--spacing-md);
+
+    .nav-item {
+      all: unset;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-md);
+      transition: all 0.2s ease;
+      opacity: 0.6;
+      filter: grayscale(1);
+    
+      &[data-active="true"] {
+        opacity: 1;
+        filter: grayscale(0);
+      }
+      
+    
+      img, svg, ng-icon, .nav-icon {
+        max-width: 2rem;
+        max-height: 2rem;
+      }
+    
+      .active-accent {
+        height: 0.25rem;
+        width: 0;
+        border-radius: 0.125rem;
+        background-color: var(--clr-red-700);
+        transition: all 0.2s ease;
+      }
+      &[data-active="true"] .active-accent {
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+
+
+
+@keyframes slideFromLeft {
+  
+}
+
+@keyframes slideFromRight {
+  
 }
