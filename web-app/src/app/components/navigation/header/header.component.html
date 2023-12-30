@@ -1,0 +1,14 @@
+<header>
+    <div *ngIf="showBackButton" class="back">
+        <ng-icon name="featherArrowLeft" size="2rem"></ng-icon>
+    </div>
+    <div class="page-info">
+        <div class="icon-container">
+            <ng-content></ng-content>
+        </div>
+        <div class="text-container">
+            <p i18n class="page-category">{{category}}</p>
+            <h3 i18n class="page-title">{{title}}</h3>
+        </div>
+    </div>
+</header>

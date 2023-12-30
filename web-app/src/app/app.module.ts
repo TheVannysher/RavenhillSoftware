@@ -17,6 +17,8 @@ import MatModules from './matModules';
 import { OverviewComponent } from './modules/overview/overview.component';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { TaskboardComponent } from './modules/taskboard/taskboard.component';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { TaskboardComponent } from './modules/taskboard/taskboard.component';
     OverviewComponent,
     TaskboardComponent,
     ProfileComponent,
+    HeaderComponent,
+    PageWrapperComponent,
   ],
   imports: [
     AppRoutingModule,

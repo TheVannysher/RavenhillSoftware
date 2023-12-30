@@ -1,26 +1,30 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { RoutesPath } from 'src/lib/enum/routes';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Event, EventType, Router, RouterEvent, RoutesRecognized } from '@angular/router';
+import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
+import ROUTES_DATA from 'src/lib/routes/routesData';
 import { NavigaionTab } from 'types/navigation/navigator_tabs';
 
 export const NAVIGATIONS_TABS:NavigaionTab[] = [
   {
-    name: 'Profile',
+    name: RouteNames.USER_PROFILE,
     type: 'icon',
     src: 'featherUser',
-    path: RoutesPath.USER_PROFILE,
+    path: RouteFullPaths.USER_PROFILE,
+    color: ROUTES_DATA.profile.color,
   },
   {
-    name: 'Overview',
+    name: RouteNames.OVERVIEW,
     type: 'image',
     src: 'assets/logo.svg',
-    path: RoutesPath.OVERVIEW,
+    path: RouteFullPaths.OVERVIEW,
+    color: ROUTES_DATA.overview.color,
   },
   {
-    name: 'Taskboard',
+    name: RouteNames.TASKBOARD,
     type: 'icon',
     src: 'featherZap',
-    path: RoutesPath.TASKBOARD,
+    path: RouteFullPaths.TASKBOARD,
+    color: ROUTES_DATA.taskboard.color,
   },
 ];
 
@@ -29,14 +33,24 @@ export const NAVIGATIONS_TABS:NavigaionTab[] = [
   templateUrl: './navigator.component.html',
   styleUrls: ['./navigator.component.scss'],
 })
-export class NavigatorComponent {
+export class NavigatorComponent implements OnInit {
   router:Router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
 
-  currentTab = 'Overview';
+  currentTab = RouteNames.OVERVIEW;
 
   tabs = NAVIGATIONS_TABS;
 
-  handleClick(tab:string) {
+  ngOnInit(): void {
+    console.log(this.router.url);
+    this.router.events.subscribe((e: Event) => {
+      if (e.type === EventType.RoutesRecognized) {
+        this.currentTab = e.urlAfterRedirects.split('/')[2] as RouteNames;
+      }
+    })
+  }
+
+  handleClick(tab:RouteNames) {
     this.currentTab = tab;
   }
 }

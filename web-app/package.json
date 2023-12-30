@@ -25,6 +25,7 @@
     "@angular/router": "^16.2.0",
     "@ng-icons/core": "^25.2.0",
     "@ng-icons/feather-icons": "^25.2.0",
+    "angular": "^1.8.3",
     "dotenv": "^16.3.1",
     "firebase": "^9.23.0",
     "rxjs": "~7.8.0",

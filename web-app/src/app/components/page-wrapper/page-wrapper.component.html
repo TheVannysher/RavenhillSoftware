@@ -1,0 +1,15 @@
+<app-header
+    [title]="routeData.name"
+    [category]="routeData.category"
+>
+
+    <div *ngIf="routeData.icon !== undefined" [ngSwitch]="routeData.icon.type">
+        <div *ngSwitchCase="'custom'">
+            <img class="icon" [src]="routeData.icon.src" alt="">
+        </div>
+        <div *ngSwitchDefault>
+            <ng-icon style="color: var({{ routeData.color }})" class="icon" size="5rem" strokeWidth="1" [name]="routeData.icon.src"></ng-icon>
+        </div>
+    </div>
+</app-header>
+<ng-content></ng-content>

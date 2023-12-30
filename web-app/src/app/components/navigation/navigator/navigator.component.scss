@@ -1,7 +1,7 @@
 .navigator {
   width: 100vw;
   height: fit-content;
-  border-top: 0.125rem solid hsla(0, 0, 0, 15%);
+  border-top: 0.125rem solid var(--clr-neutral-300);
   padding: 0.5rem;
 
   position: absolute;
@@ -42,7 +42,6 @@
         height: 0.25rem;
         width: 0.25rem;
         border-radius: 0.125rem;
-        background-color: var(--clr-red-700);
         opacity: 0;
       }
       &[data-active="true"] .active-accent {

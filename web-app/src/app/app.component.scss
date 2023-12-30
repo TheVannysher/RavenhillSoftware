@@ -1,6 +1,8 @@
 .page-container {
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
+  overflow-y: scroll;
   .content {
     flex: 1;
   }

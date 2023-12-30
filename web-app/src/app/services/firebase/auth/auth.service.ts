@@ -6,9 +6,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   User,
+  UserInfo,
 } from '@angular/fire/auth';
 import { map, Observable } from 'rxjs';
-import LOGIN_STATUS from 'src/lib/enum/loginStatus';
+import { LOGIN_STATUS } from 'src/lib/enum/loginStatus';
+import { LocalUser } from 'types/Auth/User';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,13 @@ export default class AuthService {
   async register(email: string, password: string): Promise<string | User> {
     try {
       const { user } = await createUserWithEmailAndPassword(this.FirebaseAuth, email, password);
+      // get role of user
+      const localUser = {
+        username: user.displayName || email,
+        role: 'Role',
+      };
       localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_IN);
+      localStorage.setItem('user', JSON.stringify(localUser));
       return user;
     } catch (error) {
       console.error(error);
@@ -32,7 +40,13 @@ export default class AuthService {
   async login(email: string, password: string): Promise<string | User> {
     try {
       const { user } = await signInWithEmailAndPassword(this.FirebaseAuth, email, password);
+      // get role of user
+      const localUser = {
+        username: user.displayName || email,
+        role: 'Role',
+      };
       localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_IN);
+      localStorage.setItem('user', JSON.stringify(localUser));
       return user;
     } catch (error) {
       console.error(error);
@@ -51,8 +65,13 @@ export default class AuthService {
     }
   }
 
-  getLoginStatus(): Observable<User | null> {
-    return this.authState;
+  getUser() {
+    const localUser = localStorage.getItem('user');
+    console.log(localUser)
+    if (localUser) { 
+      return JSON.parse(localUser) as LocalUser;
+    }
+    return undefined;
   }
 
   isLoggedIn(): Observable<boolean> {
