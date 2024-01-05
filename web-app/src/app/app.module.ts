@@ -19,6 +19,8 @@ import { ProfileComponent } from './modules/profile/profile.component';
 import { TaskboardComponent } from './modules/taskboard/taskboard.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
+import { LoginComponent } from './modules/login/login.component';
+import { TextFieldComponent } from './components/inputs/text-field/text-field.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.com
     ProfileComponent,
     HeaderComponent,
     PageWrapperComponent,
+    LoginComponent,
+    TextFieldComponent,
   ],
   imports: [
     AppRoutingModule,

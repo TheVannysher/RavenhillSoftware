@@ -1,8 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Event, EventType, Router, RouterEvent, RoutesRecognized } from '@angular/router';
 import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 import ROUTES_DATA from 'src/lib/routes/routesData';
 import { NavigaionTab } from 'types/navigation/navigator_tabs';
+import { RouteData } from 'types/navigation/routes.types';
 
 export const NAVIGATIONS_TABS:NavigaionTab[] = [
   {
@@ -37,7 +38,7 @@ export class NavigatorComponent implements OnInit {
   router:Router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
 
-  currentTab = RouteNames.OVERVIEW;
+  currentTab: RouteNames;
 
   tabs = NAVIGATIONS_TABS;
 

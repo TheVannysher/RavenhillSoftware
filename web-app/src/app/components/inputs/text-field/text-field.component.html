@@ -1,0 +1,14 @@
+<div [formGroup]="formGroup" class="text-field-container shadow-md">
+    <input
+        #input
+        [type]="type"
+        [formControlName]="formControlName"
+        [placeholder]="placeholder"
+        [required]="required"
+        [value]="value"
+    >
+</div>
+<ul *ngIf="errors !== undefined"class="error-list">
+    <li *ngFor="let error of errors"class="error-item">{{error}}</li>
+</ul>
+

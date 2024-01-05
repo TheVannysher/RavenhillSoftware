@@ -3,9 +3,6 @@
   height: fit-content;
   border-top: 0.125rem solid var(--clr-neutral-300);
   padding: 0.5rem;
-
-  position: absolute;
-  bottom: 0;
   .content {
     display: flex;
     gap: var(--spacing-xl);
@@ -13,6 +10,7 @@
     justify-content: center;
 
     .nav-item {
+      --accent-color: var(--clr-green-500);
       all: unset;
       display: flex;
       flex-direction: column;
@@ -22,6 +20,7 @@
       transition: all 0.2s ease;
       opacity: 0.6;
       filter: grayscale(1);
+      color: var(--accent-color);
       
     
       &[data-active="true"] {
@@ -39,6 +38,7 @@
       }
     
       .active-accent {
+        background-color: var(--accent-color, --clr-green-500);
         height: 0.25rem;
         width: 0.25rem;
         border-radius: 0.125rem;

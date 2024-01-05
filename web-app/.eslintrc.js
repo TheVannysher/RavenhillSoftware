@@ -42,7 +42,8 @@ module.exports = {
           }
         ],
         "linebreak-style": "off",
-        "import/prefer-default-export" : "off",
+        "import/prefer-default-export": "off",
+        "import/extensions": "off",
       }
     },
     {
@@ -66,7 +67,7 @@ module.exports = {
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
     "import/no-unresolved": "error",
-    "import/prefer-default-export" : "off",
+    "import/prefer-default-export": "off",
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": "error",
     "sort-keys": [
@@ -83,7 +84,8 @@ module.exports = {
     "import/parsers": {
       "@typescript-eslint/parser": [
         ".ts",
-        ".tsx"
+        ".tsx",
+        ".component.ts"
       ]
     },
     "import/resolver": {

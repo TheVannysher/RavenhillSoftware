@@ -6,11 +6,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   User,
-  UserInfo,
 } from '@angular/fire/auth';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { LOGIN_STATUS } from 'src/lib/enum/loginStatus';
-import { LocalUser } from 'types/Auth/User';
+
+import { RouteFullPaths } from '#lib/enum/routes';
 
 @Injectable({
   providedIn: 'root',
@@ -18,18 +18,26 @@ import { LocalUser } from 'types/Auth/User';
 export default class AuthService {
   private FirebaseAuth: Auth = inject(Auth);
 
-  private authState: Observable<User | null> = authState(this.FirebaseAuth);
+  private router: Router = inject(Router);
+
+  private route: ActivatedRoute = inject(ActivatedRoute);
+
+  private user: Observable<User | null> = authState(this.FirebaseAuth);
 
   async register(email: string, password: string): Promise<string | User> {
     try {
-      const { user } = await createUserWithEmailAndPassword(this.FirebaseAuth, email, password);
+      const { user } = await createUserWithEmailAndPassword(
+        this.FirebaseAuth,
+        email,
+        password,
+      );
       // get role of user
       const localUser = {
         username: user.displayName || email,
         role: 'Role',
       };
-      localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_IN);
       localStorage.setItem('user', JSON.stringify(localUser));
+      this.router.navigate([RouteFullPaths.OVERVIEW]);
       return user;
     } catch (error) {
       console.error(error);
@@ -37,7 +45,7 @@ export default class AuthService {
     }
   }
 
-  async login(email: string, password: string): Promise<string | User> {
+  async login(email: string, password: string): Promise<string | void> {
     try {
       const { user } = await signInWithEmailAndPassword(this.FirebaseAuth, email, password);
       // get role of user
@@ -45,9 +53,10 @@ export default class AuthService {
         username: user.displayName || email,
         role: 'Role',
       };
-      localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_IN);
       localStorage.setItem('user', JSON.stringify(localUser));
-      return user;
+      console.log('login success!');
+      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || RouteFullPaths.OVERVIEW;
+      this.router.navigate([returnUrl]);
     } catch (error) {
       console.error(error);
       return 'login failed';
@@ -57,7 +66,7 @@ export default class AuthService {
   async logout(): Promise<string | void> {
     try {
       await signOut(this.FirebaseAuth);
-      localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_OUT);
+      localStorage.removeItem('user');
       return 'logged out';
     } catch (error) {
       console.error(error);
@@ -65,16 +74,7 @@ export default class AuthService {
     }
   }
 
-  getUser() {
-    const localUser = localStorage.getItem('user');
-    console.log(localUser)
-    if (localUser) { 
-      return JSON.parse(localUser) as LocalUser;
-    }
-    return undefined;
-  }
-
   isLoggedIn(): Observable<boolean> {
-    return this.authState.pipe(map((user) => (!!user)));
+    return this.user.pipe(map((user) => (!!user)));
   }
 }

@@ -16,7 +16,6 @@ import {
   featherZap,
 } from '@ng-icons/feather-icons';
 
-
 const icons = {
   featherArrowLeft,
   featherEdit,
@@ -35,22 +34,25 @@ const icons = {
   featherZap,
 };
 
-export enum NG_ICONS {
-  featherArrowLeft = 'featherArrowLeft',
-  featherCheck = 'featherCheck',
-  featherCheckCircle = 'featherCheckCircle',
-  featherChevronDown = 'featherChevronDown',
-  featherChevronUp = 'featherChevronUp',
-  featherEdit = 'featherEdit',
-  featherFeather = 'featherFeather',
-  featherLoader = 'featherLoader',
-  featherLogIn = 'featherLogIn',
-  featherLogOut = 'featherLogOut',
-  featherPlus = 'featherPlus',
-  featherSettings = 'featherSettings',
-  featherUser = 'featherUser',
-  featherX = 'featherX',
-  featherZap = 'featherZap',
+enum Feather {
+  ArrowLeft = 'featherArrowLeft',
+  Check = 'featherCheck',
+  CheckCircle = 'featherCheckCircle',
+  ChevronDown = 'featherChevronDown',
+  ChevronUp = 'featherChevronUp',
+  Edit = 'featherEdit',
+  Feather = 'featherFeather',
+  Loader = 'featherLoader',
+  LogIn = 'featherLogIn',
+  LogOut = 'featherLogOut',
+  Plus = 'featherPlus',
+  Settings = 'featherSettings',
+  User = 'featherUser',
+  X = 'featherX',
+  Zap = 'featherZap',
 }
 
-export default {...icons};
+export const NGIcons = {
+  feather: Feather,
+};
+export default { ...icons };

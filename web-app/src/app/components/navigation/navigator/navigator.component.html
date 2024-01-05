@@ -5,12 +5,13 @@
       (click)="handleClick(tab.name)"
       *ngFor="let tab of tabs"
       class="nav-item"
+      style="--accent-color: var({{tab.color}})"
       [attr.data-active]="tab.name === currentTab">
-      <div class="nav-icon" >
-        <ng-icon *ngIf="tab.type === 'icon'" [name]="tab.src" size="2rem"  style="color: var({{tab.color}})"></ng-icon>
+      <div class="nav-icon">
+        <ng-icon *ngIf="tab.type === 'icon'" [name]="tab.src" size="2rem"></ng-icon>
         <img *ngIf="tab.type === 'image'" [src]="tab.src" alt="">
       </div>
-      <div class="active-accent" style="background-color: var({{tab.color}})"></div>
+      <div class="active-accent"></div>
     </a>
   </div>
 </div>

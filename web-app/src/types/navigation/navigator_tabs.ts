@@ -5,5 +5,5 @@ export interface NavigaionTab {
   name: RouteNames,
   src: string
   path: string
-  color: string,
+  color?: string,
 }

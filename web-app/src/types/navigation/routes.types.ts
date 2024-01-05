@@ -14,6 +14,6 @@ export interface RouteData {
     category: RouteCategories | string,
     name: RouteNames | string,
     fullPath: RouteFullPaths,
-    icon: RouteIcon,
-    color: string,
+    icon?: RouteIcon,
+    color?: string,
 }

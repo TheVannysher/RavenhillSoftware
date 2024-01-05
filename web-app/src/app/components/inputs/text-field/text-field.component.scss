@@ -1,0 +1,31 @@
+.text-field-container {
+    --accent-color: var(--clr-red-100);
+    border-radius: 0.25rem;
+    overflow: clip;
+    min-width: 14rem;
+    max-width: 20rem;
+}
+.error-list {
+    padding: var(--spacing-sm);
+    transition: all 0.2s ease;
+    .error-item {
+        font-weight: bold;
+        color: var(--clr-red-400);
+        font-size: 0.8rem;
+    }
+}
+
+input {
+    all: unset;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-height: 2rem;
+    max-height: 4rem;
+    background-color: var(--clr-neutral-200);
+    width: 100%;
+    border-radius: 0.25rem;
+
+    &::placeholder {
+        font-family: var(--ff-default);
+        color: var(--clr-neutral-500);
+    }
+}

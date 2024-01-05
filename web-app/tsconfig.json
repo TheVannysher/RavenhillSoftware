@@ -26,8 +26,24 @@
       "dom"
     ],
     "paths": {
-      "types/*": ["src/types/*"],
-      "assets/*": ["src/assets/*"]
+      "#assets/*": [
+        "src/assets/*"
+      ],
+      "#components/*": [
+        "src/app/components/*"
+      ],
+      "#lib/*": [
+        "src/lib/*"
+      ],
+      "#modules/*": [
+        "src/app/modules/*"
+      ],
+      "#services/*": [
+        "src/app/services/*"
+      ],
+      "#types/*": [
+        "src/types/*"
+      ]
     }
   },
   "angularCompilerOptions": {
@@ -35,6 +51,8 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
 }
