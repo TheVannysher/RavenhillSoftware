@@ -129,6 +129,21 @@ div.flex-container {
   gap: var(--spacing-sm);
 }
 
+input {
+  all: unset;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  min-height: 2rem;
+  max-height: 4rem;
+  background-color: var(--clr-neutral-200);
+  width: 100%;
+  border-radius: 0.25rem;
+
+  &::placeholder {
+    font-family: var(--ff-default);
+    color: var(--clr-neutral-500);
+  }
+}
+
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -137,4 +152,26 @@ div.flex-container {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loading-icon {
+    animation: loading 1.2s linear infinite;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

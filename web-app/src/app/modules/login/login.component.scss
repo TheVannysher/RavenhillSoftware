@@ -6,6 +6,7 @@
   height: 100%;
   width: 100vw;
   background-color: var(--clr-neutral-100);
+
 }
 
 img {
@@ -32,10 +33,27 @@ p.title {
   gap: 1rem;
   align-items: center;
   justify-content: center;
+
+  transition: all ease 0.5s;
+
+  @keyframes slide_up {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animated-input {
+    animation: slide_up 0.5s ease forwards;
+  }
 }
 
 .optional-container {
-
   p {
 
     button {

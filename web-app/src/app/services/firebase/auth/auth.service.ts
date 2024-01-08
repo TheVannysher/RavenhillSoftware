@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from '@angular/fire/auth';
 import {
   doc, docData, Firestore, setDoc,
@@ -45,20 +46,22 @@ export default class AuthService {
     );
   }
 
-  async register(email: string, password: string): Promise<void> {
+  async register(email: string, password: string, displayName: string | undefined): Promise<void> {
     const { user } = await createUserWithEmailAndPassword(
       this.FirebaseAuth,
       email,
       password,
     );
+    if (displayName) {
+      await updateProfile(user, { displayName });
+    }
     if (user) {
       const {
-        displayName,
         photoURL,
         uid,
       } = user;
       await setDoc(doc(this.store, 'users', uid), {
-        displayName,
+        displayName: displayName || user.displayName,
         email,
         photoURL,
         uid,

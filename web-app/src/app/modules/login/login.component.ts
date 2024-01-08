@@ -32,12 +32,14 @@ export class LoginComponent implements OnInit {
       }
     });
     this.loginForm = this.fb.group({
+      username: ['', [Validators.minLength(5), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required]],
     });
   }
 
   async login() {
+    console.log('login');
     this.submiting = true;
     const { email, password } = this.loginForm.value;
     await this.authService.login(email, password);
@@ -45,9 +47,10 @@ export class LoginComponent implements OnInit {
   }
 
   async register() {
+    console.log('register');
     this.submiting = true;
-    const { email, password } = this.loginForm.value;
-    await this.authService.register(email, password);
+    const { email, password, username } = this.loginForm.value;
+    await this.authService.register(email, password, username);
     this.submiting = false;
   }
 

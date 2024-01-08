@@ -11,7 +11,6 @@ import settings from 'src/lib/settings/settings';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TextFieldComponent } from './components/inputs/text-field/text-field.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { NavigatorComponent } from './components/navigation/navigator/navigator.component';
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
@@ -32,7 +31,6 @@ import { TaskboardComponent } from './modules/taskboard/taskboard.component';
     HeaderComponent,
     PageWrapperComponent,
     LoginComponent,
-    TextFieldComponent,
   ],
   imports: [
     AppRoutingModule,
