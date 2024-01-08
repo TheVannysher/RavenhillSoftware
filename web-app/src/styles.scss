@@ -4,6 +4,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --ff-default: 'Nunito', sans-serif;
 
@@ -93,11 +94,17 @@
 }
 
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body, h1, h2, h3, p {
+body,
+h1,
+h2,
+h3,
+p {
   font-family: var(--ff-default);
   font-size: var(--fs-default);
   padding: 0;
@@ -123,11 +130,11 @@ div.flex-container {
 }
 
 .visually-hidden {
-  clip: rect(0 0 0 0); 
+  clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
-  white-space: nowrap; 
+  white-space: nowrap;
   width: 1px;
 }

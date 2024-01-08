@@ -1,6 +1,6 @@
 import { Settings } from './dev.sample';
 
-const dev:Settings = {
+const dev: Settings = {
   app: {
     basePath: 'http://localhost:4200',
   },

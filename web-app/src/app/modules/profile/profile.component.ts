@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 
 import ROUTES_DATA from '#lib/routes/routesData';
-import { ProfileService } from '#services/routes/profile.service';
+import AuthService from '#services/firebase/auth/auth.service';
 import { RouteData } from '#types/navigation/routes.types';
 
 @Component({
@@ -10,11 +10,21 @@ import { RouteData } from '#types/navigation/routes.types';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  profileService = inject(ProfileService);
+  authService = inject(AuthService);
 
-  routeData: RouteData = ROUTES_DATA.profile;
+  headerInfos: RouteData = ROUTES_DATA.profile;
 
   ngOnInit(): void {
-    this.routeData = this.profileService.getRouteData();
+    this.authService.getUser().subscribe((user) => {
+      if (user) {
+        this.headerInfos.name = user.displayName || user.email!;
+        this.headerInfos.category = user.roles.join(',');
+      }
+    });
+  }
+
+  async logout() {
+    await this.authService.logout();
+    window.location.reload();
   }
 }

@@ -1,6 +1,3 @@
-<app-page-wrapper
-    [overwriteHeaderContent]="true"
-    [routeData]="routeData"
->
-    <p>profile works!</p>
+<app-page-wrapper class="w-full" [overwriteHeaderContent]="true" [routeData]="headerInfos">
+  <button (click)="logout()">logout</button>
 </app-page-wrapper>

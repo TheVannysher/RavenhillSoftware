@@ -1,11 +1,15 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Event, EventType, Router, RouterEvent, RoutesRecognized } from '@angular/router';
+import {
+  Component, inject, Input, OnInit,
+} from '@angular/core';
+import {
+  ActivatedRoute, Event, EventType, Router,
+} from '@angular/router';
 import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 import ROUTES_DATA from 'src/lib/routes/routesData';
-import { NavigaionTab } from 'types/navigation/navigator_tabs';
-import { RouteData } from 'types/navigation/routes.types';
 
-export const NAVIGATIONS_TABS:NavigaionTab[] = [
+import { NavigaionTab } from '#types/navigation/navigator_tabs';
+
+export const NAVIGATIONS_TABS: NavigaionTab[] = [
   {
     name: RouteNames.USER_PROFILE,
     type: 'icon',
@@ -35,23 +39,24 @@ export const NAVIGATIONS_TABS:NavigaionTab[] = [
   styleUrls: ['./navigator.component.scss'],
 })
 export class NavigatorComponent implements OnInit {
-  router:Router = inject(Router);
+  router: Router = inject(Router);
+
   activatedRoute = inject(ActivatedRoute);
 
-  currentTab: RouteNames;
+  @Input() currentTab: RouteNames;
 
   tabs = NAVIGATIONS_TABS;
 
   ngOnInit(): void {
-    console.log(this.router.url);
+    console.log(this.currentTab);
     this.router.events.subscribe((e: Event) => {
       if (e.type === EventType.RoutesRecognized) {
         this.currentTab = e.urlAfterRedirects.split('/')[2] as RouteNames;
       }
-    })
+    });
   }
 
-  handleClick(tab:RouteNames) {
+  handleClick(tab: RouteNames) {
     this.currentTab = tab;
   }
 }

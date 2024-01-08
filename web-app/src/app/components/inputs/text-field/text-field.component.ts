@@ -1,18 +1,21 @@
 import { Component, Input } from '@angular/core';
-import { FormControlName, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'text-field',
+  selector: 'app-text-field',
   templateUrl: './text-field.component.html',
-  styleUrls: ['./text-field.component.scss']
+  styleUrls: ['./text-field.component.scss'],
 })
 export class TextFieldComponent {
-  @Input() type: string = 'text';
-  @Input() placeholder: string;
-  @Input() formControlName: string;
-  @Input() formGroup: FormGroup;
-  @Input() required: string;
-  @Input() value: string;
-  errors: string;
+  @Input() type = 'text';
 
+  @Input() placeholder = '';
+
+  @Input({ required: true }) formControlName: string;
+
+  @Input({ required: true }) fg: FormGroup;
+
+  @Input() required = 'false';
+
+  errors: string;
 }

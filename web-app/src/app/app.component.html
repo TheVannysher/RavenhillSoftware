@@ -2,5 +2,5 @@
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-  <app-navigator></app-navigator>
+  <app-navigator *ngIf="currentRoute !== undefined && userIsLoggedIn" [currentTab]="currentRoute"></app-navigator>
 </div>

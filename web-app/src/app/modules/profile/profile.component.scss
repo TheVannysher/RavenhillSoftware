@@ -1,0 +1,10 @@
+button {
+  padding: 0.5rem 1rem;
+  color: var(--clr-blue-500);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--clr-neutral-900);
+  }
+}

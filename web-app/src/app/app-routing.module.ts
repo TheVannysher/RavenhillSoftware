@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteNames, RouteCategories, RouteFullPaths } from 'src/lib/enum/routes';
+import { RouteCategories, RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
+import ROUTES_DATA from 'src/lib/routes/routesData';
 
+import { authGuard } from './guards/auth/auth.guard';
+import { LoginComponent } from './modules/login/login.component';
 import { OverviewComponent } from './modules/overview/overview.component';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { TaskboardComponent } from './modules/taskboard/taskboard.component';
-import ROUTES_DATA from 'src/lib/routes/routesData';
-import { LoginComponent } from './modules/login/login.component';
-import { authGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -42,7 +42,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: RouteFullPaths.LOGIN,
+    redirectTo: RouteFullPaths.OVERVIEW,
   },
 ];
 
@@ -50,4 +50,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

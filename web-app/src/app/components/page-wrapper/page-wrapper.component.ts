@@ -1,15 +1,23 @@
-import { Component, Input, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RouteData, RouteIcon } from 'types/navigation/routes.types';
+
+import { RouteData } from '#types/navigation/routes.types';
 
 @Component({
   selector: 'app-page-wrapper',
   templateUrl: './page-wrapper.component.html',
-  styleUrls: ['./page-wrapper.component.scss']
+  styleUrls: ['./page-wrapper.component.scss'],
 })
-export class PageWrapperComponent {
+export class PageWrapperComponent implements OnInit {
   route = inject(ActivatedRoute);
+
   @Input() overwriteHeaderContent = false;
+
   @Input() routeData: RouteData;
 
   ngOnInit(): void {
@@ -23,6 +31,6 @@ export class PageWrapperComponent {
       if (routeData) {
         this.routeData = routeData as (RouteData);
       }
-    })
+    });
   }
 }

@@ -11,16 +11,16 @@ import settings from 'src/lib/settings/settings';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TextFieldComponent } from './components/inputs/text-field/text-field.component';
+import { HeaderComponent } from './components/navigation/header/header.component';
 import { NavigatorComponent } from './components/navigation/navigator/navigator.component';
+import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 import icons from './icons';
 import MatModules from './matModules';
+import { LoginComponent } from './modules/login/login.component';
 import { OverviewComponent } from './modules/overview/overview.component';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { TaskboardComponent } from './modules/taskboard/taskboard.component';
-import { HeaderComponent } from './components/navigation/header/header.component';
-import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
-import { LoginComponent } from './modules/login/login.component';
-import { TextFieldComponent } from './components/inputs/text-field/text-field.component';
 
 @NgModule({
   declarations: [
@@ -49,4 +49,4 @@ import { TextFieldComponent } from './components/inputs/text-field/text-field.co
   providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppModule {}
+export default class AppModule { }
