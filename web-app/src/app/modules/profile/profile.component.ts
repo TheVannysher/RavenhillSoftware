@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 
+import { HeaderInfo } from '#components/page-wrapper/page-wrapper.component';
 import ROUTES_DATA from '#lib/routes/routesData';
 import AuthService from '#services/firebase/auth/auth.service';
-import { RouteData } from '#types/navigation/routes.types';
 
 @Component({
   selector: 'app-profile',
@@ -12,13 +12,16 @@ import { RouteData } from '#types/navigation/routes.types';
 export class ProfileComponent implements OnInit {
   authService = inject(AuthService);
 
-  headerInfos: RouteData = ROUTES_DATA.profile;
+  headerInfos: HeaderInfo;
 
   ngOnInit(): void {
     this.authService.getUser().subscribe((user) => {
       if (user) {
-        this.headerInfos.name = user.displayName || user.email!;
-        this.headerInfos.category = user.roles.join(',');
+        this.headerInfos = {
+          ...ROUTES_DATA.profile,
+          title: user.displayName || user.email!,
+          category: user.roles.join(','),
+        };
       }
     });
   }

@@ -1,12 +1,13 @@
 import {
-  Component, inject, Input, OnInit,
+  Component, inject, OnInit,
 } from '@angular/core';
 import {
   ActivatedRoute, Event, EventType, Router,
 } from '@angular/router';
-import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
+import { RouteCategories, RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 import ROUTES_DATA from 'src/lib/routes/routesData';
 
+import AuthService from '#services/firebase/auth/auth.service';
 import { NavigaionTab } from '#types/navigation/navigator_tabs';
 
 export const NAVIGATIONS_TABS: NavigaionTab[] = [
@@ -15,21 +16,21 @@ export const NAVIGATIONS_TABS: NavigaionTab[] = [
     type: 'icon',
     src: 'featherUser',
     path: RouteFullPaths.USER_PROFILE,
-    color: ROUTES_DATA.profile.color,
+    color: ROUTES_DATA.profile!.color,
   },
   {
     name: RouteNames.OVERVIEW,
     type: 'image',
     src: 'assets/logo.svg',
     path: RouteFullPaths.OVERVIEW,
-    color: ROUTES_DATA.overview.color,
+    color: ROUTES_DATA.overview!.color,
   },
   {
     name: RouteNames.TASKBOARD,
     type: 'icon',
     src: 'featherZap',
     path: RouteFullPaths.TASKBOARD,
-    color: ROUTES_DATA.taskboard.color,
+    color: ROUTES_DATA.taskboard!.color,
   },
 ];
 
@@ -39,24 +40,40 @@ export const NAVIGATIONS_TABS: NavigaionTab[] = [
   styleUrls: ['./navigator.component.scss'],
 })
 export class NavigatorComponent implements OnInit {
+  authService: AuthService = inject(AuthService);
+
   router: Router = inject(Router);
 
   activatedRoute = inject(ActivatedRoute);
 
-  @Input() currentTab: RouteNames;
+  currentRoute: RouteNames | undefined;
 
   tabs = NAVIGATIONS_TABS;
 
+  showNavigator = false;
+
   ngOnInit(): void {
-    console.log(this.currentTab);
-    this.router.events.subscribe((e: Event) => {
-      if (e.type === EventType.RoutesRecognized) {
-        this.currentTab = e.urlAfterRedirects.split('/')[2] as RouteNames;
+    this.authService.getUser().subscribe((user) => {
+      if (user) {
+        this.router.events.subscribe((e: Event) => {
+          if (e.type === EventType.NavigationEnd) {
+            const [, currentCategory, currentRouteName] = e.urlAfterRedirects.split('/');
+            if (currentCategory === RouteCategories.HOME) {
+              this.currentRoute = currentRouteName as RouteNames;
+            } else {
+              this.currentRoute = undefined;
+            }
+          }
+          this.showNavigator = !!this.currentRoute;
+        });
+      } else {
+        this.currentRoute = undefined;
+        this.showNavigator = false;
       }
     });
   }
 
   handleClick(tab: RouteNames) {
-    this.currentTab = tab;
+    this.currentRoute = tab;
   }
 }

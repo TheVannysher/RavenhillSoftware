@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +7,15 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input({ required: true }) category: string;
+  router: Router = inject(Router);
 
-  @Input({ required: true }) title: string;
+  @Input() category = '';
 
-  @Input({ required: false }) showBackButton: string;
+  @Input() title = '';
+
+  @Input({ required: true }) hideBackButton: boolean;
+
+  back() {
+    this.router.navigate(['..']);
+  }
 }

@@ -7,19 +7,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgIconsModule } from '@ng-icons/core';
-import settings from 'src/lib/settings/settings';
+
+import { MenuItemComponent } from '#components/menu/menu-item/menu-item.component';
+import { HeaderComponent } from '#components/navigation/header/header.component';
+import { NavigatorComponent } from '#components/navigation/navigator/navigator.component';
+import { PageWrapperComponent } from '#components/page-wrapper/page-wrapper.component';
+import settings from '#lib/settings/settings';
+import { ControlPanelComponent } from '#modules/control-panel/control-panel.component';
+import { FieldListComponent } from '#modules/control-panel/field/field-list/field-list.component';
+import { LoginComponent } from '#modules/login/login.component';
+import { OverviewComponent } from '#modules/overview/overview.component';
+import { ProfileComponent } from '#modules/profile/profile.component';
+import { TaskboardComponent } from '#modules/taskboard/taskboard.component';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './components/navigation/header/header.component';
-import { NavigatorComponent } from './components/navigation/navigator/navigator.component';
-import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 import icons from './icons';
 import MatModules from './matModules';
-import { LoginComponent } from './modules/login/login.component';
-import { OverviewComponent } from './modules/overview/overview.component';
-import { ProfileComponent } from './modules/profile/profile.component';
-import { TaskboardComponent } from './modules/taskboard/taskboard.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { TaskboardComponent } from './modules/taskboard/taskboard.component';
     HeaderComponent,
     PageWrapperComponent,
     LoginComponent,
+    MenuItemComponent,
+    ControlPanelComponent,
+    FieldListComponent,
   ],
   imports: [
     AppRoutingModule,

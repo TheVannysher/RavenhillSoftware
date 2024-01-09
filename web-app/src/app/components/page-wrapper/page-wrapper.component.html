@@ -1,13 +1,12 @@
 <div class="w-full">
-  <app-header [title]="routeData.name" [category]="routeData.category">
-
-    <div *ngIf="routeData.icon !== undefined" [ngSwitch]="routeData.icon.type">
+  <app-header [hideBackButton]="hideBackButton" [title]="headerInfo.title" [category]="headerInfo.category!">
+    <div *ngIf="headerInfo.icon !== undefined" [ngSwitch]="headerInfo.icon.type">
       <div *ngSwitchCase="'custom'">
-        <img class="icon" [src]="routeData.icon.src" alt="">
+        <img class="icon" [src]="headerInfo.icon.src" alt="">
       </div>
       <div *ngSwitchDefault>
-        <ng-icon style="--accent-color: var({{ routeData.color }})" class="icon" size="5rem" strokeWidth="1"
-          [name]="routeData.icon.src"></ng-icon>
+        <ng-icon style="--accent-color: var({{ headerInfo.color }})" class="icon" size="5rem" strokeWidth="1"
+          [name]="headerInfo.icon.src"></ng-icon>
       </div>
     </div>
   </app-header>

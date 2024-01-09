@@ -1,12 +1,7 @@
-<div class="navigator">
+<div class="navigator" [attr.data-show]="showNavigator">
   <div class="content">
-    <a
-      [routerLink]="tab.path"
-      (click)="handleClick(tab.name)"
-      *ngFor="let tab of tabs"
-      class="nav-item"
-      style="--accent-color: var({{tab.color}})"
-      [attr.data-active]="tab.name === currentTab">
+    <a [routerLink]="tab.path" (click)="handleClick(tab.name)" *ngFor="let tab of tabs" class="nav-item"
+      style="--accent-color: var({{tab.color}})" [attr.data-active]="tab.name === currentRoute">
       <div class="nav-icon">
         <ng-icon *ngIf="tab.type === 'icon'" [name]="tab.src" size="2rem"></ng-icon>
         <img *ngIf="tab.type === 'image'" [src]="tab.src" alt="">

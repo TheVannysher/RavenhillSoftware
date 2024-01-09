@@ -86,10 +86,17 @@
 
   --fs-xs: var(--size-xs);
   --fs-sm: var(--size-sm);
-  --fs-md: var(--size-md);
-  --fs-md: var(--size-md);
+  --fs-regular: 1rem;
+  --fs-md: 1.25rem;
   --fs-lg: var(--size-lg);
   --fs-xl: var(--size-xl);
+
+  --fw-xs: 200;
+  --fw-sm: 300;
+  --fw-regular: 500;
+  --fw-md: 600;
+  --fw-semi-bold: 700;
+  --fw-bold: bold;
 
 }
 

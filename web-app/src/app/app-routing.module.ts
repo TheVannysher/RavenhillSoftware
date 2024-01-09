@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteCategories, RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 import ROUTES_DATA from 'src/lib/routes/routesData';
 
+import { ControlPanelComponent } from '#modules/control-panel/control-panel.component';
+import { FieldListComponent } from '#modules/control-panel/field/field-list/field-list.component';
+
 import { authGuard } from './guards/auth/auth.guard';
 import { LoginComponent } from './modules/login/login.component';
 import { OverviewComponent } from './modules/overview/overview.component';
@@ -36,6 +39,17 @@ const routes: Routes = [
         title: RouteNames.USER_PROFILE,
         component: ProfileComponent,
         data: ROUTES_DATA.profile,
+      },
+    ],
+  },
+  {
+    path: RouteCategories.CONTROL_PANEL,
+    title: RouteCategories.CONTROL_PANEL,
+    component: ControlPanelComponent,
+    children: [
+      {
+        path: RouteNames.FIELD_MANAGEMENT,
+        component: FieldListComponent,
       },
     ],
   },

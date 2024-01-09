@@ -3,8 +3,12 @@ header {
   padding: var(--spacing-md);
   gap: 1rem;
   align-items: center;
+  position: relative;
 
   .back {
+    position: absolute;
+    left: 0;
+    padding: 1rem;
     width: min-content;
     color: var(--clr-neutral-500);
 

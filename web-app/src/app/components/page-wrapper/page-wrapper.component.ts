@@ -6,8 +6,14 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RouteData } from '#types/navigation/routes.types';
+import { RouteData, RouteIcon } from '#types/navigation/routes.types';
 
+export interface HeaderInfo {
+  category: string,
+  color?: string,
+  title: string,
+  icon?: RouteIcon,
+}
 @Component({
   selector: 'app-page-wrapper',
   templateUrl: './page-wrapper.component.html',
@@ -18,7 +24,12 @@ export class PageWrapperComponent implements OnInit {
 
   @Input() overwriteHeaderContent = false;
 
-  @Input() routeData: RouteData;
+  @Input() hideBackButton = false;
+
+  @Input() headerInfo: HeaderInfo = {
+    title: '',
+    category: '',
+  };
 
   ngOnInit(): void {
     if (!this.overwriteHeaderContent) {
@@ -29,7 +40,15 @@ export class PageWrapperComponent implements OnInit {
   getHeaderData() {
     this.route.data.subscribe((routeData) => {
       if (routeData) {
-        this.routeData = routeData as (RouteData);
+        const {
+          name, category, color, icon,
+        } = routeData as (RouteData);
+        this.headerInfo = {
+          title: name,
+          category,
+          color,
+          icon,
+        };
       }
     });
   }

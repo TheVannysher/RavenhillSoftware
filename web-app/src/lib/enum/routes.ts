@@ -3,6 +3,8 @@ export enum RouteFullPaths {
   OVERVIEW = '/home/overview',
   TASKBOARD = '/home/taskboard',
   USER_PROFILE = '/home/profile',
+  CONTROL_PANEL = '/control-panel',
+  FIELD_MANAGEMENT = '/control-panel/field_management',
 }
 
 export enum RouteNames {
@@ -10,11 +12,13 @@ export enum RouteNames {
   OVERVIEW = 'overview',
   TASKBOARD = 'taskboard',
   USER_PROFILE = 'profile',
+  CONTROL_PANEL = 'control-panel',
+  FIELD_MANAGEMENT = 'field_management',
 }
-
 
 export enum RouteCategories {
   LOGIN = 'login',
   HOME = 'home',
   SETTINGS = 'settings',
+  CONTROL_PANEL = 'control-panel',
 }

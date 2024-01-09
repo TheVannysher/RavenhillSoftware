@@ -3,7 +3,7 @@ import { NGIcons } from 'src/app/icons';
 import { RouteCategories, RouteFullPaths, RouteNames } from '#lib/enum/routes';
 import { RouteData, RouteIconTypes } from '#types/navigation/routes.types';
 
-const ROUTES_DATA: Record<RouteNames, RouteData> = {
+const ROUTES_DATA: Partial<Record<RouteNames, RouteData>> = {
   login: {
     category: RouteCategories.LOGIN,
     fullPath: RouteFullPaths.LOGIN,
