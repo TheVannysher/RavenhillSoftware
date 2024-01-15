@@ -10,6 +10,7 @@ import { NgIconsModule } from '@ng-icons/core';
 
 import { MenuItemComponent } from '#components/menu/menu-item/menu-item.component';
 import { HeaderComponent } from '#components/navigation/header/header.component';
+import { ItemComponent } from '#components/navigation/navigator/item/item.component';
 import { NavigatorComponent } from '#components/navigation/navigator/navigator.component';
 import { PageWrapperComponent } from '#components/page-wrapper/page-wrapper.component';
 import settings from '#lib/settings/settings';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import icons from './icons';
 import MatModules from './matModules';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import MatModules from './matModules';
     MenuItemComponent,
     ControlPanelComponent,
     FieldListComponent,
+    ItemComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,5 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component, EventEmitter, inject, Input, Output,
+} from '@angular/core';
+
+import AuthService from '#services/firebase/auth/auth.service';
+import { NavigationService } from '#services/navigation/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  router: Router = inject(Router);
+  navigate: NavigationService = inject(NavigationService);
+
+  auth: AuthService = inject(AuthService);
 
   @Input() category = '';
 
@@ -15,7 +21,21 @@ export class HeaderComponent {
 
   @Input({ required: true }) hideBackButton: boolean;
 
+  menuOpen = false;
+
+  @Output() menuButtonClicked: EventEmitter<boolean> = new EventEmitter();
+
   back() {
-    this.router.navigate(['..']);
+    this.navigate.back();
+  }
+
+  logout() {
+    this.auth.logout();
+    window.location.reload();
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    this.menuButtonClicked.emit(this.menuOpen);
   }
 }

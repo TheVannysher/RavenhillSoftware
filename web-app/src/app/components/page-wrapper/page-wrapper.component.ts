@@ -31,6 +31,8 @@ export class PageWrapperComponent implements OnInit {
     category: '',
   };
 
+  open = false;
+
   ngOnInit(): void {
     if (!this.overwriteHeaderContent) {
       this.getHeaderData();
@@ -41,15 +43,18 @@ export class PageWrapperComponent implements OnInit {
     this.route.data.subscribe((routeData) => {
       if (routeData) {
         const {
-          name, category, color, icon,
+          name, category, icon,
         } = routeData as (RouteData);
         this.headerInfo = {
           title: name,
           category,
-          color,
           icon,
         };
       }
     });
+  }
+
+  menuToggle(state: boolean) {
+    this.open = state;
   }
 }

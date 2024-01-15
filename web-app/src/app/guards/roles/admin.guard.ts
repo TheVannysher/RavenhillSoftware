@@ -10,6 +10,7 @@ import AuthService from 'src/app/services/firebase/auth/auth.service';
 export const adminGuard: CanActivateFn = () => {
   const authService: AuthService = inject(AuthService);
   return authService.getUser().pipe(map((user) => {
+    console.log(user);
     if (user) {
       const hasRole = user.roles.includes('admin');
       return hasRole;

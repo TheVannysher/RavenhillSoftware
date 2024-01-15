@@ -11,9 +11,8 @@ export interface RouteIcon {
 }
 
 export interface RouteData {
-  category: RouteCategories | string,
-  name: RouteNames | string,
+  category: RouteCategories,
+  name: RouteNames,
   fullPath: RouteFullPaths,
   icon?: RouteIcon,
-  color?: string,
 }

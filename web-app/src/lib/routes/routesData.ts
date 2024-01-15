@@ -11,7 +11,6 @@ const ROUTES_DATA: Partial<Record<RouteNames, RouteData>> = {
   },
   overview: {
     category: RouteCategories.HOME,
-    color: '--clr-green-500',
     name: RouteNames.OVERVIEW,
     fullPath: RouteFullPaths.OVERVIEW,
     icon: {
@@ -21,7 +20,6 @@ const ROUTES_DATA: Partial<Record<RouteNames, RouteData>> = {
   },
   profile: {
     category: RouteCategories.HOME,
-    color: '--clr-blue-500',
     name: RouteNames.USER_PROFILE,
     fullPath: RouteFullPaths.USER_PROFILE,
     icon: {
@@ -31,12 +29,20 @@ const ROUTES_DATA: Partial<Record<RouteNames, RouteData>> = {
   },
   taskboard: {
     category: RouteCategories.HOME,
-    color: '--clr-orange-500',
     name: RouteNames.TASKBOARD,
     fullPath: RouteFullPaths.TASKBOARD,
     icon: {
       type: RouteIconTypes.NG_ICON,
       src: NGIcons.feather.Zap,
+    },
+  },
+  'control-panel': {
+    category: RouteCategories.CONTROL_PANEL,
+    name: RouteNames.CONTROL_PANEL,
+    fullPath: RouteFullPaths.CONTROL_PANEL,
+    icon: {
+      type: RouteIconTypes.NG_ICON,
+      src: NGIcons.feather.Settings,
     },
   },
 };

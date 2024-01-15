@@ -12,7 +12,7 @@ import AuthService from '#services/firebase/auth/auth.service';
 export class ProfileComponent implements OnInit {
   authService = inject(AuthService);
 
-  headerInfos: HeaderInfo;
+  headerInfos: HeaderInfo = { title: '', category: '' };
 
   ngOnInit(): void {
     this.authService.getUser().subscribe((user) => {
@@ -24,10 +24,5 @@ export class ProfileComponent implements OnInit {
         };
       }
     });
-  }
-
-  async logout() {
-    await this.authService.logout();
-    window.location.reload();
   }
 }

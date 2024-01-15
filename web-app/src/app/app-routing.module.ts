@@ -5,8 +5,10 @@ import ROUTES_DATA from 'src/lib/routes/routesData';
 
 import { ControlPanelComponent } from '#modules/control-panel/control-panel.component';
 import { FieldListComponent } from '#modules/control-panel/field/field-list/field-list.component';
+import { PageNotFoundComponent } from '#modules/page-not-found/page-not-found.component';
 
 import { authGuard } from './guards/auth/auth.guard';
+import { adminGuard } from './guards/roles/admin.guard';
 import { LoginComponent } from './modules/login/login.component';
 import { OverviewComponent } from './modules/overview/overview.component';
 import { ProfileComponent } from './modules/profile/profile.component';
@@ -21,6 +23,8 @@ const routes: Routes = [
   {
     path: RouteCategories.HOME,
     canActivate: [authGuard],
+    component: OverviewComponent,
+    data: ROUTES_DATA.overview,
     children: [
       {
         path: RouteNames.OVERVIEW,
@@ -46,6 +50,8 @@ const routes: Routes = [
     path: RouteCategories.CONTROL_PANEL,
     title: RouteCategories.CONTROL_PANEL,
     component: ControlPanelComponent,
+    data: ROUTES_DATA['control-panel'],
+    canActivate: [authGuard, adminGuard],
     children: [
       {
         path: RouteNames.FIELD_MANAGEMENT,
@@ -58,6 +64,7 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: RouteFullPaths.OVERVIEW,
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
