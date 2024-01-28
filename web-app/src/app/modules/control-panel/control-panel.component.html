@@ -1,17 +1,5 @@
 <app-page-wrapper [overwriteHeaderContent]="true" [headerInfo]="headerInfo">
-  <div class="m-4 p-4 bg-white rounded shadow">
-    <div class="grid grid-cols-1 gap-4">
-      <div class="grid grid-cols-3 gap-2">
-        <div class="">
-          <p i18n>id</p>
-        </div>
-        <div class="">
-          <p i18n>name</p>
-        </div>
-        <div class="">
-          <p i18n>actions</p>
-        </div>
-      </div>
-    </div>
+  <div class="mx-8 md:ml-8 md:mr-16">
+    <router-outlet></router-outlet>
   </div>
 </app-page-wrapper>

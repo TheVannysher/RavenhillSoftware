@@ -28,7 +28,7 @@ module.exports = {
         "@angular-eslint/component-selector": [
           "error",
           {
-            "prefix": "app",
+            "prefix": ["app", "rh"],
             "style": "kebab-case",
             "type": "element",
           }

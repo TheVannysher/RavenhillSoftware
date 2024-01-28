@@ -1,23 +1,38 @@
-<app-page-wrapper [overwriteHeaderContent]="true" [headerInfo]="headerInfo">
-  <div class="m-4 p-4 bg-white rounded shadow">
+<div class="grid grid-cols-1 p-4 bg-white shadow rounded-lg">
+  <div class="flex mb-4 justify-between">
+    <div class="flex gap-2">
+      <ng-icon class="text-green-700" name="featherFeather" size="2rem"></ng-icon>
+      <p class="text-xl text-black font-semibold capitalize">fields</p>
+    </div>
+    <a routerLink="/control-panel/field_management/create">
+      <div
+        class="px-4 py-2 rounded-full hover:shadow-lg text-blue-600 hover:text-white hover:bg-blue-600 transition-all ease duration-200">
+        <p class="font-semibold ">add field</p>
+      </div>
+    </a>
+  </div>
+  <div class="">
     <div class="grid grid-cols-1 gap-4">
-      <div class="grid grid-cols-3 gap-2">
+      <div class="grid grid-cols-3 gap-2 py-2 border-b-2">
         <div class="">
-          <p>
-            id
+          <p i18n>
+            identifiant
           </p>
         </div>
         <div class="">
-          <p>
+          <p i18n>
             name
           </p>
         </div>
         <div class="">
-          <p>
+          <p i18n>
             actions
           </p>
         </div>
       </div>
+      <div *ngFor="let field of data | async">
+        <app-field-item [name]="field.name" [id]="field.id"></app-field-item>
+      </div>
     </div>
   </div>
-</app-page-wrapper>
+</div>

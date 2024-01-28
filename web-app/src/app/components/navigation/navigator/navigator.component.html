@@ -3,13 +3,14 @@
 md:h-full
 overflow-clip
 transition-all ease duration-500
-w-full md:p-4
-md:min-w-[16rem]
-md:max-w-[22rem]">
-  <div class="h-full w-full md:rounded-lg">
+w-full
+md:p-4
+lg:min-w-[16rem]
+lg:max-w-[22rem]">
+  <div class="h-full w-full">
     <div
-      class="md:h-full w-full flex flex-col gap-4 justify-between items-center md:py-0 py-2 bg-white md:bg-transparent">
-      <div class="w-full">
+      class="w-full md:h-full sm:w-full md:w-min lg:w-full flex flex-col gap-4 justify-between items-center md:py-0 py-2 bg-white md:bg-transparent">
+      <div class="w-full flex flex-col gap-2">
         <app-navigator-item [active]="tab.name === currentRoute" *ngFor="let tab of tabs" [name]="tab.name"
           [path]="tab.path" [icon]="tab.src" />
       </div>

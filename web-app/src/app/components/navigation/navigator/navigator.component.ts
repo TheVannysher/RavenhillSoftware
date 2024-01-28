@@ -9,25 +9,24 @@ import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 
 import AuthService from '#services/firebase/auth/auth.service';
 import { NavigaionTab } from '#types/navigation/navigator_tabs';
-import { RouteData } from '#types/navigation/routes.types';
 
 export const NAVIGATIONS_TABS: NavigaionTab[] = [
   {
     name: RouteNames.OVERVIEW,
     type: 'icon',
-    src: NGIcons.feather.Feather,
+    src: NGIcons.feather.BarChart2,
     path: RouteFullPaths.OVERVIEW,
   },
   {
     name: RouteNames.USER_PROFILE,
     type: 'icon',
-    src: 'featherUser',
+    src: NGIcons.feather.User,
     path: RouteFullPaths.USER_PROFILE,
   },
   {
     name: RouteNames.TASKBOARD,
     type: 'icon',
-    src: 'featherZap',
+    src: NGIcons.feather.Zap,
     path: RouteFullPaths.TASKBOARD,
   },
 ];
@@ -50,10 +49,8 @@ export class NavigatorComponent implements OnInit {
   isAdmin = false;
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data) => {
-      if (data) {
-        this.currentRoute = (data as RouteData).name;
-      }
+    this.activatedRoute.url.subscribe((url) => {
+      this.currentRoute = url[0].path as RouteNames;
     });
     this.auth.getUser().subscribe((user) => {
       if (user) {

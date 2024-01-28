@@ -1,20 +1,23 @@
 /* eslint-disable import/prefer-default-export */
 import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { map } from 'rxjs';
 import AuthService from 'src/app/services/firebase/auth/auth.service';
+
+import { RouteFullPaths } from '#lib/enum/routes';
 
 // TODO:
 // RolesService
 
-export const adminGuard: CanActivateFn = () => {
+export const adminGuard: CanActivateFn = (_, state) => {
   const authService: AuthService = inject(AuthService);
+  const router: Router = inject(Router);
   return authService.getUser().pipe(map((user) => {
-    console.log(user);
     if (user) {
       const hasRole = user.roles.includes('admin');
       return hasRole;
     }
+    router.navigate([RouteFullPaths.LOGIN], { queryParams: { returnUrl: state.url } });
     return false;
   }));
 };

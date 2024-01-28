@@ -4,15 +4,18 @@ import { RouteCategories, RouteFullPaths, RouteNames } from 'src/lib/enum/routes
 import ROUTES_DATA from 'src/lib/routes/routesData';
 
 import { ControlPanelComponent } from '#modules/control-panel/control-panel.component';
+import { EditOrCreateFieldComponent } from '#modules/control-panel/field/edit-or-create-field/edit-or-create-field.component';
 import { FieldListComponent } from '#modules/control-panel/field/field-list/field-list.component';
+import { ListsPanelComponent } from '#modules/control-panel/lists-panel/lists-panel.component';
+import { HomeComponent } from '#modules/home/home.component';
 import { PageNotFoundComponent } from '#modules/page-not-found/page-not-found.component';
 
 import { authGuard } from './guards/auth/auth.guard';
 import { adminGuard } from './guards/roles/admin.guard';
+import { OverviewComponent } from './modules/home/overview/overview.component';
+import { ProfileComponent } from './modules/home/profile/profile.component';
+import { TaskboardComponent } from './modules/home/taskboard/taskboard.component';
 import { LoginComponent } from './modules/login/login.component';
-import { OverviewComponent } from './modules/overview/overview.component';
-import { ProfileComponent } from './modules/profile/profile.component';
-import { TaskboardComponent } from './modules/taskboard/taskboard.component';
 
 const routes: Routes = [
   {
@@ -23,9 +26,12 @@ const routes: Routes = [
   {
     path: RouteCategories.HOME,
     canActivate: [authGuard],
-    component: OverviewComponent,
     data: ROUTES_DATA.overview,
+    component: HomeComponent,
     children: [
+      {
+        path: '', pathMatch: 'full', redirectTo: RouteNames.OVERVIEW,
+      },
       {
         path: RouteNames.OVERVIEW,
         title: RouteNames.OVERVIEW,
@@ -54,8 +60,23 @@ const routes: Routes = [
     canActivate: [authGuard, adminGuard],
     children: [
       {
+        path: '', pathMatch: 'full', redirectTo: 'lists-panel',
+      },
+      {
+        path: 'lists-panel',
+        component: ListsPanelComponent,
+      },
+      {
         path: RouteNames.FIELD_MANAGEMENT,
         component: FieldListComponent,
+      },
+      {
+        path: `${RouteNames.FIELD_MANAGEMENT}/create`,
+        component: EditOrCreateFieldComponent,
+      },
+      {
+        path: `${RouteNames.FIELD_MANAGEMENT}/edit/:id`,
+        component: EditOrCreateFieldComponent,
       },
     ],
   },

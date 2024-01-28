@@ -2,7 +2,7 @@ import { DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 export type ListOptions = {
-  itemByPage?: number,
+  itemByPage: number,
   order: string,
 
 };

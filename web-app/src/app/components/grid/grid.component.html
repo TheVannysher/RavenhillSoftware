@@ -1,0 +1,33 @@
+<div class="grid w-full">
+  <div class="flex justify-start items-center w-full overflow-scroll">
+    <div class="flex flex-col items-center justify-center">
+      <div class="flex flex-col gap-4">
+        <div *ngFor="let row of nodes index as i" class="cursor-pointer flex items-center gap-4">
+          <button class="" (click)="addNode(i)">
+            <ng-icon name="featherPlus" />
+          </button>
+          <button class="" (click)="removeNode(i)">
+            <ng-icon name="featherMinus" />
+          </button>
+          <p class="select-none">R{{i+1}}</p>
+          <div class="flex gap-4 items-center">
+            <app-grid-node (clicked)="itemSelected($event)" *ngFor="let vine of row index as j"
+              [position]="{ row: i, vine: j }" [content]="nodes[i][j]" [selected]="nodes[i][j] === selectedBlock"
+              [locked]="nodes[i][j] !== '' && nodes[i][j] !== selectedBlock" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-4 p-2 w-full justify-start items-center">
+    <button class="" (click)="addRow()">
+      <p>insert row</p>
+    </button>
+    <button class="" (click)="removeRow()">
+      <p>remove row</p>
+    </button>
+  </div>
+  <div class="mt-4">
+    {{selection | json}}
+  </div>
+</div>

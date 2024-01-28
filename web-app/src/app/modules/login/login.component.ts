@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    console.log('login');
     this.submiting = true;
     const { email, password } = this.loginForm.value;
     await this.authService.login(email, password);
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
   }
 
   async register() {
-    console.log('register');
     this.submiting = true;
     const { email, password, username } = this.loginForm.value;
     await this.authService.register(email, password, username);

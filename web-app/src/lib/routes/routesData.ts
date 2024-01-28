@@ -14,8 +14,8 @@ const ROUTES_DATA: Partial<Record<RouteNames, RouteData>> = {
     name: RouteNames.OVERVIEW,
     fullPath: RouteFullPaths.OVERVIEW,
     icon: {
-      type: RouteIconTypes.CUSTOM,
-      src: 'assets/logo.svg',
+      type: RouteIconTypes.NG_ICON,
+      src: NGIcons.feather.BarChart2,
     },
   },
   profile: {

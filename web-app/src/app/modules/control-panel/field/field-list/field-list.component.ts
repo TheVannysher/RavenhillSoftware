@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import {
   DocumentSnapshot,
 } from '@angular/fire/firestore';
-import { map } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { NGIcons } from 'src/app/icons';
 
 import { HeaderInfo } from '#components/page-wrapper/page-wrapper.component';
@@ -18,7 +18,7 @@ import { RouteIconTypes } from '#types/navigation/routes.types';
 export class FieldListComponent implements OnInit {
   fieldService: FieldService = inject(FieldService);
 
-  data: Field[] = [];
+  data: Observable<Field[]> = of([]);
 
   pageNumber = 1;
 
@@ -38,13 +38,7 @@ export class FieldListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.fieldService.list({
-      order: 'id',
-      itemByPage: 10,
-    }).first().pipe(map((fields) => {
-      this.data = fields;
-      // this.lastDocument = fields[fields.length - 1],
-    }));
+    this.data = this.fieldService.listAll();
     this.loading = false;
   }
 
@@ -52,10 +46,6 @@ export class FieldListComponent implements OnInit {
     if (this.lastDocument) {
       this.pageNumber += 1;
       this.loading = true;
-      // this.fieldService.list({
-      //   order: 'id',
-      //   itemByPage: 10,
-      // }).next();
     }
   }
 }
