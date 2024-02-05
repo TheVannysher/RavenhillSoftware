@@ -78,6 +78,7 @@ import { VineListComponent } from './modules/control-panel/vine/vine-list/vine-l
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     DragToSelectModule.forRoot(),
+    provideFirebaseApp(() => initializeApp({"projectId":"rossvineyards","appId":"1:1059335026033:web:55dab0e97b366c666232d0","storageBucket":"rossvineyards.appspot.com","apiKey":"AIzaSyDGTgwnkaq9ytbgWoTh_FXke9fZHbH1004","authDomain":"rossvineyards.firebaseapp.com","messagingSenderId":"1059335026033","measurementId":"G-39648EVREB"})),
   ],
   providers: [],
   bootstrap: [AppComponent],

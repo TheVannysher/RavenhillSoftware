@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
@@ -32,6 +32,13 @@ export class CreateBulkVineComponent implements OnInit {
   @Input() value: Vine[] = [];
 
   @Output() valueChange = new EventEmitter<Vine[]>();
+
+  VIGOR_LIST = [
+    'low',
+    'medium',
+    'high',
+    'dead',
+  ];
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

@@ -139,55 +139,55 @@ div.flex-container {
   gap: var(--spacing-sm);
 }
 
-input {
-  all: unset;
-}
+// input {
+//   all: unset;
+// }
 
-input[type=text],
-input[type=email],
-input[type=password] {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  min-height: 2rem;
-  max-height: 4rem;
-  background-color: var(--clr-neutral-200);
-  width: 100%;
-  border-radius: 0.325rem;
+// input[type=text],
+// input[type=email],
+// input[type=password] {
+//   padding: var(--spacing-xs) var(--spacing-sm);
+//   min-height: 2rem;
+//   max-height: 4rem;
+//   background-color: var(--clr-neutral-200);
+//   width: 100%;
+//   border-radius: 0.325rem;
 
-  &::placeholder {
-    font-family: var(--ff-default);
-    color: var(--clr-neutral-500);
-  }
-}
+//   &::placeholder {
+//     font-family: var(--ff-default);
+//     color: var(--clr-neutral-500);
+//   }
+// }
 
-textarea {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  min-height: 2rem;
-  max-height: 12rem;
-  background-color: var(--clr-neutral-200);
-  width: 100%;
-  border-radius: 0.325rem;
+// textarea {
+//   padding: var(--spacing-xs) var(--spacing-sm);
+//   min-height: 2rem;
+//   max-height: 12rem;
+//   background-color: var(--clr-neutral-200);
+//   width: 100%;
+//   border-radius: 0.325rem;
 
-  &::placeholder {
-    font-family: var(--ff-default);
-    color: var(--clr-neutral-500);
-  }
-}
+//   &::placeholder {
+//     font-family: var(--ff-default);
+//     color: var(--clr-neutral-500);
+//   }
+// }
 
-select {
-  all: unset;
-  min-height: 2rem;
-  max-height: 4rem;
-  background-color: var(--clr-neutral-200);
-  width: 100%;
-  border-radius: 0.325rem;
-  padding: var(--spacing-xs) var(--spacing-sm);
+// select {
+//   all: unset;
+//   min-height: 2rem;
+//   max-height: 4rem;
+//   background-color: var(--clr-neutral-200);
+//   width: 100%;
+//   border-radius: 0.325rem;
+//   padding: var(--spacing-xs) var(--spacing-sm);
 
-  option {
-    width: 100%;
-    padding: 0.5rem;
-    font-family: var(--ff-default);
-  }
-}
+//   option {
+//     width: 100%;
+//     padding: 0.5rem;
+//     font-family: var(--ff-default);
+//   }
+// }
 
 .visually-hidden {
   clip: rect(0 0 0 0);

@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 justify-items-start  px-4 p-2">
     <p i18n class="text-center text-xl font-bold capitalize">Vines 🌱</p>
   </div>
-  <div class="grid grid-cols-3 p-4 gap-2">
+  <div class="flex flex-col">
     <div class="col-span-3 md:col-span-1 flex items-center md:justify-end">
       <label for="variety">Variety<span class="text-red-600">*</span></label>
     </div>
@@ -11,40 +11,20 @@
         <option *ngFor="let variety of varieties | async" [ngValue]="variety">{{variety.name}}</option>
       </select>
     </div>
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <mat-label>Quantity to add</mat-label>
-      <input type="email" matInput formControlName="quantity" placeholder="0">
-      <mat-hint>Errors appear instantly!</mat-hint>
-      @if (quantity.hasError('email') && !quantity.hasError('required')) {
-      <mat-error>Please enter a valid email address</mat-error>
-      }
-      @if (quantity.hasError('required')) {
-      <mat-error>Email is <strong>required</strong></mat-error>
-      }
+      <input type="number" matInput formControlName="quantity" placeholder="0">
     </mat-form-field>
-    <!-- <div class="col-span-3 md:col-span-1 flex items-center md:justify-end">
-      <label for="quantity">Qty of vines to create<span class="text-red-600">*</span></label>
-    </div>
-    <div class="col-span-3 md:col-span-2 flex items-center">
-      <input type="text" formControlName="quantity" placeholder="0" required />
-    </div> -->
-    <div class="col-span-3 md:col-span-1 flex items-center md:justify-end">
-      <label for="vigor">Default vigor<span class="text-red-600">*</span></label>
-    </div>
-    <div class="col-span-3 md:col-span-2 flex items-center">
-      <select name="vigor" formControlName="vigor">
-        <option value="low" i18n>low</option>
-        <option value="medium" i18n>medium</option>
-        <option value="high" i18n>high</option>
-        <option value="dead" i18n>dead</option>
-      </select>
-    </div>
-    <div class="col-span-3 md:col-span-1 flex items-center md:justify-end">
-      <label for="clusters">Qty of clusters<span class="text-red-600">*</span></label>
-    </div>
-    <div class="col-span-3 md:col-span-2 flex items-center">
-      <input type="text" formControlName="clusters" placeholder="0" required />
-    </div>
+    <mat-form-field>
+      <mat-label>Vigor</mat-label>
+      <mat-select formControlName="vigor">
+        <mat-option *ngFor="let vigor of VIGOR_LIST" [value]="vigor">{{vigor}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="">
+      <mat-label>clusters</mat-label>
+      <input type="number" matInput formControlName="quantity" placeholder="0">
+    </mat-form-field>
     <div class="col-span-3 text-center p-2">
       <p class="text-neutral-500">**All vines of same variety will be grouped into a block on form submition**</p>
       <p class="text-neutral-500">**Inputs fields with a red * are mandatory**</p>
