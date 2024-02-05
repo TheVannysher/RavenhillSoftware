@@ -10,10 +10,11 @@ import {
   limit,
   orderBy,
   query,
+  serverTimestamp,
   setDoc,
   startAfter,
 } from '@angular/fire/firestore';
-import { map, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Field } from '#types/firebase/models/field';
 import { Vine } from '#types/firebase/models/vine';
@@ -34,17 +35,7 @@ export class FieldService implements Model<Field> {
   };
 
   get(id: string): Observable<Field | null> {
-    const result = docData(doc(this.store, this.collectionPath, id)).pipe(map((value) => {
-      const f = value as Field;
-      const data = {
-        ...f,
-        vines: collectionData(
-          collection(this.store, this.collectionPath, ...[f.id, this.subCollectionPath.vines]),
-        ).pipe(map((v) => (v as Vine[]))),
-      };
-      return data;
-    }));
-    return result as Observable<Field>;
+    return docData(doc(this.store, this.collectionPath, id)) as Observable<Field>;
   }
 
   listAll(): Observable<Field[]> {
@@ -74,7 +65,10 @@ export class FieldService implements Model<Field> {
   }
 
   async set(id: string, data: Partial<Field>) {
-    await setDoc(doc(this.store, this.collectionPath, id), { ...data });
+    await setDoc(doc(this.store, this.collectionPath, id), {
+      ...data,
+      updatedAt: serverTimestamp(),
+    });
   }
 
   async delete(id: string) {

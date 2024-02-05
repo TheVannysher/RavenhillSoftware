@@ -1,0 +1,38 @@
+<div class="bg-white rounded-lg shadow p-4 overflow-x-clip overflow-y-auto">
+  <div class="md:grid hidden md:grid-cols-4 text-lg text-neutral-500 pb-2 border-b mb-4">
+    <div class="">
+      <p i18n>id (gonna be position in the future)</p>
+    </div>
+    <div class="">
+      <p i18n>variety</p>
+    </div>
+    <div class="">
+      <p i18n># of cluster</p>
+    </div>
+    <div class="">
+      <p>vigor</p>
+    </div>
+  </div>
+  <div *ngIf="vines.length <= 0 else vines_entry">
+    <div class="flex justify-center items-center">
+      <p class="text-xl text-neutral-500">no vines found for this field</p>
+    </div>
+  </div>
+  <ng-template #vines_entry>
+    <div *ngFor="let vine of vines; let i = index"
+      class="grid grid-cols-2 md:grid-cols-4 p-2 {{ (i % 2) > 0 ? 'bg-neutral-200' : ''}}">
+      <div class="content-center w-full overflow-hidden p-2">
+        <p class="break-words">{{vine.id}}</p>
+      </div>
+      <div class="content-center w-full overflow-hidden p-2">
+        <p>{{vine.variety.name}}</p>
+      </div>
+      <div class="content-center w-full overflow-hidden p-2">
+        <p>{{vine.clusters | number}}</p>
+      </div>
+      <div class="content-center w-full overflow-hidden p-2">
+        <p>{{vine.vigor}}</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

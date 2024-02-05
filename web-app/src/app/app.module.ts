@@ -26,41 +26,45 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IconButtonComponent } from './components/button/icon-button/icon-button.component';
 import { GridComponent } from './components/grid/grid.component';
+import { GridNodeComponent } from './components/grid/grid-node/grid-node.component';
+import { RhButtonComponent } from './components/inputs/rh-button/rh-button.component';
+import { RhInputComponent } from './components/inputs/rh-input/rh-input.component';
 import icons from './icons';
 import MatModules from './matModules';
 import { EditOrCreateFieldComponent } from './modules/control-panel/field/edit-or-create-field/edit-or-create-field.component';
 import { FieldItemComponent } from './modules/control-panel/field/field-item/field-item.component';
 import { ListsPanelComponent } from './modules/control-panel/lists-panel/lists-panel.component';
+import { CreateBulkVineComponent } from './modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component';
 import { HomeComponent } from './modules/home/home.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
-import { GridNodeComponent } from './components/grid/grid-node/grid-node.component';
-import { RhInputComponent } from './components/inputs/rh-input/rh-input.component';
-import { RhButtonComponent } from './components/inputs/rh-button/rh-button.component';
+import { VineListComponent } from './modules/control-panel/vine/vine-list/vine-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigatorComponent,
-    OverviewComponent,
-    TaskboardComponent,
-    ProfileComponent,
-    HeaderComponent,
-    PageWrapperComponent,
-    LoginComponent,
-    MenuItemComponent,
     ControlPanelComponent,
-    FieldListComponent,
-    ItemComponent,
-    PageNotFoundComponent,
-    HomeComponent,
-    FieldItemComponent,
-    IconButtonComponent,
+    CreateBulkVineComponent,
     EditOrCreateFieldComponent,
-    ListsPanelComponent,
+    FieldListComponent,
+    FieldItemComponent,
     GridComponent,
     GridNodeComponent,
+    HeaderComponent,
+    HomeComponent,
+    IconButtonComponent,
+    ItemComponent,
+    ListsPanelComponent,
+    LoginComponent,
+    MenuItemComponent,
+    NavigatorComponent,
+    OverviewComponent,
+    PageNotFoundComponent,
+    PageWrapperComponent,
+    ProfileComponent,
     RhInputComponent,
     RhButtonComponent,
+    TaskboardComponent,
+    VineListComponent,
   ],
   imports: [
     AppRoutingModule,
