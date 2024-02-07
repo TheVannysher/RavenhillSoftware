@@ -8,7 +8,7 @@ describe('EditOrCreateFieldComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditOrCreateFieldComponent]
+      declarations: [EditOrCreateFieldComponent],
     });
     fixture = TestBed.createComponent(EditOrCreateFieldComponent);
     component = fixture.componentInstance;

@@ -1,5 +1,5 @@
 <form [formGroup]="fieldForm" (submit)="submit()" class="">
-  <div class="grid grid-cols-6 py-4 mt-2 gap-4 max-h-[80vh]">
+  <div class="grid grid-cols-6 py-4 mt-2 gap-4">
     <div class="col-span-6 p-2 h-min">
       <div class="flex justify-between items-center">
         <button (click)="back()" class="group/back cursor-pointer">
@@ -26,32 +26,53 @@
         </button>
       </div>
     </div>
-    <div class="col-span-6 lg:col-span-2 bg-white rounded-lg shadow overflow-y-auto overflow-x-clip">
-      <div class="flex items-center justify-items-start gap-2 px-4 p-2">
-        <p i18n class="text-center text-xl font-bold capitalize">Field Properties 🪴</p>
+    <div class="col-span-6 lg:col-span-2 flex flex-col">
+      <div class="flex justify-center p-4">
+        <p i18n class="text-center text-2xl font-bold capitalize">Field Properties 🪴</p>
       </div>
-      <input type="hidden" name="id" formControlName="id">
-      <div class="flex gap-2 justify-center items-center px-4 py-2">
-        <label class="flex" for="identifier" i18n>identifier<span class="text-red-600">*</span></label>
-        <input type="text" formControlName="name" name="name" placeholder="identifier" id="">
-      </div>
-      <div class="flex gap-2 justify-center items-center px-4 py-2">
-        <label class="flex" for="identifier" i18n>orientation</label>
-        <input type="text" formControlName="orientation" name="orientation" placeholder="orientation" id="">
-      </div>
-      <div class="flex gap-2 justify-center items-center px-4 py-2">
-        <label class="flex" for="identifier" i18n>notes</label>
-        <textarea type="text" formControlName="notes" name="notes" placeholder="notes" id=""></textarea>
+      <div class="flex flex-col gap-4 p-4">
+        <input type="hidden" name="id" formControlName="id">
+        <div class="flex flex-col gap-1">
+          <label i18n for="name" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">
+            Identifier<span class="text-red-600">*</span>
+          </label>
+          <input [ngClass]="nameControl.invalid && nameControl.touched ? 'ring-2 ring-red-600' : ''"
+            class="appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600"
+            id="identifier" formControlName="name" type="text" placeholder="field identifier">
+        </div>
+        <!-- WIP -->
+        <!-- <div class="flex flex-col gap-1">
+          <label i18n for="orientation" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">
+            orientation (WIP)
+          </label>
+          <input [attr.disabled]="true"
+            class="disabled:bg-neutral-200 appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600"
+            id="orientation" formControlName="orientation" type="text" placeholder="0">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label i18n for="orientation" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">
+            notes (WIP)
+          </label>
+          <textarea [attr.disabled]="true" class="appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight
+            focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600
+            disabled:focus:ring-0
+            disabled:bg-neutral-200" id="notes" formControlName="notes" type="text" placeholder="0"></textarea>
+        </div> -->
       </div>
     </div>
-    <div class="flex col-span-full lg:col-span-4 row-start-2 lg:row-span-4 overflow-clip">
+    <div class="flex col-span-full row-start-4 lg:col-span-4 lg:row-start-2 lg:row-span-4 overflow-clip">
       <app-vine-list [vines]="fieldForm.value.vines" />
     </div>
-    <div class="col-span-6 row-span-2 lg:col-span-2">
-      <app-create-bulk-vine [(value)]="fieldForm.value.vines" [parentId]="id"></app-create-bulk-vine>
+    <div class="col-span-6 row-start-3 lg:row-span-2 lg:col-span-2 flex">
+      <app-create-bulk-vine (valueChangeSideEffect)="addVineBulkSideEffect($event)" [(value)]="fieldForm.value.vines"
+        [parentId]="id"></app-create-bulk-vine>
     </div>
-  </div>
-  <div class="rounded-lg bg-white shadow col-span-full">
-    <p>allo</p>
+    <div class="col-span-full flex flex-wrap justify-center gap-4 py-4">
+      @for (block of fieldForm.value.blocks; track $index) {
+      <div class="w-80 flex flex-col items-center">
+        <app-block-card [block]="block" />
+      </div>
+      }
+    </div>
   </div>
 </form>

@@ -24,9 +24,9 @@ export class BlockService {
     await setDoc(doc(this.store, `fields/${parentId}/blocks`, id), { ...data });
   }
 
-  async setAll(items: Partial<Block>[], parentId: string) {
-    items.forEach(async (vine) => {
-      await setDoc(doc(this.store, `fields/${parentId}/blocks`), { ...vine });
+  async setAll(items: Block[], parentId: string) {
+    items.forEach(async (block) => {
+      await setDoc(doc(this.store, `fields/${parentId}/blocks`, block.id), { ...block });
     });
   }
 }
