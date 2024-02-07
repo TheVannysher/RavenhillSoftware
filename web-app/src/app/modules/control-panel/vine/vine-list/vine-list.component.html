@@ -1,16 +1,19 @@
-<div class="bg-white rounded-lg shadow p-4 overflow-x-clip overflow-y-auto">
-  <div class="md:grid hidden md:grid-cols-4 text-lg text-neutral-500 pb-2 border-b mb-4">
-    <div class="">
-      <p i18n>id (gonna be position in the future)</p>
+<div class="h-full w-full">
+  <div class="flex h-20 overflow-hidden">
+    <div class="p-2 flex items-center justify-center">
+      <p i18n>#</p>
     </div>
-    <div class="">
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+      <p i18n>id (position in the future)</p>
+    </div>
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
       <p i18n>variety</p>
     </div>
-    <div class="">
-      <p i18n># of cluster</p>
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+      <p i18n># of Clusters</p>
     </div>
-    <div class="">
-      <p>vigor</p>
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+      <p i18n>vigor</p>
     </div>
   </div>
   <div *ngIf="vines.length <= 0 else vines_entry">
@@ -19,19 +22,32 @@
     </div>
   </div>
   <ng-template #vines_entry>
-    <div *ngFor="let vine of vines; let i = index"
-      class="grid grid-cols-2 md:grid-cols-4 p-2 {{ (i % 2) > 0 ? 'bg-neutral-200' : ''}}">
-      <div class="content-center w-full overflow-hidden p-2">
-        <p class="break-words">{{vine.id}}</p>
-      </div>
-      <div class="content-center w-full overflow-hidden p-2">
-        <p>{{vine.variety.name}}</p>
-      </div>
-      <div class="content-center w-full overflow-hidden p-2">
-        <p>{{vine.clusters | number}}</p>
-      </div>
-      <div class="content-center w-full overflow-hidden p-2">
-        <p>{{vine.vigor}}</p>
+    <div class="w-full h-full overflow-x-clip overflow-y-auto">
+      <div class="flex flex-col gap-2">
+        @for (vine of vines; track $index) {
+        <div class="flex p-2 bg-white shadow-lg border rounded h-20 overflow-hidden">
+          <div class="p-2 flex items-center justify-center">
+            <p class="text-lg text-neutral-500">{{$index}}</p>
+          </div>
+          <div class="flex flex-2 justify-start items-center overflow-x-auto overflow-y-hidden p-2">
+            <p class="min-w-min">{{vine.id}}</p>
+          </div>
+          <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+            <p>{{vine.variety.name}}</p>
+          </div>
+          <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+            <p>{{vine.clusters | number}}</p>
+          </div>
+          <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+            <p [ngClass]="{
+              'bg-red-600': vine.vigor === 'dead',
+              'bg-green-600': vine.vigor === 'high',
+              'bg-amber-500': vine.vigor === 'medium',
+              'bg-orange-600': vine.vigor === 'low',
+            }" class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
+          </div>
+        </div>
+        }
       </div>
     </div>
   </ng-template>

@@ -94,7 +94,10 @@ export class EditOrCreateFieldComponent implements OnInit {
 
   addVineBulkSideEffect(value: BulkVineFormValue) {
     const { variety } = value;
-    const alreadyExist = this.fieldForm.value.blocks.map((block: Block) => block.name).includes([variety]);
+    const alreadyExist = this.fieldForm.value.blocks.map((block: Block) => block.name).includes(variety.name);
+    console.log('alreadyExist', alreadyExist);
+    console.log('variety', variety);
+    console.log('this.fieldForm.value', this.fieldForm.value.blocks.map((block: Block) => block.name));
     if (!alreadyExist) {
       const newBlock: Block = {
         id: `block_${variety.id}`,

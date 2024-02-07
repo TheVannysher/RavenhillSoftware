@@ -17,6 +17,8 @@ export class FieldItemComponent {
 
   @Input({ required: true }) name: string;
 
+  @Input({ required: true }) index: number;
+
   confirmModalOpened = false;
 
   editField() {
