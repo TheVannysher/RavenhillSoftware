@@ -39,6 +39,10 @@ import { VineListComponent } from './modules/control-panel/vine/vine-list/vine-l
 import { HomeComponent } from './modules/home/home.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
+import { ListComponent} from '#components/list/list.component';
+import { ListItemComponent } from '#components/list/list-item/list-item.component';
+import { list } from 'postcss';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +58,8 @@ import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.c
     HomeComponent,
     IconButtonComponent,
     ItemComponent,
+    ListComponent,
+    ListItemComponent,
     ListsPanelComponent,
     LoginComponent,
     MenuItemComponent,

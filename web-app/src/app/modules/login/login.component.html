@@ -9,11 +9,11 @@
   <ng-template #form>
     <form [formGroup]="loginForm" (ngSubmit)="newUser ? register() : login()">
       <div class="inputs-container">
-        <input *ngIf="newUser" class="animated-input shadow-md" [formGroup]="loginForm" type="text"
+        <input *ngIf="newUser" class="animated-input shadow-md appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600" [formGroup]="loginForm" type="text"
           formControlName="username" placeholder="Username" />
-        <input class="animated-input shadow-md" [formGroup]="loginForm" type="email" formControlName="email"
+        <input class="animated-input appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600" [formGroup]="loginForm" type="email" formControlName="email"
           placeholder="Email" required />
-        <input class="animated-input shadow-md" [formGroup]="loginForm" type="password" formControlName="password"
+        <input class="animated-input appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600" [formGroup]="loginForm" type="password" formControlName="password"
           placeholder="Password" required />
         <div class="optional-container">
           <div *ngIf="newUser; else signin">
