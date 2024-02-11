@@ -4,11 +4,13 @@ export enum RouteFullPaths {
   TASKBOARD = '/home/taskboard',
   USER_PROFILE = '/home/profile',
   CONTROL_PANEL = '/control-panel',
+  LIST_PANEL = '/control-panel/lists-panel',
   FIELD_MANAGEMENT = '/control-panel/field_management',
 }
 
 export enum RouteNames {
   LOGIN = 'login',
+  LISTS_PANEL = 'lists-panel',
   OVERVIEW = 'overview',
   TASKBOARD = 'taskboard',
   USER_PROFILE = 'profile',

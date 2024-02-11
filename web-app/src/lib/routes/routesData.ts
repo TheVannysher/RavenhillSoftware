@@ -38,12 +38,17 @@ const ROUTES_DATA: Partial<Record<RouteNames, RouteData>> = {
   },
   'control-panel': {
     category: RouteCategories.CONTROL_PANEL,
-    name: RouteNames.CONTROL_PANEL,
+    name: RouteNames.LISTS_PANEL,
     fullPath: RouteFullPaths.CONTROL_PANEL,
     icon: {
       type: RouteIconTypes.NG_ICON,
       src: NGIcons.feather.Settings,
     },
+  },
+  'lists-panel': {
+    category: RouteCategories.CONTROL_PANEL,
+    name: RouteNames.LISTS_PANEL,
+    fullPath: RouteFullPaths.LIST_PANEL,
   },
 };
 

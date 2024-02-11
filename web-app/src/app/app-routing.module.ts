@@ -61,10 +61,14 @@ const routes: Routes = [
     children: [
       {
         path: '', pathMatch: 'full', redirectTo: 'lists-panel',
+        title: RouteNames.LISTS_PANEL,
+        data: ROUTES_DATA['lists-panel'],
       },
       {
         path: 'lists-panel',
+        title: RouteNames.LISTS_PANEL,
         component: ListsPanelComponent,
+        data: ROUTES_DATA['lists-panel'],
       },
       {
         path: RouteNames.FIELD_MANAGEMENT,
