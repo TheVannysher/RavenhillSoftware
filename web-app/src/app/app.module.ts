@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgIconsModule } from '@ng-icons/core';
-import { DragToSelectModule } from 'ngx-drag-to-select';
 
 import { BlockCardComponent } from '#components/block/block-card/block-card.component';
 import { MenuItemComponent } from '#components/menu/menu-item/menu-item.component';
@@ -80,7 +79,6 @@ import environment from 'src/environments/environment';
     provideFirebaseApp(() => initializeApp(settings.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    DragToSelectModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
   ],
   providers: [],
