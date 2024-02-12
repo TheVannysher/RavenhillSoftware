@@ -24,7 +24,6 @@ import { LoginComponent } from '#modules/login/login.component';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { IconButtonComponent } from './components/button/icon-button/icon-button.component';
 import { GridComponent } from './components/grid/grid.component';
 import { GridNodeComponent } from './components/grid/grid-node/grid-node.component';
 import { RhButtonComponent } from './components/inputs/rh-button/rh-button.component';
@@ -53,7 +52,6 @@ import environment from 'src/environments/environment';
     GridNodeComponent,
     HeaderComponent,
     HomeComponent,
-    IconButtonComponent,
     ItemComponent,
     ListsPanelComponent,
     LoginComponent,
