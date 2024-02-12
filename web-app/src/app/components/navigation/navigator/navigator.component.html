@@ -14,7 +14,7 @@ lg:max-w-[22rem]">
         <app-navigator-item [active]="tab.name === currentRoute" *ngFor="let tab of tabs" [name]="tab.name"
           [path]="tab.path" [icon]="tab.src" />
       </div>
-      <div *ngIf="isAdmin" class="w-full">
+      <div *ngIf="hasPermissions" class="w-full">
         <app-navigator-item [active]="currentRoute === 'control-panel'" name="Control-Panel" path="/control-panel"
           icon="featherSettings" />
       </div>

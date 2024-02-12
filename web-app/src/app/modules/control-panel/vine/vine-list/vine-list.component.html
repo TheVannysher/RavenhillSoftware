@@ -1,4 +1,4 @@
-<div class="h-full w-full">
+<div class="h-full w-full flex flex-col">
   <div class="flex h-20 overflow-hidden">
     <div class="p-2 flex items-center justify-center">
       <p i18n>#</p>
@@ -26,31 +26,32 @@
     </div>
   </div>
   <ng-template #vines_entry>
-    <div class="w-full h-full overflow-x-clip overflow-y-auto">
+    <div class="w-full overflow-y-auto pr-2">
       <div class="flex flex-col gap-2">
         @for (vine of vines; track $index) {
-        <div class="flex p-2 bg-white shadow-lg border rounded h-20 overflow-hidden">
-          <div class="p-2 flex items-center justify-center">
-            <p class="text-lg text-neutral-500">{{$index}}</p>
+        <button type="button" (click)="openModal($event, vine.id)">
+          <div
+            class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white cursor-pointer">
+            <div class="p-2 flex items-center justify-center">
+              <p class="text-lg text-neutral-500 group-hover:text-neutral-100">{{$index}}</p>
+            </div>
+            <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+              <p>{{vine.variety.name}}</p>
+            </div>
+            <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+              <p>{{vine.clusters | number}}</p>
+            </div>
+            <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+              <p [ngClass]="{
+                  'bg-red-600': vine.vigor === 'dead',
+                  'bg-green-600': vine.vigor === 'high',
+                  'bg-amber-500': vine.vigor === 'medium',
+                  'bg-orange-600': vine.vigor === 'low',
+                }" class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
+            </div>
           </div>
-          <div class="flex flex-2 justify-start items-center overflow-x-auto overflow-y-hidden p-2">
-            <p class="min-w-min">{{vine.id}}</p>
-          </div>
-          <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
-            <p>{{vine.variety.name}}</p>
-          </div>
-          <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
-            <p>{{vine.clusters | number}}</p>
-          </div>
-          <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
-            <p [ngClass]="{
-              'bg-red-600': vine.vigor === 'dead',
-              'bg-green-600': vine.vigor === 'high',
-              'bg-amber-500': vine.vigor === 'medium',
-              'bg-orange-600': vine.vigor === 'low',
-            }" class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
-          </div>
-        </div>
+          <app-vine [userRoles]="userRoles" [vine]="vine" />
+        </button>
         }
       </div>
     </div>

@@ -24,6 +24,5 @@ export class GridNodeComponent {
       this.clicked.emit(this.position);
       this.selected = !this.selected;
     }
-    console.log('nodes: ', this.selected);
   }
 }

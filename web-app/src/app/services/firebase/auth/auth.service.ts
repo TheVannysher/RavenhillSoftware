@@ -12,6 +12,7 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
+  BehaviorSubject,
   Observable,
   of,
   switchMap,
@@ -33,6 +34,8 @@ export default class AuthService {
   private route: ActivatedRoute = inject(ActivatedRoute);
 
   private user$: Observable<any>;
+
+  // private _roles = new BehaviorSubject<string[]>([]);
 
   constructor() {
     this.user$ = authState(this.FirebaseAuth).pipe(

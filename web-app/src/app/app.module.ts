@@ -38,6 +38,7 @@ import { CreateBulkVineComponent } from './modules/control-panel/vine/create-bul
 import { VineListComponent } from './modules/control-panel/vine/vine-list/vine-list.component';
 import { HomeComponent } from './modules/home/home.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
+import { VineComponent } from '#modules/control-panel/vine/vine.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.c
     RhButtonComponent,
     TaskboardComponent,
     VineListComponent,
+    VineComponent,
   ],
   imports: [
     AppRoutingModule,

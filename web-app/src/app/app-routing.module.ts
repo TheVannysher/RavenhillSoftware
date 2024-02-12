@@ -16,6 +16,7 @@ import { OverviewComponent } from './modules/home/overview/overview.component';
 import { ProfileComponent } from './modules/home/profile/profile.component';
 import { TaskboardComponent } from './modules/home/taskboard/taskboard.component';
 import { LoginComponent } from './modules/login/login.component';
+import { managerGuard } from './guards/roles/manager.guard';
 
 const routes: Routes = [
   {
@@ -57,7 +58,7 @@ const routes: Routes = [
     title: RouteCategories.CONTROL_PANEL,
     component: ControlPanelComponent,
     data: ROUTES_DATA['control-panel'],
-    canActivate: [authGuard, adminGuard],
+    canActivate: [authGuard, managerGuard],
     children: [
       {
         path: '', pathMatch: 'full', redirectTo: 'lists-panel',

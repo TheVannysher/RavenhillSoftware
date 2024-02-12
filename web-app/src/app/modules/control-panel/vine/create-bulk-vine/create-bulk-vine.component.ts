@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 import { Variety, Vine } from '#types/firebase/models/vine';
+import { VIGOR_LIST } from '#lib/enum/vine';
 
 
 export interface BulkVineFormValue {
@@ -42,19 +43,12 @@ export class CreateBulkVineComponent implements OnInit {
 
   @Output() valueChangeSideEffect = new EventEmitter<BulkVineFormValue>();
 
-  VIGOR_LIST = [
-    'low',
-    'medium',
-    'high',
-    'dead',
-  ];
-
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       quantity: [null, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.min(1), Validators.max(60)]],
       variety: [null, [Validators.required]],
       clusters: [0, [Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(40)]],
-      vigor: [null, [Validators.required, Validators.pattern(new RegExp(this.VIGOR_LIST.join('|')))]],
+      vigor: [null, [Validators.required, Validators.pattern(new RegExp(Object.values(VIGOR_LIST).join('|')))]],
     });
     this.varieties = collectionData(collection(this.store, 'varieties')) as Observable<Variety[]>;
   }

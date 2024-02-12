@@ -9,6 +9,7 @@ import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 
 import AuthService from '#services/firebase/auth/auth.service';
 import { NavigaionTab } from '#types/navigation/navigator_tabs';
+import { Roles } from '#lib/enum/roles';
 
 export const NAVIGATIONS_TABS: NavigaionTab[] = [
   {
@@ -46,7 +47,7 @@ export class NavigatorComponent implements OnInit {
 
   @Input() open = false;
 
-  isAdmin = false;
+  hasPermissions = false;
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe((url) => {
@@ -54,7 +55,7 @@ export class NavigatorComponent implements OnInit {
     });
     this.auth.getUser().subscribe((user) => {
       if (user) {
-        this.isAdmin = user.roles.includes('admin');
+        this.hasPermissions = user.roles.includes(Roles.ADMIN) || user.roles.includes(Roles.MANAGER);
       }
     });
   }

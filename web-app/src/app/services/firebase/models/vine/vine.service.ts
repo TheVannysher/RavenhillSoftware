@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  collection, collectionData, doc, docData, Firestore, setDoc,
+  collection, collectionData, deleteDoc, doc, docData, Firestore, setDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -18,6 +18,10 @@ export class VineService {
 
   getAll(parentId: string) {
     return collectionData(collection(this.store, `fields/${parentId}/vines`)) as Observable<Vine[]>;
+  }
+
+  async delete(id: string, parentId: string) {
+    await deleteDoc(doc(this.store, `fields/${parentId}/vines`, id));
   }
 
   async set(id: string, parentId: string, data: Vine) {
