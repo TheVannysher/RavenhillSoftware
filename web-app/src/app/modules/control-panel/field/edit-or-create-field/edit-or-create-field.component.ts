@@ -58,9 +58,9 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeParamsSubscription.unsubscribe();
-    this.fieldSubscription.unsubscribe();
-    this.vinesSubscription.unsubscribe();
-    this.blocksSubscription.unsubscribe();
+    if (this.fieldSubscription) this.fieldSubscription.unsubscribe();
+    if (this.vinesSubscription) this.vinesSubscription.unsubscribe();
+    if (this.blocksSubscription) this.blocksSubscription.unsubscribe();
   }
 
   getInitialFormValue() {

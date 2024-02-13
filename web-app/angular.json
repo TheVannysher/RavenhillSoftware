@@ -7,7 +7,6 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "en-US": "src/locale/messages.xlf",
           "fr-CA": "src/locale/messages.fr.xlf"
         }
       },
@@ -25,7 +24,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "localize": [
-              "en-US",
               "fr-CA"
             ],
             "outputPath": "dist/web-app",

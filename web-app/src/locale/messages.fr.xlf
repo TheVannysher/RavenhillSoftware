@@ -23,6 +23,10 @@
           <context context-type="sourcefile">src/app/modules/control-panel/field/edit-or-create-field/edit-or-create-field.component.html</context>
           <context context-type="linenumber">24,25</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="3614914631874715715" datatype="html">
         <source> logout </source>
@@ -82,6 +86,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
           <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3375385596440618633" datatype="html">
+        <source> Ajouter un champs</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
+          <context context-type="linenumber">22,23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3304726875780709038" datatype="html">
@@ -160,21 +171,21 @@
         <source>Cépage</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8829122781460890184" datatype="html">
         <source># de Grapes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6279675468203467124" datatype="html">
         <source>Vigeur</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1561667836612690684" datatype="html">
@@ -206,7 +217,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4728010188868754319" datatype="html">
@@ -216,11 +227,18 @@
           <context context-type="linenumber">31,32</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7022070615528435141" datatype="html">
+        <source>Supprimer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="6578243162291387912" datatype="html">
         <source>Vigeur 💪</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1699299205444149760" datatype="html">
