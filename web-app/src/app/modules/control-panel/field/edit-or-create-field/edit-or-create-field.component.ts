@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -16,41 +16,35 @@ import { Block } from '#types/firebase/models/block';
 import { Vine } from '#types/firebase/models/vine';
 import { BulkVineFormValue } from '#modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component';
 import { BlockService } from '#services/firebase/models/block/block.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-or-create-field',
   templateUrl: './edit-or-create-field.component.html',
 })
-export class EditOrCreateFieldComponent implements OnInit {
+export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
   navigation: NavigationService = inject(NavigationService);
-
   fieldService: FieldService = inject(FieldService);
-
   blockService: BlockService = inject(BlockService);
-
   vineService: VineService = inject(VineService);
-
   route: ActivatedRoute = inject(ActivatedRoute);
-
   formBuilder: FormBuilder = inject(FormBuilder);
 
+  private routeParamsSubscription: Subscription;
+  private fieldSubscription: Subscription;
+  private vinesSubscription: Subscription;
+  private blocksSubscription: Subscription;
+
   fieldForm: FormGroup;
-
   vines: Vine[] = [];
-
   blocks: Block[] = [];
-
   errors: ValidationErrors | null = null;
-
   submitting = false;
-
-  loading = true;
-
   id = `field_${uuid()}`;
 
   constructor() {
     this.fieldForm = this.formBuilder.group({
-      id: [`field_${uuid()}`],
+      id: [this.id],
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-_]+$/), Validators.maxLength(20)]],
       updatedAt: [],
       blocks: [[]],
@@ -62,33 +56,38 @@ export class EditOrCreateFieldComponent implements OnInit {
     this.getInitialFormValue();
   }
 
+  ngOnDestroy(): void {
+    this.routeParamsSubscription.unsubscribe();
+    this.fieldSubscription.unsubscribe();
+    this.vinesSubscription.unsubscribe();
+    this.blocksSubscription.unsubscribe();
+  }
+
   getInitialFormValue() {
-    this.loading = true;
-    this.route.params.subscribe(({ id }) => {
+    this.routeParamsSubscription = this.route.params.subscribe(({ id }) => {
       this.id = id;
       if (id) {
-        this.fieldService.get(id).subscribe((field) => {
+        this.fieldSubscription = this.fieldService.get(this.id).subscribe((field) => {
           if (field) {
-            this.fieldForm.setValue({
-              ...this.fieldForm.value,
-              ...field,
-            });
-            this.vineService.getAll(id).subscribe((vines) => {
+            this.vinesSubscription = this.vineService.getAll(this.id).subscribe((vines) => {
               this.fieldForm.setValue({
                 ...this.fieldForm.value,
                 vines,
               });
             });
-            this.blockService.getAll(id).subscribe((blocks) => {
+            this.blocksSubscription = this.blockService.getAll(this.id).subscribe((blocks) => {
               this.fieldForm.setValue({
                 ...this.fieldForm.value,
                 blocks,
-              });
+              })
+            });
+            this.fieldForm.setValue({
+              ...this.fieldForm.value,
+              ...field,
             });
           }
         });
       }
-      this.loading = false;
     });
   }
 

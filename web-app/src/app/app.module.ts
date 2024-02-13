@@ -14,7 +14,6 @@ import { HeaderComponent } from '#components/navigation/header/header.component'
 import { ItemComponent } from '#components/navigation/navigator/item/item.component';
 import { NavigatorComponent } from '#components/navigation/navigator/navigator.component';
 import { PageWrapperComponent } from '#components/page-wrapper/page-wrapper.component';
-import settings from '#lib/settings/settings';
 import { ControlPanelComponent } from '#modules/control-panel/control-panel.component';
 import { FieldListComponent } from '#modules/control-panel/field/field-list/field-list.component';
 import { OverviewComponent } from '#modules/home/overview/overview.component';
@@ -24,10 +23,6 @@ import { LoginComponent } from '#modules/login/login.component';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GridComponent } from './components/grid/grid.component';
-import { GridNodeComponent } from './components/grid/grid-node/grid-node.component';
-import { RhButtonComponent } from './components/inputs/rh-button/rh-button.component';
-import { RhInputComponent } from './components/inputs/rh-input/rh-input.component';
 import icons from './icons';
 import { EditOrCreateFieldComponent } from './modules/control-panel/field/edit-or-create-field/edit-or-create-field.component';
 import { FieldItemComponent } from './modules/control-panel/field/field-item/field-item.component';
@@ -48,8 +43,6 @@ import environment from 'src/environments/environment';
     EditOrCreateFieldComponent,
     FieldListComponent,
     FieldItemComponent,
-    GridComponent,
-    GridNodeComponent,
     HeaderComponent,
     HomeComponent,
     ItemComponent,
@@ -61,8 +54,6 @@ import environment from 'src/environments/environment';
     PageNotFoundComponent,
     PageWrapperComponent,
     ProfileComponent,
-    RhInputComponent,
-    RhButtonComponent,
     TaskboardComponent,
     VineListComponent,
     VineComponent,
@@ -74,7 +65,6 @@ import environment from 'src/environments/environment';
     ReactiveFormsModule,
     HttpClientModule,
     NgIconsModule.withIcons({ ...icons }),
-    provideFirebaseApp(() => initializeApp(settings.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),

@@ -1,8 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
   DocumentSnapshot,
 } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { NGIcons } from 'src/app/icons';
 
 import { HeaderInfo } from '#components/page-wrapper/page-wrapper.component';
@@ -15,37 +15,17 @@ import { RouteIconTypes } from '#types/navigation/routes.types';
   templateUrl: './field-list.component.html',
   styleUrls: ['./field-list.component.scss'],
 })
-export class FieldListComponent implements OnInit {
+export class FieldListComponent implements OnInit, OnDestroy {
   fieldService: FieldService = inject(FieldService);
 
-  data: Observable<Field[]> = of([]);
-
-  pageNumber = 1;
-
-  lastDocument: DocumentSnapshot;
-
-  loading = true;
-
-  headerInfo: HeaderInfo = {
-    title: 'Fields',
-    category: 'Control-Panel',
-    color: '--clr-green-500',
-    icon: {
-      src: NGIcons.feather.Feather,
-      type: RouteIconTypes.NG_ICON,
-    },
-  };
+  dataSubscription: Subscription;
+  data: Field[] = [];
 
   ngOnInit(): void {
-    this.loading = true;
-    this.data = this.fieldService.listAll();
-    this.loading = false;
+    this.dataSubscription = this.fieldService.listAll().subscribe((data) => { this.data = data; });
   }
 
-  next() {
-    if (this.lastDocument) {
-      this.pageNumber += 1;
-      this.loading = true;
-    }
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
   }
 }

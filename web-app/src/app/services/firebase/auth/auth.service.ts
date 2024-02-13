@@ -35,8 +35,6 @@ export default class AuthService {
 
   private user$: Observable<any>;
 
-  // private _roles = new BehaviorSubject<string[]>([]);
-
   constructor() {
     this.user$ = authState(this.FirebaseAuth).pipe(
       switchMap((user) => {

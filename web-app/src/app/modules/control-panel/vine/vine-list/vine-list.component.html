@@ -3,13 +3,6 @@
     <div class="p-2 flex items-center justify-center">
       <p i18n>#</p>
     </div>
-    <!-- WIP  -->
-    <!-- TODO when applying position flow will be added -->
-    <!-- <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
-      <p i18n>
-        position
-      </p>
-    </div> -->
     <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
       <p i18n>variety</p>
     </div>
@@ -47,7 +40,7 @@
                   'bg-green-600': vine.vigor === 'high',
                   'bg-amber-500': vine.vigor === 'medium',
                   'bg-orange-600': vine.vigor === 'low',
-                }" class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
+                }" i18n class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
             </div>
           </div>
           <app-vine [userRoles]="userRoles" [vine]="vine" />

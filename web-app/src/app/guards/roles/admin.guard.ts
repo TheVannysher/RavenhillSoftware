@@ -7,9 +7,6 @@ import AuthService from 'src/app/services/firebase/auth/auth.service';
 import { RouteFullPaths } from '#lib/enum/routes';
 import { Roles } from '#lib/enum/roles';
 
-// TODO:
-// RolesService
-
 export const adminGuard: CanActivateFn = (_, state) => {
   const authService: AuthService = inject(AuthService);
   const router: Router = inject(Router);
