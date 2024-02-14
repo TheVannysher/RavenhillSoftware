@@ -38,31 +38,20 @@ export class FieldService implements Model<Field> {
     return docData(doc(this.store, this.collectionPath, id)) as Observable<Field>;
   }
 
-  listAll(): Observable<Field[]> {
+  getAll(): Observable<Field[]> {
     return collectionData(collection(this.store, this.collectionPath)) as Observable<Field[]>;
   }
 
-  list(options: ListOptions | undefined = { order: 'createdAt', itemByPage: 10 }) {
-    const collectionRef = collection(this.store, this.collectionPath);
-    const { itemByPage, order } = options;
-    return {
-      first: () => (collectionData(
-        query(
-          collectionRef,
-          orderBy(order),
-          limit(itemByPage),
-        ),
-      ) as Observable<Field[]>),
-      next: (lastResponse: DocumentSnapshot) => (lastResponse ? (collectionData(
-        query(
-          collectionRef,
-          orderBy(order),
-          limit(itemByPage),
-          startAfter(lastResponse),
-        ),
-      ) as Observable<Field[]>) : (of(null))),
-    };
-  }
+  list(pageSize: number = 10, order: keyof Field = 'id', startAfterId?: string): Observable<Field[]> {
+    const fieldsCollection = collection(this.store, this.collectionPath);
+    let fieldQuery;
+    if (startAfterId) {
+      fieldQuery = query(fieldsCollection, orderBy(order), startAfter(startAfterId), limit(pageSize));
+    } else {
+      fieldQuery = query(fieldsCollection, orderBy(order), limit(pageSize));
+    }
+    return collectionData(fieldQuery) as Observable<Field[]>;
+  };
 
   async set(id: string, data: Partial<Field>) {
     await setDoc(doc(this.store, this.collectionPath, id), {

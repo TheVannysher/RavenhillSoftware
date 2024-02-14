@@ -64,9 +64,13 @@
 ## Task 📝
 
 ## MVP 👑
+    [ ] - Vine position `(x,y)` `(row, vine#)`
     [ ] - lazy loading / pagination
         [ ] - samples data list
         [ ] - vine list
+    [ ] - filtering
+     [ ] - search in user-list
+     [ ] - filter by row in vine-list (once position is added)
     [ ] - basic CRUD
         [ ] - vine
         [x] - field

@@ -17,7 +17,7 @@ import { Observable, of } from 'rxjs';
 
 import { Variety } from '#types/firebase/models/vine';
 
-import { ListOptions, ListQueryReturn, Model } from '../types';
+import { Model } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -35,27 +35,16 @@ export class VarietyService implements Model<Variety> {
     return docData(doc(this.store, this.collectionPath, id)) as Observable<Variety | null>;
   }
 
-  list(options: ListOptions | undefined = { order: 'name', itemByPage: 10 }): ListQueryReturn<Variety> {
-    const collectionRef = collection(this.store, this.collectionPath);
-    const { itemByPage, order } = options;
-    return {
-      first: () => (collectionData(
-        query(
-          collectionRef,
-          orderBy(order),
-          limit(itemByPage),
-        ),
-      ) as Observable<Variety[]>),
-      next: (lastResponse: DocumentSnapshot) => (lastResponse ? (collectionData(
-        query(
-          collectionRef,
-          orderBy(order),
-          limit(itemByPage),
-          startAfter(lastResponse),
-        ),
-      ) as Observable<Variety[]>) : (of(null))),
-    };
-  }
+  list(pageSize: number = 10, order: keyof Variety = 'name', startAfterId?: string): Observable<Variety[]> {
+    const varietysCollection = collection(this.store, this.collectionPath);
+    let varietyQuery;
+    if (startAfterId) {
+      varietyQuery = query(varietysCollection, orderBy(order), startAfter(startAfterId), limit(pageSize));
+    } else {
+      varietyQuery = query(varietysCollection, orderBy(order), limit(pageSize));
+    }
+    return collectionData(varietyQuery) as Observable<Variety[]>;
+  };
 
   async set(id: string, data: Partial<Variety>): Promise<void> {
     await setDoc(doc(this.store, this.collectionPath, id), { ...data });

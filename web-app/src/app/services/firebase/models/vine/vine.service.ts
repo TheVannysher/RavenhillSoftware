@@ -1,8 +1,18 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  collection, collectionData, deleteDoc, doc, docData, Firestore, setDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+  limit,
+  orderBy,
+  query,
+  setDoc,
+  startAfter,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Vine } from '#types/firebase/models/vine';
 
@@ -19,6 +29,18 @@ export class VineService {
   getAll(parentId: string) {
     return collectionData(collection(this.store, `fields/${parentId}/vines`)) as Observable<Vine[]>;
   }
+
+  list(parentId?: string, pageSize: number = 10, order: keyof Vine = 'id', startAfterId?: string): Observable<Vine[]> {
+    if (!parentId) return of([]);
+    const vinesCollection = collection(this.store, `fields/${parentId}/vines`);
+    let VineQuery;
+    if (startAfterId) {
+      VineQuery = query(vinesCollection, orderBy(order), startAfter(startAfterId), limit(pageSize));
+    } else {
+      VineQuery = query(vinesCollection, orderBy(order), limit(pageSize));
+    }
+    return collectionData(VineQuery) as Observable<Vine[]>;
+  };
 
   async delete(id: string, parentId: string) {
     await deleteDoc(doc(this.store, `fields/${parentId}/vines`, id));
