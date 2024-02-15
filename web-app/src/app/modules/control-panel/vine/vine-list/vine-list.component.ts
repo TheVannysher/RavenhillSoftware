@@ -5,6 +5,7 @@ import { ModalService } from '#services/modal/modal.service';
 import AuthService from '#services/firebase/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { Roles } from '#lib/enum/roles';
+import { VineService } from '#services/firebase/models/vine/vine.service';
 
 @Component({
   selector: 'app-vine-list',
@@ -14,11 +15,14 @@ import { Roles } from '#lib/enum/roles';
 export class VineListComponent implements OnInit, OnDestroy {
   modalService: ModalService = inject(ModalService);
   authService: AuthService = inject(AuthService);
+  vineService: VineService = inject(VineService);
   private userRolesSubscription: Subscription;
+  private vinesSubscription: Subscription;
   userRoles: Roles[] = [];
   hasEditingPermission: boolean = false;
 
   @Input({ required: true }) vines: Vine[] = [];
+  @Input({ required: true }) parentId: string;
 
   ngOnInit(): void {
     this.userRolesSubscription = this.authService.getUser().subscribe((user) => {
@@ -26,6 +30,7 @@ export class VineListComponent implements OnInit, OnDestroy {
       this.userRoles = roles;
       this.hasEditingPermission = user ? roles.includes(Roles.ADMIN) : false;
     });
+    this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: 10, order: 'id' }).subscribe((vines) => { this.vines = vines; });
   }
 
   ngOnDestroy(): void {
@@ -35,5 +40,20 @@ export class VineListComponent implements OnInit, OnDestroy {
   openModal(event: MouseEvent, id: string) {
     event.stopPropagation();
     this.modalService.openModal(id);
+  }
+
+  loadMore(event: MouseEvent) {
+    event.preventDefault();
+    if (this.vinesSubscription) this.vinesSubscription.unsubscribe();
+    console.log(this.vines[this.vines.length - 1].id);
+    this.vinesSubscription = this.vineService.list({
+      parentId: this.parentId,
+      pageSize: 10,
+      order: 'id',
+      startAfterId: this.vines[this.vines.length - 1].id,
+    }).subscribe((vines) => {
+      this.vines = this.vines.concat(vines);
+    });
+
   }
 }

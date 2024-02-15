@@ -19,13 +19,14 @@ import { Observable, of } from 'rxjs';
 import { Field } from '#types/firebase/models/field';
 import { Vine } from '#types/firebase/models/vine';
 
-import { ListOptions, Model } from '../types';
+import { ListOptions, Model, PaginatedQueryArgs } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FieldService implements Model<Field> {
   private store: Firestore = inject(Firestore);
+  private defaultListQueryArg: PaginatedQueryArgs<Field> = { pageSize: 10, order: 'id', startAfterId: undefined };
 
   private collectionPath = 'fields';
 
@@ -42,7 +43,12 @@ export class FieldService implements Model<Field> {
     return collectionData(collection(this.store, this.collectionPath)) as Observable<Field[]>;
   }
 
-  list(pageSize: number = 10, order: keyof Field = 'id', startAfterId?: string): Observable<Field[]> {
+  list(options: PaginatedQueryArgs<Field> = this.defaultListQueryArg): Observable<Field[]> {
+    const {
+      pageSize = 10,
+      order = 'id',
+      startAfterId,
+    } = options;
     const fieldsCollection = collection(this.store, this.collectionPath);
     let fieldQuery;
     if (startAfterId) {

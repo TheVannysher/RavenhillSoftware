@@ -69,12 +69,12 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
       if (id) {
         this.fieldSubscription = this.fieldService.get(this.id).subscribe((field) => {
           if (field) {
-            this.vinesSubscription = this.vineService.getAll(this.id).subscribe((vines) => {
-              this.fieldForm.setValue({
-                ...this.fieldForm.value,
-                vines,
-              });
-            });
+            // this.vinesSubscription = this.vineService.getAll(this.id).subscribe((vines) => {
+            //   this.fieldForm.setValue({
+            //     ...this.fieldForm.value,
+            //     vines,
+            //   });
+            // });
             this.blocksSubscription = this.blockService.getAll(this.id).subscribe((blocks) => {
               this.fieldForm.setValue({
                 ...this.fieldForm.value,

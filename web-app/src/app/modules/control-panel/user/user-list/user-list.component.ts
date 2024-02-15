@@ -1,7 +1,6 @@
 import { UserService } from '#services/firebase/models/user/user.service';
 import { User } from '#types/Auth/User';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { on } from 'events';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,7 +15,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   users: User[] = [];
 
   ngOnInit(): void {
-    this.userSubscription = this.userService.list(2).subscribe((users) => {
+    this.userSubscription = this.userService.list({ pageSize: 1 }).subscribe((users) => {
+      console.log(users);
       this.users = users;
     });
   }
@@ -27,7 +27,13 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   loadMore() {
     this.userSubscription.unsubscribe();
-    this.userSubscription = this.userService.list(1, 'uid', this.users[this.users.length - 1].uid).subscribe((users) => {
+    this.userSubscription = this.userService.list({
+      parentId: 'none',
+      pageSize: 1,
+      order: 'uid',
+      startAfterId: this.users[this.users.length - 1].uid
+    }).subscribe((users) => {
+      console.log('newsub: ', users);
       this.users = this.users.concat(users);
     });
   }

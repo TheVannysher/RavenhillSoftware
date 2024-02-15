@@ -17,13 +17,14 @@ import { Observable, of } from 'rxjs';
 
 import { Variety } from '#types/firebase/models/vine';
 
-import { Model } from '../types';
+import { Model, PaginatedQueryArgs } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VarietyService implements Model<Variety> {
   private store: Firestore = inject(Firestore);
+  private defaultListQueryArg: PaginatedQueryArgs<Variety> = { pageSize: 10, order: 'name', startAfterId: undefined };
 
   private collectionPath = 'varieties';
 
@@ -35,7 +36,12 @@ export class VarietyService implements Model<Variety> {
     return docData(doc(this.store, this.collectionPath, id)) as Observable<Variety | null>;
   }
 
-  list(pageSize: number = 10, order: keyof Variety = 'name', startAfterId?: string): Observable<Variety[]> {
+  list(options: PaginatedQueryArgs<Variety> = this.defaultListQueryArg): Observable<Variety[]> {
+    const {
+      pageSize = 10,
+      order = 'name',
+      startAfterId,
+    } = options;
     const varietysCollection = collection(this.store, this.collectionPath);
     let varietyQuery;
     if (startAfterId) {
