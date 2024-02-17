@@ -73,8 +73,4 @@ export class UserService implements Model<User>{
   async set(id: string, user: Partial<User>): Promise<void> {
     await setDoc(doc(this.store, this.collectionPath, id), { ...user });
   }
-
-  async delete(id: string): Promise<void> {
-    await deleteDoc(doc(this.store, this.collectionPath, id));
-  }
 }

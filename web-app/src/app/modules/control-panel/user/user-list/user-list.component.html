@@ -15,7 +15,7 @@
     </div>
     <div class="flex flex-col gap-2">
         @for (user of users; track $index) {
-        <button type="button">
+        <button type="button" (click)="openModal($event, user.uid)">
             <div
                 class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white hover:font-bold cursor-pointer">
                 <div class="p-2 flex items-center justify-center">
@@ -34,6 +34,7 @@
                 </div>
             </div>
             <!-- editing modal goes here -->
+            <app-edit-user-modal [user]="user" />
         </button>
         }
         <button (click)="loadMore($event)">

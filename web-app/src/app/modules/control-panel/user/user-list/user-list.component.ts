@@ -1,5 +1,6 @@
 import AuthService from '#services/firebase/auth/auth.service';
 import { UserService } from '#services/firebase/models/user/user.service';
+import { ModalService } from '#services/modal/modal.service';
 import { User } from '#types/Auth/User';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -10,10 +11,11 @@ import { Subscription } from 'rxjs';
 })
 export class UserListComponent implements OnInit, OnDestroy {
   userService: UserService = inject(UserService);
-
+  modalService: ModalService = inject(ModalService);
   authService: AuthService = inject(AuthService);
 
   userSubscription: Subscription;
+  modalSubscription: Subscription;
 
   users: User[] = [];
 
@@ -34,6 +36,11 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+  }
+
+  openModal(event: MouseEvent, id: string) {
+    event.stopPropagation();
+    this.modalService.openModal(id);
   }
 
   loadMore(event: MouseEvent) {
