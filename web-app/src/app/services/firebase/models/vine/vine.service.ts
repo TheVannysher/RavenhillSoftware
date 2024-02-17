@@ -35,15 +35,14 @@ export class VineService {
     const {
       pageSize = 10,
       order = 'id',
-      startAfterId,
+      startAfterItem = undefined,
       parentId,
     } = options;
     if (!parentId) return of([]);
     const vinesCollection = collection(this.store, `fields/${parentId}/vines`);
     let VineQuery;
-    console.log('startAfterId', startAfterId);
-    if (startAfterId) {
-      VineQuery = query(vinesCollection, orderBy(order), startAfter(startAfterId), limit(pageSize));
+    if (startAfterItem) {
+      VineQuery = query(vinesCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
     } else {
       VineQuery = query(vinesCollection, orderBy(order), limit(pageSize));
     }

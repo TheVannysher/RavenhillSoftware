@@ -16,4 +16,4 @@ export interface Model<T> {
   delete?: (id: string) => Promise<void>;
 }
 
-export type PaginatedQueryArgs<T> = { parentId?: string, pageSize?: number, order?: keyof T, startAfterId?: string }
+export type PaginatedQueryArgs<T> = { parentId?: string, pageSize?: number, order?: keyof T, startAfterItem?: T }

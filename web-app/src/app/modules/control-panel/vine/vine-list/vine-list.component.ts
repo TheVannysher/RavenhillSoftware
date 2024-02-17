@@ -50,7 +50,7 @@ export class VineListComponent implements OnInit, OnDestroy {
       parentId: this.parentId,
       pageSize: 10,
       order: 'id',
-      startAfterId: this.vines[this.vines.length - 1].id,
+      startAfterItem: this.vines[this.vines.length - 1],
     }).subscribe((vines) => {
       this.vines = this.vines.concat(vines);
     });

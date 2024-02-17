@@ -12,7 +12,6 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  BehaviorSubject,
   Observable,
   of,
   switchMap,
@@ -38,6 +37,7 @@ export default class AuthService {
   constructor() {
     this.user$ = authState(this.FirebaseAuth).pipe(
       switchMap((user) => {
+        console.log('in AUTH')
         if (user) {
           const data = docData(doc(this.store, 'users', user.uid));
           return data as Observable<User>;

@@ -26,7 +26,7 @@ import { ListOptions, Model, PaginatedQueryArgs } from '../types';
 })
 export class FieldService implements Model<Field> {
   private store: Firestore = inject(Firestore);
-  private defaultListQueryArg: PaginatedQueryArgs<Field> = { pageSize: 10, order: 'id', startAfterId: undefined };
+  private defaultListQueryArg: PaginatedQueryArgs<Field> = { pageSize: 10, order: 'id', startAfterItem: undefined };
 
   private collectionPath = 'fields';
 
@@ -47,12 +47,12 @@ export class FieldService implements Model<Field> {
     const {
       pageSize = 10,
       order = 'id',
-      startAfterId,
+      startAfterItem = undefined,
     } = options;
     const fieldsCollection = collection(this.store, this.collectionPath);
     let fieldQuery;
-    if (startAfterId) {
-      fieldQuery = query(fieldsCollection, orderBy(order), startAfter(startAfterId), limit(pageSize));
+    if (startAfterItem) {
+      fieldQuery = query(fieldsCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
     } else {
       fieldQuery = query(fieldsCollection, orderBy(order), limit(pageSize));
     }
