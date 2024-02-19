@@ -8,9 +8,9 @@
         [ ] rolesGuard
 
 ## Control-panel
-    [ ] - user list for admin
-        [ ] - lazy loading / infinite scroll / pagination
-        [ ] - Roles edition
+    [x] - user list for admin
+        [x] - lazy loading / infinite scroll / pagination
+        [x] - Roles edition
         [ ] - Filter / search by username or email
 
 ## Field_management 🌍🌱🍇
