@@ -17,7 +17,7 @@
         @for (user of users; track $index) {
         <button type="button" (click)="openModal($event, user.uid)">
             <div
-                class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white hover:font-bold cursor-pointer">
+                class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white hover:font-bold cursor-pointer transition duration-100 ease-in-out">
                 <div class="p-2 flex items-center justify-center">
                     <p class="text-lg text-neutral-500 group-hover:text-neutral-100">{{$index + 1}}</p>
                 </div>
