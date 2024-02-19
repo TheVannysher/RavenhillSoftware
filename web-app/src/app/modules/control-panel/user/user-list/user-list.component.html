@@ -31,8 +31,7 @@
                     <p>{{user.roles}}</p>
                 </div>
             </div>
-            <!-- editing modal goes here -->
-            <app-edit-user-modal [user]="user" />
+            <app-edit-user-modal [editable]="currentUser !== null && currentUser.uid !== user.uid" [user]="user" />
         </button>
         }
         <button (click)="loadMore($event)">

@@ -20,6 +20,7 @@
                                 <p i18n>Email 📬</p>
                                 <p>{{user.email}}</p>
                             </div>
+                            @if (editable) {
                             <div class="flex flex-col gap-1 text-start">
                                 <label i18n class="block text-neutral-700" for="roles">
                                     Roles 🛡️<span class="text-red-600">*</span></label>
@@ -34,6 +35,12 @@
                                     </select>
                                 </div>
                             </div>
+                            } @else {
+                            <div class="flex justify-between items-center gap-4 text-neutral-700">
+                                <p i18n>Roles 🛡️</p>
+                                <p>{{user.roles}}</p>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>

@@ -20,6 +20,7 @@ export class EditUserModalComponent implements OnInit, OnDestroy {
   open: boolean = false;
   modalSubscription: Subscription;
   @Input({ required: true }) user: User;
+  @Input() editable: boolean = false;
   rolesArrays: Roles[] = Object.values(Roles);
 
   ngOnInit(): void {
