@@ -37,7 +37,6 @@ export default class AuthService {
   constructor() {
     this.user$ = authState(this.FirebaseAuth).pipe(
       switchMap((user) => {
-        console.log('in AUTH')
         if (user) {
           const data = docData(doc(this.store, 'users', user.uid));
           return data as Observable<User>;
@@ -66,7 +65,7 @@ export default class AuthService {
         email,
         photoURL,
         uid,
-        roles: ['defaultAccess'],
+        roles: 'defaultAccess',
       });
       this.router.navigate([RouteFullPaths.OVERVIEW]);
     }

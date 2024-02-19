@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   userSubscription: Subscription;
   modalSubscription: Subscription;
+  pageSize: number = 5;
 
   users: User[] = [];
 
@@ -24,8 +25,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   lastUser: User | undefined;
 
   ngOnInit(): void {
-    this.userSubscription = this.userService.initial({ pageSize: 1 }).subscribe((users) => {
-      console.log(users);
+    this.userSubscription = this.userService.initial({ pageSize: this.pageSize }).subscribe((users) => {
       this.users = users;
       this.lastUser = users[users.length - 1] || undefined;
     });
@@ -44,11 +44,10 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   loadMore(event: MouseEvent) {
-    console.log(event)
     if (this.lastUser) {
       this.userService.list({
         parentId: 'none',
-        pageSize: 1,
+        pageSize: this.pageSize,
         order: 'uid',
         startAfterItem: this.lastUser,
       }).subscribe((users) => {

@@ -18,7 +18,7 @@ export class VineListComponent implements OnInit, OnDestroy {
   vineService: VineService = inject(VineService);
   private userRolesSubscription: Subscription;
   private vinesSubscription: Subscription;
-  userRoles: Roles[] = [];
+  userRoles: Roles = Roles.DEFAULT;
   hasEditingPermission: boolean = false;
 
   @Input({ required: true }) vines: Vine[] = [];
@@ -26,9 +26,9 @@ export class VineListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userRolesSubscription = this.authService.getUser().subscribe((user) => {
-      const roles: Roles[] = user ? user.roles : [];
+      const roles: Roles = user ? user.roles : Roles.DEFAULT;
       this.userRoles = roles;
-      this.hasEditingPermission = user ? roles.includes(Roles.ADMIN) : false;
+      this.hasEditingPermission = user ? [Roles.ADMIN].includes(user.roles) : false;
     });
     this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: 10, order: 'id' }).subscribe((vines) => { this.vines = vines; });
   }
@@ -45,7 +45,6 @@ export class VineListComponent implements OnInit, OnDestroy {
   loadMore(event: MouseEvent) {
     event.preventDefault();
     if (this.vinesSubscription) this.vinesSubscription.unsubscribe();
-    console.log(this.vines[this.vines.length - 1].id);
     this.vinesSubscription = this.vineService.list({
       parentId: this.parentId,
       pageSize: 10,

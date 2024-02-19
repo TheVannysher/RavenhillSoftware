@@ -3,6 +3,7 @@ import { UserService } from '#services/firebase/models/user/user.service';
 import { ModalService } from '#services/modal/modal.service';
 import { User } from '#types/Auth/User';
 import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { FirestoreError } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -19,6 +20,7 @@ export class EditUserModalComponent implements OnInit, OnDestroy {
   open: boolean = false;
   modalSubscription: Subscription;
   @Input({ required: true }) user: User;
+  rolesArrays: Roles[] = Object.values(Roles);
 
   ngOnInit(): void {
     this.modalSubscription = this.modalService.showModal$.subscribe((open: string) => this.open = open === this.user.uid);
@@ -38,10 +40,22 @@ export class EditUserModalComponent implements OnInit, OnDestroy {
     this.modalService.closeModal();
   }
 
-  submit(event: SubmitEvent) {
+  async submit(event: SubmitEvent) {
     event.stopPropagation();
-    console.log(this.userEditForm.value);
-    this.userService.set(this.user.uid, this.userEditForm.value);
+    if (!this.userEditForm.invalid) {
+      try {
+        await this.userService.set(this.user.uid, {
+          ...this.user,
+          ...this.userEditForm.value,
+        });
+        this.modalService.closeModal();
+      } catch (error) {
+        // handle firebase errors
+        if (error instanceof FirestoreError) {
+          error.code === 'permission-denied'
+        }
+      }
+    };
   }
 
   get displayName() { return this.userEditForm.get('displayName'); }

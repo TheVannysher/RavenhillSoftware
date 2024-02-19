@@ -20,9 +20,19 @@
                                 <p i18n>Email 📬</p>
                                 <p>{{user.email}}</p>
                             </div>
-                            <div class="flex justify-between items-center gap-4 text-neutral-700">
-                                <p i18n>Roles 🛡️</p>
-                                <p>{{user.roles.join(', ')}}</p>
+                            <div class="flex flex-col gap-1 text-start">
+                                <label i18n class="block text-neutral-700" for="roles">
+                                    Roles 🛡️<span class="text-red-600">*</span></label>
+                                <div class="relative">
+                                    <select
+                                        [ngClass]="roles && roles.invalid && roles.touched ? 'ring-2 ring-red-600' : ''"
+                                        class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:ring-green-600 focus:ring-2"
+                                        name="roles" formControlName="roles">
+                                        @for (role of rolesArrays; track $index) {
+                                        <option [value]="role" i18n>{{role}}</option>
+                                        }
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

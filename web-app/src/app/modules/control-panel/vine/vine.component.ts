@@ -19,7 +19,7 @@ export class VineComponent implements OnInit, OnDestroy {
   vineEditForm: FormGroup;
   private modalSubscription: Subscription;
   open: boolean = false;
-  @Input() userRoles: Roles[] = [];
+  @Input() userRoles: Roles = Roles.DEFAULT;
   editing: boolean = false;
   hasDeletionPermission: boolean = false;
 
@@ -55,10 +55,10 @@ export class VineComponent implements OnInit, OnDestroy {
     }
   }
 
-  submit(event: SubmitEvent) {
+  async submit(event: SubmitEvent) {
     event.stopPropagation();
     if (!this.vineEditForm.invalid) {
-      this.vineService.set(this.vine.id, this.vine.field_id, {
+      await this.vineService.set(this.vine.id, this.vine.field_id, {
         ...this.vine,
         ...this.vineEditForm.value,
       });

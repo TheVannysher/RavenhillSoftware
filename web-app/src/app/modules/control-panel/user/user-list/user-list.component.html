@@ -28,9 +28,7 @@
                     <p>{{user.email || 'no email'}}</p>
                 </div>
                 <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2 gap-1">
-                    @for (role of user.roles; track $index) {
-                    <p>{{role}}</p>
-                    }
+                    <p>{{user.roles}}</p>
                 </div>
             </div>
             <!-- editing modal goes here -->
