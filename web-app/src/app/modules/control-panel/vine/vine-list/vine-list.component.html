@@ -4,6 +4,9 @@
       <p i18n>#</p>
     </div>
     <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+      <p i18n>row</p>
+    </div>
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
       <p i18n>variety</p>
     </div>
     <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
@@ -24,9 +27,12 @@
         @for (vine of vines; track $index) {
         <button type="button" (click)="openModal($event, vine.id)">
           <div
-            class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white cursor-pointer">
+            class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white hover:font-bold cursor-pointer transition-all duration-100 ease-in-out">
             <div class="p-2 flex items-center justify-center">
               <p class="text-lg text-neutral-500 group-hover:text-neutral-100">{{$index + 1}}</p>
+            </div>
+            <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+              <p>{{vine.position.row}}</p>
             </div>
             <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
               <p>{{vine.variety.name}}</p>

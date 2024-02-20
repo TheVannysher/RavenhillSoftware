@@ -45,9 +45,10 @@ export class CreateBulkVineComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
+      clusters: [0, [Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(40)]],
+      row: [null, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.min(1), Validators.max(60)]],
       quantity: [null, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.min(1), Validators.max(60)]],
       variety: [null, [Validators.required]],
-      clusters: [0, [Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(40)]],
       vigor: [null, [Validators.required, Validators.pattern(new RegExp(Object.values(VIGOR_LIST).join('|')))]],
     });
     this.varieties = collectionData(collection(this.store, 'varieties')) as Observable<Variety[]>;
@@ -56,6 +57,7 @@ export class CreateBulkVineComponent implements OnInit {
   addVines() {
     const {
       clusters,
+      row,
       variety,
       quantity,
       vigor,
@@ -64,6 +66,10 @@ export class CreateBulkVineComponent implements OnInit {
       id: `vine_${uuid()}`,
       field_id: this.parentId,
       block_id: `block_${variety.id}`,
+      position: {
+        row,
+        vine: 0,
+      },
       clusters,
       variety,
       vigor,
@@ -90,5 +96,9 @@ export class CreateBulkVineComponent implements OnInit {
 
   get vigor() {
     return this.formGroup.get('vigor');
+  }
+
+  get row() {
+    return this.formGroup.get('row');
   }
 }
