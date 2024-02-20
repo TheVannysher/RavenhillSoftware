@@ -3,7 +3,7 @@ import { VIGOR_LIST } from '#lib/enum/vine';
 import { VineService } from '#services/firebase/models/vine/vine.service';
 import { ModalService } from '#services/modal/modal.service';
 import { Vine } from '#types/firebase/models/vine';
-import { Component, OnDestroy, OnInit, inject, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -24,6 +24,7 @@ export class VineComponent implements OnInit, OnDestroy {
   hasDeletionPermission: boolean = false;
 
   @Input({ required: true }) vine: Vine;
+  @Output() vineChange = new EventEmitter<Vine>();
 
   ngOnInit() {
     this.modalSubscription = this.modalService.showModal$.subscribe((open: string) => this.open = open === this.vine.id);
@@ -58,7 +59,11 @@ export class VineComponent implements OnInit, OnDestroy {
   submit(event: SubmitEvent) {
     event.stopPropagation();
     if (!this.vineEditForm.invalid) {
-      this.vineService.set(this.vine.id, this.vine.field_id, {
+      // this.vineService.set(this.vine.id, this.vine.field_id, {
+      //   ...this.vine,
+      //   ...this.vineEditForm.value,
+      // });
+      this.vineChange.emit({
         ...this.vine,
         ...this.vineEditForm.value,
       });

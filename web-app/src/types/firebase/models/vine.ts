@@ -3,7 +3,7 @@ export interface Vine {
   field_id: string,
   block_id: string,
   clusters?: number,
-  position?: Position,
+  position: Position,
   variety: Variety,
   vigor?: VineVigor
 }

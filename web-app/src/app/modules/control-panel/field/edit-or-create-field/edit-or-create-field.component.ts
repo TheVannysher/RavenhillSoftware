@@ -36,8 +36,6 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
   private blocksSubscription: Subscription;
 
   fieldForm: FormGroup;
-  vines: Vine[] = [];
-  blocks: Block[] = [];
   errors: ValidationErrors | null = null;
   submitting = false;
   id = `field_${uuid()}`;
