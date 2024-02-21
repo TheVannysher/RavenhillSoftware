@@ -49,9 +49,10 @@
                 }" i18n class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
             </div>
           </div>
-          <app-vine [userRoles]="userRoles" [vine]="vine" />
+          <app-vine [userRoles]="userRoles" [vine]="vine" (vineChange)="vineChange($event, $index)" />
         </button>
         }
+        @if (!noMoreResults) {
         <button (click)="loadMore($event)">
           <div
             class="flex bg-white shadow-lg border rounded py-4 w-full justify-center items-center group hover:bg-blue-600 transition-all duration-100 ease-in-out cursor-pointer">
@@ -60,6 +61,7 @@
               load more</p>
           </div>
         </button>
+        }
       </div>
     </div>
   </ng-template>

@@ -24,7 +24,7 @@ import { Model, PaginatedQueryArgs } from '../types';
 })
 export class VarietyService implements Model<Variety> {
   private store: Firestore = inject(Firestore);
-  private defaultListQueryArg: PaginatedQueryArgs<Variety> = { pageSize: 10, order: 'name', startAfterItem: undefined };
+  private defaultListQueryArg: PaginatedQueryArgs<Variety> = { pageSize: 10, order: ['name'], startAfterItem: undefined };
 
   private collectionPath = 'varieties';
 
@@ -39,15 +39,16 @@ export class VarietyService implements Model<Variety> {
   list(options: PaginatedQueryArgs<Variety> = this.defaultListQueryArg): Observable<Variety[]> {
     const {
       pageSize = 10,
-      order = 'name',
+      order = ['name'],
       startAfterItem = undefined,
     } = options;
     const varietysCollection = collection(this.store, this.collectionPath);
+    const orders = order.map((key) => orderBy(key));
     let varietyQuery;
     if (startAfterItem) {
-      varietyQuery = query(varietysCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
+      varietyQuery = query(varietysCollection, ...orders, startAfter(startAfterItem.id), limit(pageSize));
     } else {
-      varietyQuery = query(varietysCollection, orderBy(order), limit(pageSize));
+      varietyQuery = query(varietysCollection, ...orders, limit(pageSize));
     }
     return collectionData(varietyQuery) as Observable<Variety[]>;
   };

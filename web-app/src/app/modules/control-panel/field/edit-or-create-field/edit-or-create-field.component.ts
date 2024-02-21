@@ -13,10 +13,10 @@ import { FieldService } from '#services/firebase/models/field/field.service';
 import { VineService } from '#services/firebase/models/vine/vine.service';
 import { NavigationService } from '#services/navigation/navigation.service';
 import { Block } from '#types/firebase/models/block';
-import { Vine } from '#types/firebase/models/vine';
-import { BulkVineFormValue } from '#modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component';
+import { AddVinesSideEffectArgs } from '#modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component';
 import { BlockService } from '#services/firebase/models/block/block.service';
 import { Subscription } from 'rxjs';
+import { Field } from '#types/firebase/models/field';
 
 @Component({
   selector: 'app-edit-or-create-field',
@@ -38,12 +38,22 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
   fieldForm: FormGroup;
   errors: ValidationErrors | null = null;
   submitting = false;
-  id = `field_${uuid()}`;
+  field: Field = {
+    id: `field_${uuid()}`,
+    name: '',
+    layout: {
+      totalRows: 0,
+      totalVines: 0,
+      vinesByRow: {},
+    },
+
+  };
 
   constructor() {
     this.fieldForm = this.formBuilder.group({
-      id: [this.id],
+      id: [this.field.id],
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-_]+$/), Validators.maxLength(20)]],
+      layout: [this.field.layout],
       updatedAt: [],
       blocks: [[]],
       vines: [[]],
@@ -52,6 +62,7 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getInitialFormValue();
+    this.fieldForm.valueChanges.subscribe((value) => { console.log('fieldForm value: ', value) });
   }
 
   ngOnDestroy(): void {
@@ -63,17 +74,15 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
 
   getInitialFormValue() {
     this.routeParamsSubscription = this.route.params.subscribe(({ id }) => {
-      this.id = id;
+      this.field.id = id;
       if (id) {
-        this.fieldSubscription = this.fieldService.get(this.id).subscribe((field) => {
+        this.fieldSubscription = this.fieldService.get(id).subscribe((field) => {
           if (field) {
-            // this.vinesSubscription = this.vineService.getAll(this.id).subscribe((vines) => {
-            //   this.fieldForm.setValue({
-            //     ...this.fieldForm.value,
-            //     vines,
-            //   });
-            // });
-            this.blocksSubscription = this.blockService.getAll(this.id).subscribe((blocks) => {
+            this.field = {
+              ...this.field,
+              ...field,
+            };
+            this.blocksSubscription = this.blockService.getAll(id).subscribe((blocks) => {
               this.fieldForm.setValue({
                 ...this.fieldForm.value,
                 blocks,
@@ -89,8 +98,8 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
     });
   }
 
-  addVineBulkSideEffect(value: BulkVineFormValue) {
-    const { variety } = value;
+  addVineBulkSideEffect({ formValue, vinesByRow }: AddVinesSideEffectArgs) {
+    const { variety } = formValue;
     const alreadyExist = this.fieldForm.value.blocks.map((block: Block) => block.name).includes(variety.name);
     if (!alreadyExist) {
       const newBlock: Block = {
@@ -110,18 +119,27 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
         ],
       })
     }
+    Object.entries(vinesByRow).forEach(([row, quantity]: [string, number]) => {
+      const { layout } = this.field;
+      this.field.layout.vinesByRow[parseInt(row)] = quantity + (layout.vinesByRow[parseInt(row)] || 0);
+    });
   }
 
-  back() {
+  back($event: MouseEvent) {
+    $event.preventDefault();
     this.navigation.back();
   }
 
   async submit() {
     this.submitting = true;
     const { blocks, id, name, vines } = this.fieldForm.value;
-    const fieldId = id || `field_${uuid()}`;
+    const fieldId = id || this.field.id;
     if (this.fieldForm.valid) {
-      this.fieldService.set(fieldId, { id, name });
+      this.fieldService.set(fieldId, {
+        ...this.field,
+        id,
+        name,
+      });
       this.vineService.setAll(vines, fieldId);
       this.blockService.setAll(blocks, fieldId);
     }

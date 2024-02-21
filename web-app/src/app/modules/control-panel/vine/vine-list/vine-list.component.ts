@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 
 import { Vine } from '#types/firebase/models/vine';
 import { ModalService } from '#services/modal/modal.service';
@@ -16,25 +16,24 @@ export class VineListComponent implements OnInit, OnDestroy {
   modalService: ModalService = inject(ModalService);
   authService: AuthService = inject(AuthService);
   vineService: VineService = inject(VineService);
-  private userRolesSubscription: Subscription;
   private vinesSubscription: Subscription;
   userRoles: Roles = Roles.DEFAULT;
-  hasEditingPermission: boolean = false;
+  noMoreResults: boolean = false;
+  pageSize: number = 10;
 
   @Input({ required: true }) vines: Vine[] = [];
+  @Output() vinesChange: EventEmitter<Vine[]> = new EventEmitter<Vine[]>();
   @Input({ required: true }) parentId: string;
 
   ngOnInit(): void {
-    this.userRolesSubscription = this.authService.getUser().subscribe((user) => {
-      const roles: Roles = user ? user.roles : Roles.DEFAULT;
-      this.userRoles = roles;
-      this.hasEditingPermission = user ? [Roles.ADMIN].includes(user.roles) : false;
+    this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: this.pageSize, order: ['id'] }).subscribe((vines) => {
+      this.vines = vines;
+      this.vinesChange.emit(vines);
     });
-    this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: 10, order: 'id' }).subscribe((vines) => { this.vines = vines; });
   }
 
   ngOnDestroy(): void {
-    this.userRolesSubscription.unsubscribe();
+    this.vinesSubscription.unsubscribe();
   }
 
   openModal(event: MouseEvent, id: string) {
@@ -47,12 +46,20 @@ export class VineListComponent implements OnInit, OnDestroy {
     if (this.vinesSubscription) this.vinesSubscription.unsubscribe();
     this.vinesSubscription = this.vineService.list({
       parentId: this.parentId,
-      pageSize: 10,
-      order: 'id',
+      pageSize: this.pageSize,
+      order: ['id'],
       startAfterItem: this.vines[this.vines.length - 1],
     }).subscribe((vines) => {
-      this.vines = this.vines.concat(vines);
+      console.log('vines: ', vines);
+      const newVines = this.vines.concat(vines);
+      this.noMoreResults = vines.length < 10;
+      this.vines = newVines;
+      this.vinesChange.emit(newVines);
     });
+  }
 
+  vineChange(vine: Vine, index: number) {
+    this.vines[index] = vine;
+    this.vinesChange.emit(this.vines);
   }
 }

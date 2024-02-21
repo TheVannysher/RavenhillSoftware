@@ -1,5 +1,6 @@
 import { Roles } from '#lib/enum/roles';
 import { VIGOR_LIST } from '#lib/enum/vine';
+import AuthService from '#services/firebase/auth/auth.service';
 import { VineService } from '#services/firebase/models/vine/vine.service';
 import { ModalService } from '#services/modal/modal.service';
 import { Vine } from '#types/firebase/models/vine';
@@ -16,10 +17,12 @@ export class VineComponent implements OnInit, OnDestroy {
   modalService: ModalService = inject(ModalService);
   formBuilder: FormBuilder = inject(FormBuilder);
   vineService: VineService = inject(VineService);
+  authService: AuthService = inject(AuthService);
   vineEditForm: FormGroup;
   private modalSubscription: Subscription;
+  private userRolesSubscription: Subscription;
   open: boolean = false;
-  @Input() userRoles: Roles = Roles.DEFAULT;
+  @Input({ required: true }) userRoles: Roles;
   editing: boolean = false;
   hasDeletionPermission: boolean = false;
 
@@ -32,12 +35,17 @@ export class VineComponent implements OnInit, OnDestroy {
       clusters: [this.vine.clusters, [Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(40)]],
       vigor: [this.vine.vigor, [Validators.required, Validators.pattern(new RegExp(Object.values(VIGOR_LIST).join('|')))]],
     });
-    this.editing = this.userRoles.includes(Roles.ADMIN) || this.userRoles.includes(Roles.MANAGER);
-    this.hasDeletionPermission = this.userRoles.includes(Roles.ADMIN);
+    this.userRolesSubscription = this.authService.getUser().subscribe((user) => {
+      const roles: Roles = user ? user.roles : Roles.DEFAULT;
+      this.userRoles = roles;
+      this.hasDeletionPermission = user ? [Roles.ADMIN].includes(user.roles) : false;
+      this.editing = this.userRoles.includes(Roles.ADMIN) || this.userRoles.includes(Roles.MANAGER);
+    });
   }
 
   ngOnDestroy() {
     this.modalSubscription.unsubscribe();
+    this.userRolesSubscription.unsubscribe();
   }
 
   closeModal(event: MouseEvent) {

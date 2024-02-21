@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
 export class UserService implements Model<User>{
   private store: Firestore = inject(Firestore);
   private collectionPath = 'users';
-  private defaultListQueryArg: PaginatedQueryArgs<User> = { pageSize: 10, order: 'uid', startAfterItem: undefined };
+  private defaultListQueryArg: PaginatedQueryArgs<User> = { pageSize: 10, order: ['uid'], startAfterItem: undefined };
 
   async create(user: User): Promise<void> {
     await addDoc(collection(this.store, this.collectionPath), user);
@@ -38,34 +38,19 @@ export class UserService implements Model<User>{
     return docData(doc(this.store, this.collectionPath, id)) as Observable<User>;
   }
 
-  initial(options: PaginatedQueryArgs<User> = this.defaultListQueryArg): Observable<User[]> {
-    const {
-      pageSize = 10,
-      order = 'uid',
-      startAfterItem = undefined,
-    } = options;
-    const usersCollection = collection(this.store, this.collectionPath);
-    let userQuery;
-    if (startAfterItem) {
-      userQuery = query(usersCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
-    } else {
-      userQuery = query(usersCollection, orderBy(order), limit(pageSize));
-    }
-    return collectionData(userQuery) as Observable<User[]>;
-  };
-
   list(options: PaginatedQueryArgs<User> = this.defaultListQueryArg): Observable<User[]> {
     const {
       pageSize = 10,
-      order = 'uid',
+      order = ['uid'],
       startAfterItem,
     } = options;
     const usersCollection = collection(this.store, this.collectionPath);
+    const orders = order.map((key) => orderBy(key));
     let userQuery;
     if (startAfterItem) {
-      userQuery = query(usersCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
+      userQuery = query(usersCollection, ...orders, startAfter(startAfterItem.uid), limit(pageSize));
     } else {
-      userQuery = query(usersCollection, orderBy(order), limit(pageSize));
+      userQuery = query(usersCollection, ...orders, limit(pageSize));
     }
     return collectionData(userQuery) as Observable<User[]>;
   };

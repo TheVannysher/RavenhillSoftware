@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   lastUser: User | undefined;
 
   ngOnInit(): void {
-    this.userSubscription = this.userService.initial({ pageSize: this.pageSize }).subscribe((users) => {
+    this.userSubscription = this.userService.list({ pageSize: this.pageSize }).subscribe((users) => {
       this.users = users;
       this.lastUser = users[users.length - 1] || undefined;
     });
@@ -48,7 +48,7 @@ export class UserListComponent implements OnInit, OnDestroy {
       this.userService.list({
         parentId: 'none',
         pageSize: this.pageSize,
-        order: 'uid',
+        order: ['uid'],
         startAfterItem: this.lastUser,
       }).subscribe((users) => {
         // TODO: Check why subscription is called twice

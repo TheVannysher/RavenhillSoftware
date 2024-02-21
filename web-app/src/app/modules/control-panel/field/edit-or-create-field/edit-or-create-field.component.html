@@ -2,7 +2,7 @@
   <div class="grid grid-cols-6 py-4 mt-2 gap-4">
     <div class="col-span-6 p-2 h-min">
       <div class="flex justify-between items-center">
-        <button (click)="back()" class="group/back cursor-pointer">
+        <button type="button" (click)="back($event)" class="group/back cursor-pointer">
           <div class="flex gap-2 group-hover/back:gap-4 transition-all ease duration-200 items-center">
             <ng-icon class="text-neutral-500 group-hover/back:text-green-600" name="featherArrowLeft"
               size="1.5rem"></ng-icon>
@@ -21,7 +21,7 @@
             disabled:hover:shadow-none
             disabled:border-none
             disabled:hover:border-none">
-          <p *ngIf="!submitting" i18n>{{id ? 'Save' : 'Create'}}</p>
+          <p *ngIf="!submitting" i18n>{{field.id ? 'Save' : 'Create'}}</p>
           <ng-icon *ngIf="submitting" name="featherLoader" class="animate-spin text-green-600"></ng-icon>
         </button>
       </div>
@@ -44,11 +44,11 @@
     </div>
     <div
       class="block col-span-full row-start-4 lg:col-span-4 lg:row-start-2 lg:row-span-4 overflow-clip max-h-[45.5rem]">
-      <app-vine-list [parentId]="id" [vines]="fieldForm.value.vines" />
+      <app-vine-list [parentId]="field.id" [(vines)]="fieldForm.value.vines" />
     </div>
     <div class="col-span-6 row-start-3 lg:row-span-2 lg:col-span-2 block">
       <app-create-bulk-vine (valueChangeSideEffect)="addVineBulkSideEffect($event)" [(value)]="fieldForm.value.vines"
-        [parentId]="id"></app-create-bulk-vine>
+        [parentId]="field.id" [fieldLayout]="field ? field.layout : null"></app-create-bulk-vine>
     </div>
     <div class="col-span-full flex flex-wrap justify-center gap-4 py-4">
       @for (block of fieldForm.value.blocks; track $index) {

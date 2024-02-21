@@ -13,13 +13,20 @@ import { v4 as uuid } from 'uuid';
 
 import { Variety, Vine } from '#types/firebase/models/vine';
 import { VIGOR_LIST } from '#lib/enum/vine';
+import { Field, FieldLayout } from '#types/firebase/models/field';
 
 
 export interface BulkVineFormValue {
   variety: Variety,
+  row: number,
   quantity: number,
   clusters: number,
   vigor: string,
+}
+
+export interface AddVinesSideEffectArgs {
+  formValue: BulkVineFormValue,
+  vinesByRow: { [key: number]: number },
 }
 @Component({
   selector: 'app-create-bulk-vine',
@@ -37,11 +44,13 @@ export class CreateBulkVineComponent implements OnInit {
 
   varieties: Observable<Variety[]> = of([]);
 
+  @Input() fieldLayout: FieldLayout | null = null;
+
   @Input() value: Vine[] = [];
 
   @Output() valueChange = new EventEmitter<Vine[]>();
 
-  @Output() valueChangeSideEffect = new EventEmitter<BulkVineFormValue>();
+  @Output() valueChangeSideEffect = new EventEmitter<AddVinesSideEffectArgs>();
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -62,24 +71,32 @@ export class CreateBulkVineComponent implements OnInit {
       quantity,
       vigor,
     } = this.formGroup.value;
-    const addedVines = Array.from({ length: +quantity }).map(() => ({
-      id: `vine_${uuid()}`,
-      field_id: this.parentId,
-      block_id: `block_${variety.id}`,
-      position: {
-        row,
-        vine: 0,
-      },
-      clusters,
-      variety,
-      vigor,
-    }));
+    const addedVines = Array.from({ length: +quantity }).map((_, index) => {
+      const vineNumber = this.fieldLayout ? this.fieldLayout.vinesByRow[row] + index + 1 : index + 1;
+      return ({
+        id: `vine_${row}_${vineNumber}_${uuid()}`,
+        field_id: this.parentId,
+        block_id: `block_${variety.id}`,
+        position: {
+          row,
+          vine: vineNumber,
+        },
+        clusters,
+        variety,
+        vigor,
+      })
+    });
     this.value = [
       ...this.value,
       ...addedVines,
     ].sort((a, b) => (a.variety.name > b.variety.name ? 1 : -1));
     this.valueChange.emit(this.value);
-    this.valueChangeSideEffect.emit(this.formGroup.value);
+    this.valueChangeSideEffect.emit({
+      formValue: this.formGroup.value,
+      vinesByRow: {
+        [row]: +quantity,
+      },
+    });
   }
 
   get quantity() {

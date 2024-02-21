@@ -3,10 +3,21 @@ import { Timestamp } from 'firebase/firestore';
 export interface Field {
   id: string,
   name: string,
-  orientation?: FieldOrientation,
-  sloap?: number,
   createdAt?: Timestamp,
   updatedAt?: Timestamp,
+  layout: FieldLayout,
+}
+
+export interface FieldLayout {
+  orientation?: FieldOrientation,
+  totalRows: number,
+  totalVines: number,
+  sloap?: number,
+  vineSpacing?: number,
+  rowSpacing?: number,
+  vinesByRow: {
+    [key: number]: number,
+  },
 }
 
 export enum FieldOrientation {

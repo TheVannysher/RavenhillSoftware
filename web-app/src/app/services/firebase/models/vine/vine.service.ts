@@ -34,17 +34,18 @@ export class VineService {
   list(options: PaginatedQueryArgs<Vine>): Observable<Vine[]> {
     const {
       pageSize = 10,
-      order = 'id',
+      order = ['id'],
       startAfterItem = undefined,
       parentId,
     } = options;
     if (!parentId) return of([]);
     const vinesCollection = collection(this.store, `fields/${parentId}/vines`);
+    const orders = order.map((key) => orderBy(key));
     let VineQuery;
     if (startAfterItem) {
-      VineQuery = query(vinesCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
+      VineQuery = query(vinesCollection, ...orders, startAfter(startAfterItem.id), limit(pageSize));
     } else {
-      VineQuery = query(vinesCollection, orderBy(order), limit(pageSize));
+      VineQuery = query(vinesCollection, ...orders, limit(pageSize));
     }
     return collectionData(VineQuery) as Observable<Vine[]>;
   };
