@@ -110,6 +110,7 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
           ph: 0,
           brix: 0,
         },
+        samples: [],
       }
       this.fieldForm.setValue({
         ...this.fieldForm.value,
@@ -135,6 +136,8 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
     const { blocks, id, name, vines } = this.fieldForm.value;
     const fieldId = id || this.field.id;
     if (this.fieldForm.valid) {
+      this.field.layout.totalVines = Object.entries(this.field.layout.vinesByRow).reduce((acc, [_, quantity]) => acc + quantity, 0);
+      this.field.layout.totalRows = Object.keys(this.field.layout.vinesByRow).length;
       this.fieldService.set(fieldId, {
         ...this.field,
         id,

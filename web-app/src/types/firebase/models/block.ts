@@ -2,7 +2,7 @@ export interface Block {
   id: string,
   name: string,
   average: BlockStats,
-  samples?: SampleData[]
+  samples: SampleData[]
 }
 
 export interface BlockStats {

@@ -35,17 +35,24 @@ import { VineComponent } from '#modules/control-panel/vine/vine.component';
 import environment from 'src/environments/environment';
 import { UserListComponent } from '#modules/control-panel/user/user-list/user-list.component';
 import { EditUserModalComponent } from '#modules/control-panel/user/edit-user-modal/edit-user-modal.component';
+import { FieldSelectorComponent } from '#components/selector/field-selector/field-selector.component';
+import { DetailsPanelComponent } from '#modules/home/overview/details-panel/details-panel.component';
+import { SamplesComponent } from '#modules/control-panel/samples/samples.component';
+import { EditSampleModalComponent } from '#modules/control-panel/samples/edit-sample-modal/edit-sample-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BlockCardComponent,
     ControlPanelComponent,
     CreateBulkVineComponent,
-    BlockCardComponent,
+    DetailsPanelComponent,
     EditOrCreateFieldComponent,
     EditUserModalComponent,
+    EditSampleModalComponent,
     FieldListComponent,
     FieldItemComponent,
+    FieldSelectorComponent,
     HeaderComponent,
     HomeComponent,
     ItemComponent,
@@ -57,6 +64,7 @@ import { EditUserModalComponent } from '#modules/control-panel/user/edit-user-mo
     PageNotFoundComponent,
     PageWrapperComponent,
     ProfileComponent,
+    SamplesComponent,
     TaskboardComponent,
     UserListComponent,
     VineListComponent,

@@ -2,9 +2,9 @@
         w-full
         p-2 group/item
         rounded
-        hover:bg-white
-        md:hover:shadow
-        transition-all ease duration-200" [ngClass]="active ? 'bg-white md:shadow-lg' : ''">
+        bg-white
+        hover:bg-green-600
+        transition-all ease duration-200" [ngClass]="active ? 'bg-white' : ''">
   <a [routerLink]="path" class="w-full cursor-pointer">
     <div class="
             flex gap-2
@@ -14,12 +14,11 @@
             w-full {{active ? 'md:text-black' : 'text-neutral-400'}}
           group-hover/item:text-black
             ">
-      <div class="{{active ? 'text-green-600 shadow-none' : 'bg-white'}}
-            group-hover/item:bg-green-600
+      <div class="{{active ? 'text-green-600 shadow-none' : ''}}
+          
           group-hover/item:text-white
               p-1
               rounded
-              shadow
               justify-center items-center
               transition-all ease duration-200
               sm:hidden
@@ -28,7 +27,7 @@
               ">
         <ng-icon [name]="icon" size="2rem" class=""></ng-icon>
       </div>
-      <div class="capitalize md:hidden lg:block">{{name}}</div>
+      <div class="group-hover/item:text-white capitalize md:hidden lg:block text-base">{{name}}</div>
     </div>
   </a>
 </div>

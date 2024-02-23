@@ -3,7 +3,10 @@
     <div class="flex justify-center p-4">
       <h1 class="text-gray-900 font-bold text-2xl capitalize">{{block.name}}</h1>
     </div>
-    <h2 class="text-gray-700 text-xl ml-2">no samples found</h2>
+    <a routerLink="/block/{{block.id}}">
+      <h2 class="text-gray-700 text-xl ml-2 hover:underline hover:text-green-600 cursor-pointer">see samples
+        ({{block.samples.length}})</h2>
+    </a>
   </div>
   <div class="px-4 py-2 -mt-4">
     <div class="flex overflow-clip border rounded-lg shadow">

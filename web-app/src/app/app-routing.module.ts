@@ -17,6 +17,7 @@ import { ProfileComponent } from './modules/home/profile/profile.component';
 import { TaskboardComponent } from './modules/home/taskboard/taskboard.component';
 import { LoginComponent } from './modules/login/login.component';
 import { managerGuard } from './guards/roles/manager.guard';
+import { SamplesComponent } from '#modules/control-panel/samples/samples.component';
 
 const routes: Routes = [
   {
@@ -72,16 +73,20 @@ const routes: Routes = [
         data: ROUTES_DATA['lists-panel'],
       },
       {
-        path: RouteNames.FIELD_MANAGEMENT,
+        path: 'field_management',
         component: FieldListComponent,
       },
       {
-        path: `${RouteNames.FIELD_MANAGEMENT}/create`,
+        path: 'field_management/create',
         component: EditOrCreateFieldComponent,
       },
       {
-        path: `${RouteNames.FIELD_MANAGEMENT}/edit/:id`,
+        path: 'field_management/edit/:id',
         component: EditOrCreateFieldComponent,
+      },
+      {
+        path: RouteNames.SAMPLES,
+        component: SamplesComponent,
       },
     ],
   },

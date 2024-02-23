@@ -1,3 +1,48 @@
 <app-page-wrapper [hideBackButton]="true">
-  <p>Overview works !</p>
+  <div class="flex flex-col p-4">
+    <div class="flex justify-between items-center flex-row-reverse m-4">
+      <div class="min-w-48 h-full flex justify-end items-start">
+        <app-field-selector (selectedFieldChange)="loadField($event)"></app-field-selector>
+      </div>
+      <div>
+        <div class="flex-1 flex gap-4">
+          <div class="bg-white border rounded-lg shadow-sm p-4 flex flex-col gap-2">
+            @if(loading) {
+            <ng-icon name="featherLoader" size="2rem" class="animate-spin"></ng-icon>
+            } @else {
+            <div>
+              <h2 class="text-xl font-bold">{{field && field.name}}</h2>
+            </div>
+            <div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloribus saepe hic voluptate qui
+                laboriosam distinctio at tempore quia voluptates ipsum maiores repellat incidunt, blanditiis dolorem
+                deleniti consequatur pariatur iste!</p>
+            </div>
+            }
+          </div>
+          <!-- principal graphs here (samples) -->
+          <div class="bg-white border rounded-lg shadow-sm p-4 flex flex-col gap-2">
+            @if(loading) {
+            <ng-icon name="featherLoader" size="2rem" class="animate-spin"></ng-icon>
+            } @else {
+            <div>
+              <h2 class="text-xl font-bold">Samples</h2>
+            </div>
+            <div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloribus saepe hic voluptate qui
+                laboriosam distinctio at tempore quia voluptates ipsum maiores repellat incidunt, blanditiis dolorem
+                deleniti consequatur pariatur iste!</p>
+            </div>
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="flex">
+      <div class="flex-1">
+        <app-details-panel [field]="field"></app-details-panel>
+      </div>
+    </div>
+  </div>
 </app-page-wrapper>

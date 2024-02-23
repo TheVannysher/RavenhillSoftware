@@ -1,0 +1,24 @@
+<div class="bg-white border rounded-lg shadow-sm flex flex-col gap-2 overflow-hidden">
+    <div class="p-4 bg-neutral-800 text-white">
+        <h2 class="text-xl font-bold">Details</h2>
+    </div>
+    <div class="p-4 flex flex-col gap-2">
+        <div class="flex justify-center gap-2 mt-4">
+            @if (blockList.length <= 0) { <div class="flex justify-center items-center">
+                <p i18n class="text-neutral-400 font-bold text-lg">no blocks found</p>
+        </div>
+        } @else {
+        @for (block of blockList; track $index) {
+        <app-block-card [block]="block"></app-block-card>
+        }
+        }
+    </div>
+    @if (field) {
+    <div class="h-96">
+        <div class="block w-full overflow-clip h-full">
+            <app-vine-list [parentId]="field.id"></app-vine-list>
+        </div>
+    </div>
+    }
+</div>
+</div>
