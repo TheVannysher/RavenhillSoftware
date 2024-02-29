@@ -1,0 +1,37 @@
+<div class="flex justify-center items-center flex-col w-screen h-screen">
+  <img src="assets/logo.svg" alt="Ravenhill Logo"> <!-- Adjust the path as needed -->
+  <p class="title">Raven<span>hill</span></p>
+  <div *ngIf="loading;else form">
+    <div class="loading-container">
+      <ng-icon class="loading-icon" name="featherLoader" size="4rem"></ng-icon>
+    </div>
+  </div>
+  <ng-template #form>
+    <form [formGroup]="loginForm" (ngSubmit)="newUser ? register() : login()">
+      <div class="inputs-container">
+        <input *ngIf="newUser" class="animated-input shadow-md appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600" [formGroup]="loginForm" type="text"
+          formControlName="username" placeholder="Username" />
+        <input class="animated-input appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600" [formGroup]="loginForm" type="email" formControlName="email"
+          placeholder="Email" required />
+        <input class="animated-input appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600" [formGroup]="loginForm" type="password" formControlName="password"
+          placeholder="Password" required />
+        <div class="optional-container">
+          <div *ngIf="newUser; else signin">
+            <p class="" i18n>
+              Already have an account ?
+              <button (click)="toggleRegister()" type="button">Login instead.</button>
+            </p>
+            <button class="submit" type="submit">register</button>
+          </div>
+          <ng-template #signin>
+            <p class="" i18n>
+              Don't have an account ?
+              <button class="option" (click)="toggleRegister()" type="button">Create one.</button>
+            </p>
+            <button class="submit" type="submit">Login</button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>

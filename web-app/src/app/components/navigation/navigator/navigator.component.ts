@@ -1,42 +1,62 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { RoutesPath } from 'src/lib/enum/routes';
-import { NavigaionTab } from 'types/navigation/navigator_tabs';
+import {
+  Component, inject, Input, OnInit,
+} from '@angular/core';
+import {
+  ActivatedRoute,
+} from '@angular/router';
+import { NGIcons } from 'src/app/icons';
+import { RouteFullPaths, RouteNames } from 'src/lib/enum/routes';
 
-export const NAVIGATIONS_TABS:NavigaionTab[] = [
+import AuthService from '#services/firebase/auth/auth.service';
+import { NavigaionTab } from '#types/navigation/navigator_tabs';
+import { Roles } from '#lib/enum/roles';
+
+export const NAVIGATIONS_TABS: NavigaionTab[] = [
   {
-    name: 'Profile',
+    name: RouteNames.OVERVIEW,
     type: 'icon',
-    src: 'featherUser',
-    path: RoutesPath.USER_PROFILE,
+    src: NGIcons.feather.BarChart2,
+    path: RouteFullPaths.OVERVIEW,
   },
   {
-    name: 'Overview',
-    type: 'image',
-    src: 'assets/logo.svg',
-    path: RoutesPath.OVERVIEW,
+    name: RouteNames.USER_PROFILE,
+    type: 'icon',
+    src: NGIcons.feather.User,
+    path: RouteFullPaths.USER_PROFILE,
   },
   {
-    name: 'Taskboard',
+    name: RouteNames.TASKBOARD,
     type: 'icon',
-    src: 'featherZap',
-    path: RoutesPath.TASKBOARD,
+    src: NGIcons.feather.Zap,
+    path: RouteFullPaths.TASKBOARD,
   },
 ];
 
 @Component({
   selector: 'app-navigator',
   templateUrl: './navigator.component.html',
-  styleUrls: ['./navigator.component.scss'],
 })
-export class NavigatorComponent {
-  router:Router = inject(Router);
+export class NavigatorComponent implements OnInit {
+  auth: AuthService = inject(AuthService);
 
-  currentTab = 'Overview';
+  activatedRoute = inject(ActivatedRoute);
+
+  currentRoute: RouteNames | undefined;
 
   tabs = NAVIGATIONS_TABS;
 
-  handleClick(tab:string) {
-    this.currentTab = tab;
+  @Input() open = false;
+
+  hasPermissions = false;
+
+  ngOnInit(): void {
+    this.activatedRoute.url.subscribe((url) => {
+      this.currentRoute = url[0].path as RouteNames;
+    });
+    this.auth.getUser().subscribe((user) => {
+      if (user) {
+        this.hasPermissions = user.roles.includes(Roles.ADMIN) || user.roles.includes(Roles.MANAGER);
+      }
+    });
   }
 }

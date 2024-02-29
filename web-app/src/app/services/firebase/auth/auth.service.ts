@@ -5,57 +5,84 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  User,
+  updateProfile,
 } from '@angular/fire/auth';
-import { map, Observable } from 'rxjs';
-import LOGIN_STATUS from 'src/lib/enum/loginStatus';
+import {
+  doc, docData, Firestore, setDoc,
+} from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  BehaviorSubject,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
+
+import { RouteFullPaths } from '#lib/enum/routes';
+import { User } from '#types/Auth/User';
 
 @Injectable({
   providedIn: 'root',
 })
 export default class AuthService {
+  private store: Firestore = inject(Firestore);
+
   private FirebaseAuth: Auth = inject(Auth);
 
-  private authState: Observable<User | null> = authState(this.FirebaseAuth);
+  private router: Router = inject(Router);
 
-  async register(email: string, password: string): Promise<string | User> {
-    try {
-      const { user } = await createUserWithEmailAndPassword(this.FirebaseAuth, email, password);
-      localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_IN);
-      return user;
-    } catch (error) {
-      console.error(error);
-      return 'there was an issue registering the user';
+  private route: ActivatedRoute = inject(ActivatedRoute);
+
+  private user$: Observable<any>;
+
+  constructor() {
+    this.user$ = authState(this.FirebaseAuth).pipe(
+      switchMap((user) => {
+        if (user) {
+          const data = docData(doc(this.store, 'users', user.uid));
+          return data as Observable<User>;
+        }
+        return of(null);
+      }),
+    );
+  }
+
+  async register(email: string, password: string, displayName: string | undefined): Promise<void> {
+    const { user } = await createUserWithEmailAndPassword(
+      this.FirebaseAuth,
+      email,
+      password,
+    );
+    if (displayName) {
+      await updateProfile(user, { displayName });
+    }
+    if (user) {
+      const {
+        photoURL,
+        uid,
+      } = user;
+      await setDoc(doc(this.store, 'users', uid), {
+        displayName: displayName || user.displayName,
+        email,
+        photoURL,
+        uid,
+        roles: ['defaultAccess'],
+      });
+      this.router.navigate([RouteFullPaths.OVERVIEW]);
     }
   }
 
-  async login(email: string, password: string): Promise<string | User> {
-    try {
-      const { user } = await signInWithEmailAndPassword(this.FirebaseAuth, email, password);
-      localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_IN);
-      return user;
-    } catch (error) {
-      console.error(error);
-      return 'login failed';
-    }
+  async login(email: string, password: string): Promise<void> {
+    await signInWithEmailAndPassword(this.FirebaseAuth, email, password);
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || RouteFullPaths.OVERVIEW;
+    this.router.navigate([returnUrl]);
   }
 
-  async logout(): Promise<string | void> {
-    try {
-      await signOut(this.FirebaseAuth);
-      localStorage.setItem('loginStatus', LOGIN_STATUS.LOGGED_OUT);
-      return 'logged out';
-    } catch (error) {
-      console.error(error);
-      return 'error while login out the user';
-    }
+  async logout(): Promise<void> {
+    await signOut(this.FirebaseAuth);
   }
 
-  getLoginStatus(): Observable<User | null> {
-    return this.authState;
-  }
-
-  isLoggedIn(): Observable<boolean> {
-    return this.authState.pipe(map((user) => (!!user)));
+  getUser(): Observable<User | null> {
+    return this.user$;
   }
 }

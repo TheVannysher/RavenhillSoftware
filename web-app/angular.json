@@ -7,7 +7,7 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "fr-CA": "src/locale/messages.xlf"
+          "fr-CA": "src/locale/messages.fr.xlf"
         }
       },
       "projectType": "application",
@@ -39,7 +39,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-drag-to-select/ngx-drag-to-select.css"
             ],
             "scripts": []
           },
@@ -74,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "web-app:build:production"
+              "buildTarget": "web-app:build:production"
             },
             "development": {
-              "browserTarget": "web-app:build:development"
+              "buildTarget": "web-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web-app:build"
+            "buildTarget": "web-app:build"
           }
         },
         "test": {
@@ -119,9 +120,19 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "version": 2,
-            "browserTarget": "web-app:build:production"
-          }
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "web-app:build:production",
+              "serveTarget": "web-app:serve:production"
+            },
+            "development": {
+              "buildTarget": "web-app:build:development",
+              "serveTarget": "web-app:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
@@ -129,6 +140,7 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": false
   }
 }

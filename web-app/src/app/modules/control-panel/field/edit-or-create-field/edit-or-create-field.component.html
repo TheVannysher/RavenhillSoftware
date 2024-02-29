@@ -1,0 +1,61 @@
+<form [formGroup]="fieldForm" (submit)="submit()" class="">
+  <div class="grid grid-cols-6 py-4 mt-2 gap-4">
+    <div class="col-span-6 p-2 h-min">
+      <div class="flex justify-between items-center">
+        <button (click)="back()" class="group/back cursor-pointer">
+          <div class="flex gap-2 group-hover/back:gap-4 transition-all ease duration-200 items-center">
+            <ng-icon class="text-neutral-500 group-hover/back:text-green-600" name="featherArrowLeft"
+              size="1.5rem"></ng-icon>
+            <p class="text-xl text-neutral-500 group-hover/back:text-green-600 font-semibold capitalize">back</p>
+          </div>
+        </button>
+        <button [disabled]="fieldForm.invalid" type="submit" class="
+            px-4 py-2 rounded-full 
+            transition-all ease duration-150
+            text-green-600
+            border border-green-600
+            hover:bg-green-600 hover:text-white
+            hover:shadow
+            disabled:bg-neutral-200
+            disabled:text-neutral-500
+            disabled:hover:shadow-none
+            disabled:border-none
+            disabled:hover:border-none">
+          <p *ngIf="!submitting" i18n>{{id ? 'Save' : 'Create'}}</p>
+          <ng-icon *ngIf="submitting" name="featherLoader" class="animate-spin text-green-600"></ng-icon>
+        </button>
+      </div>
+    </div>
+    <div class="col-span-6 lg:col-span-2 flex flex-col">
+      <div class="flex justify-center p-4">
+        <p i18n class="text-center text-2xl font-bold capitalize">Field Properties 🪴</p>
+      </div>
+      <div class="flex flex-col gap-4 p-4">
+        <input type="hidden" name="id" formControlName="id">
+        <div class="flex flex-col gap-1">
+          <label i18n for="name" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">
+            Identifier<span class="text-red-600">*</span>
+          </label>
+          <input [ngClass]="nameControl.invalid && nameControl.touched ? 'ring-2 ring-red-600' : ''"
+            class="appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600"
+            id="identifier" formControlName="name" type="text" placeholder="field identifier">
+        </div>
+      </div>
+    </div>
+    <div
+      class="block col-span-full row-start-4 lg:col-span-4 lg:row-start-2 lg:row-span-4 overflow-clip max-h-[45.5rem]">
+      <app-vine-list [vines]="fieldForm.value.vines" />
+    </div>
+    <div class="col-span-6 row-start-3 lg:row-span-2 lg:col-span-2 block">
+      <app-create-bulk-vine (valueChangeSideEffect)="addVineBulkSideEffect($event)" [(value)]="fieldForm.value.vines"
+        [parentId]="id"></app-create-bulk-vine>
+    </div>
+    <div class="col-span-full flex flex-wrap justify-center gap-4 py-4">
+      @for (block of fieldForm.value.blocks; track $index) {
+      <div class="w-80 flex flex-col items-center">
+        <app-block-card [block]="block" />
+      </div>
+      }
+    </div>
+  </div>
+</form>

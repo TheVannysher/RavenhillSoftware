@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="7708270344948043036" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{title}}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu-item/menu-item.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{category}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navigation/header/header.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navigation/header/header.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/edit-or-create-field/edit-or-create-field.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3614914631874715715" datatype="html">
+        <source> logout </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navigation/header/header.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1551726611382393081" datatype="html">
+        <source>Propriétées du champ 🪴</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/edit-or-create-field/edit-or-create-field.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4555148191605214008" datatype="html">
+        <source> Identifiant<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;text-red-600&quot;&gt;"/>*<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/edit-or-create-field/edit-or-create-field.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9095134843628689709" datatype="html">
+        <source>modifier</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-item/field-item.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2456043080471762298" datatype="html">
+        <source>supprimer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-item/field-item.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="10524368647766690" datatype="html">
+        <source>#</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5536826885341235854" datatype="html">
+        <source>identifiant</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6305962755687847469" datatype="html">
+        <source>actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3375385596440618633" datatype="html">
+        <source> Ajouter un champs</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3304726875780709038" datatype="html">
+        <source>Liste de champs 🪴</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/lists-panel/lists-panel.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6701660465551371033" datatype="html">
+        <source>Ajouter des vignes 🌱</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1012017629292241524" datatype="html">
+        <source> Quantité<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;text-red-600&quot;&gt;"/>*<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">18,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7897565236366850950" datatype="html">
+        <source>faible</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4688460977394283086" datatype="html">
+        <source>moyenne</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2602838849414645735" datatype="html">
+        <source>haute</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5903029682455491204" datatype="html">
+        <source>morte</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8813026458248365587" datatype="html">
+        <source> Grapes </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/create-bulk-vine/create-bulk-vine.component.html</context>
+          <context context-type="linenumber">40,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1711645308797008818" datatype="html">
+        <source>Cépage</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8829122781460890184" datatype="html">
+        <source># de Grapes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6279675468203467124" datatype="html">
+        <source>Vigeur</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1561667836612690684" datatype="html">
+        <source> Détails de la vigne </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1172866303261737245" datatype="html">
+        <source>Position</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3759068558652420373" datatype="html">
+        <source>Cépage 🌱</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8035001601835391810" datatype="html">
+        <source>Grapes 🍇</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4728010188868754319" datatype="html">
+        <source> Vigeur 💪<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;text-red-600&quot;&gt;"/>*<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7022070615528435141" datatype="html">
+        <source>Supprimer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6578243162291387912" datatype="html">
+        <source>Vigeur 💪</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1699299205444149760" datatype="html">
+        <source> Vous avez déjà un compte? <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;toggleRegister()&quot; type=&quot;button&quot;&gt;"/>Connetez vous.<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/login/login.component.html</context>
+          <context context-type="linenumber">20,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3403050883093246240" datatype="html">
+        <source> Vous n&apos;avez pas de compte ? <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button class=&quot;option&quot; (click)=&quot;toggleRegister()&quot; type=&quot;button&quot;&gt;"/>Créez en un.<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/login/login.component.html</context>
+          <context context-type="linenumber">27,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4635783975792357696" datatype="html">
+        <source> Page innexistante </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

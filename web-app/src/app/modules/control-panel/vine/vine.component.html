@@ -1,0 +1,85 @@
+<div *ngIf="open" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+  aria-modal="true">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+    <form [formGroup]="vineEditForm" (submit)="submit($event)"
+      class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="sm:flex sm:items-start">
+          <div class="text-center w-full">
+            <h3 i18n class="text-2xl leading-6 font-medium text-gray-900 mb-4" id="modal-title">
+              Vine details
+            </h3>
+            <div class="mt-2 flex flex-col gap-2 p-2">
+              <div class="flex justify-between items-center gap-4 text-neutral-700">
+                <p i18n>Position</p>
+                <p>WIP</p>
+              </div>
+              <div class="flex justify-between items-center gap-4 text-neutral-700">
+                <p i18n>Variety 🌱</p>
+                <p>{{vine.variety.name}}</p>
+              </div>
+              @if (editing) {
+              <div class="flex flex-col gap-1 text-start">
+                <label i18n for="" class="text-neutral-700">Clusters 🍇</label>
+                <input [ngClass]="clusters && clusters.invalid ? 'ring-2 ring-red-600' : ''"
+                  class="appearance-none flex-1 bg-white text-gray-700 ring-1 ring-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:bg-white focus:ring-green-600"
+                  id="clusters" formControlName="clusters" type="number" placeholder="0">
+              </div>
+              <div class="flex flex-col gap-1 text-start">
+                <label i18n class="block text-neutral-700" for="vigor">
+                  Vigor 💪<span class="text-red-600">*</span></label>
+                <div class="relative">
+                  <select [ngClass]="vigor && vigor.invalid && vigor.touched ? 'ring-2 ring-red-600' : ''"
+                    class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:ring-green-600 focus:ring-2"
+                    name="vigor" formControlName="vigor">
+                    <option value="low" i18n>low</option>
+                    <option value="medium" i18n>medium</option>
+                    <option value="high" i18n>high</option>
+                    <option value="dead" i18n>dead</option>
+                  </select>
+                </div>
+              </div>
+              @if (hasDeletionPermission) {
+              <div class="flex items-center justify-center">
+                <button (click)="deleteVine($event)" type="button"
+                  class="py-2 px-4 text-red-600 hover:text-white hover:bg-red-600 rounded-full hover:shadow transition-all duration-100 ease-in-out">
+                  <p i18n class="text-base font-medium">Delete</p>
+                </button>
+              </div>
+              }
+              } @else {
+              <div class="text-neutral-700 flex justify-between items-center gap-4">
+                <p i18n>Clusters 🍇</p>
+                <p>{{vine.clusters}}</p>
+              </div>
+              <div class="text-neutral-700 flex justify-between items-center gap-4">
+                <p i18n>Vigor 💪</p>
+                <p [ngClass]="{
+                  'bg-red-600': vine.vigor === 'dead',
+                  'bg-green-600': vine.vigor === 'high',
+                  'bg-amber-500': vine.vigor === 'medium',
+                  'bg-orange-600': vine.vigor === 'low',
+                }" class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">{{vine.vigor}}</p>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white px-4 py-2 sm:px-6 sm:flex sm:flex-row-reverse gap-2">
+        @if (editing) {
+        <button type="submit"
+          class="inline-flex justify-center rounded-full border border-transparent hover:shadow px-4 py-1 text-base font-medium text-green-600 hover:text-white hover:bg-green-600 focus:outline-none">
+          Save
+        </button>
+        }
+        <button type="button" (click)="closeModal($event)"
+          class="inline-flex justify-center rounded-full border border-transparent hover:shadow px-4 py-1 text-base font-medium text-red-600 hover:text-white hover:bg-red-600 focus:outline-none">
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

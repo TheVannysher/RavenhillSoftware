@@ -1,16 +1,23 @@
-<div class="navigator">
-  <div class="content">
-    <a
-      [routerLink]="tab.path"
-      (click)="handleClick(tab.name)"
-      *ngFor="let tab of tabs"
-      class="nav-item"
-      [attr.data-active]="tab.name === currentTab">
-      <div class="nav-icon" >
-        <ng-icon *ngIf="tab.type === 'icon'" [name]="tab.src" size="2rem"></ng-icon>
-        <img *ngIf="tab.type === 'image'" [src]="tab.src" alt="">
+<div class="
+{{open ? 'h-min' : 'h-0' }}
+md:h-full
+overflow-clip
+transition-all ease duration-500
+w-full
+md:p-4
+lg:min-w-[16rem]
+lg:max-w-[22rem]">
+  <div class="h-full w-full">
+    <div
+      class="w-full md:h-full sm:w-full md:w-min lg:w-full flex flex-col gap-4 justify-between items-center md:py-0 py-2 bg-white md:bg-transparent">
+      <div class="w-full flex flex-col gap-2">
+        <app-navigator-item [active]="tab.name === currentRoute" *ngFor="let tab of tabs" [name]="tab.name"
+          [path]="tab.path" [icon]="tab.src" />
       </div>
-      <div class="active-accent"></div>
-    </a>
+      <div *ngIf="hasPermissions" class="w-full">
+        <app-navigator-item [active]="currentRoute === 'control-panel'" name="Control-Panel" path="/control-panel"
+          icon="featherSettings" />
+      </div>
+    </div>
   </div>
 </div>

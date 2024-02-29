@@ -1,0 +1,38 @@
+<header class="flex justify-center shadow-lg bg-white">
+  <div class="w-10/12 flex justify-between items-center p-4">
+    <div class="md:hidden md:invisible block hover:bg-neutral-200">
+      <button class="
+        flex justify-center items-center
+        p-2 border rounded bg-white
+        border-green-700
+        hover:text-white
+        hover:bg-green-700
+        hover:shadow
+        transition-all ease duration-150
+        " (click)="toggleMenu()">
+        <ng-icon name="featherMenu" size="1.5rem" />
+      </button>
+    </div>
+    <div class="flex gap-2 items-center">
+      <div class="flex gap-2 items-center">
+        <img class="w-12 h-12" src="assets/logo.svg" alt="">
+      </div>
+      <div class="">
+        <h3 i18n class="text-neutral-400 font-medium text-sm capitalize">{{category}}</h3>
+        <h2 i18n class="text-black font-bold text-base capitalize">{{title}}</h2>
+      </div>
+    </div>
+    <div>
+      <button (click)="logout()" i18n class="py-2 px-4
+        text-green-600
+        border-2
+        border-green-600 
+        hover:bg-green-600
+        hover:text-white
+        hover:shadow
+        rounded-full transition-all">
+        logout
+      </button>
+    </div>
+  </div>
+</header>

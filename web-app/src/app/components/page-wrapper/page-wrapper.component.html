@@ -1,0 +1,10 @@
+<div class="flex flex-col min-w-screen max-w-screen min-h-screen max-h-screen bg-neutral-100">
+  <app-header (menuButtonClicked)="menuToggle($event)" [hideBackButton]="hideBackButton" [title]="headerInfo.title"
+    [category]="headerInfo.category!" />
+  <div class="flex flex-col flex-1 md:flex-row overflow-hidden">
+    <app-navigator [open]="open"></app-navigator>
+    <div class="flex-1 overflow-y-auto overflow-x-clip">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="h-full w-full">
+  <div class="flex h-20 overflow-hidden">
+    <div class="p-2 flex items-center justify-center">
+      <p i18n>#</p>
+    </div>
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+      <p i18n>identifier</p>
+    </div>
+    <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+      <p i18n>actions</p>
+    </div>
+  </div>
+  <div class="w-full mb-4">
+    <div class="flex flex-col gap-2">
+      @for (field of data; track $index) {
+      <app-field-item [name]="field.name" [id]="field.id" [index]="$index"></app-field-item>
+      }
+      <a routerLink="/control-panel/field_management/create">
+        <div
+          class="flex bg-white shadow-lg border rounded py-4 w-full justify-center items-center group hover:bg-blue-600 transition-all duration-100 ease-in-out cursor-pointer">
+          <p i18n
+            class="font-semibold capitalize text-blue-600 group-hover:text-white transition-all duration-100 ease-in-out">
+            add field</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
