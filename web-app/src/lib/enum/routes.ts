@@ -1,7 +1,7 @@
 export enum RouteFullPaths {
   BLOCK = '/control-panel/blocks',
   CONTROL_PANEL = '/control-panel',
-  FIELD_MANAGEMENT = '/control-panel/field_management',
+  FIELD = '/control-panel/field',
   LIST_PANEL = '/control-panel/lists-panel',
   LOGIN = '/login',
   OVERVIEW = '/home/overview',
@@ -12,7 +12,7 @@ export enum RouteFullPaths {
 export enum RouteNames {
   BLOCK = 'blocks',
   CONTROL_PANEL = 'control-panel',
-  FIELD_MANAGEMENT = 'field_management',
+  FIELD = 'field',
   LISTS_PANEL = 'lists-panel',
   LOGIN = 'login',
   OVERVIEW = 'overview',

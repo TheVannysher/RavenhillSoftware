@@ -15,7 +15,7 @@ import {
 import { Observable, of } from 'rxjs';
 
 import { Vine } from '#types/firebase/models/vine';
-import { PaginatedQueryArgs } from '../types';
+import { Model, PaginatedQueryArgs } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ import { PaginatedQueryArgs } from '../types';
 export class VineService {
   private store: Firestore = inject(Firestore);
 
-  get(id: string, parentId: string) {
+  get(id: string, parentId?: string) {
     return docData(doc(this.store, `fields/${parentId}/vines`, id)) as Observable<Vine>;
   }
 
@@ -40,10 +40,11 @@ export class VineService {
     } = options;
     if (!parentId) return of([]);
     const vinesCollection = collection(this.store, `fields/${parentId}/vines`);
-    const orders = order.map((key) => orderBy(key));
+    const orders = order.map((key) => orderBy(key, 'asc'));
     let VineQuery;
     if (startAfterItem) {
-      VineQuery = query(vinesCollection, ...orders, startAfter(startAfterItem.id), limit(pageSize));
+      const startAfterValues = order.map((key) => startAfterItem[key]);
+      VineQuery = query(vinesCollection, ...orders, startAfter(...startAfterValues), limit(pageSize));
     } else {
       VineQuery = query(vinesCollection, ...orders, limit(pageSize));
     }

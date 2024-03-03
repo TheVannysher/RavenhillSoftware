@@ -22,7 +22,7 @@ export class FieldItemComponent {
   confirmModalOpened = false;
 
   editField() {
-    this.router.navigate([`control-panel/${RouteNames.FIELD_MANAGEMENT}/edit`, this.id]);
+    this.router.navigate([`control-panel/${RouteNames.FIELD}/edit`, this.id]);
   }
 
   deleteField(id: string) {

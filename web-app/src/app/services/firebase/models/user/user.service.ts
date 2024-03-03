@@ -48,7 +48,8 @@ export class UserService implements Model<User>{
     const orders = order.map((key) => orderBy(key));
     let userQuery;
     if (startAfterItem) {
-      userQuery = query(usersCollection, ...orders, startAfter(startAfterItem.uid), limit(pageSize));
+      const startAfterValues = order.map((key) => startAfterItem[key]);
+      userQuery = query(usersCollection, ...orders, startAfter(...startAfterValues), limit(pageSize));
     } else {
       userQuery = query(usersCollection, ...orders, limit(pageSize));
     }

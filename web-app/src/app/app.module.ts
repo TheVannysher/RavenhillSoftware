@@ -39,6 +39,7 @@ import { FieldSelectorComponent } from '#components/selector/field-selector/fiel
 import { DetailsPanelComponent } from '#modules/home/overview/details-panel/details-panel.component';
 import { SamplesComponent } from '#modules/control-panel/samples/samples.component';
 import { EditSampleModalComponent } from '#modules/control-panel/samples/edit-sample-modal/edit-sample-modal.component';
+import { CreateSampleComponent } from '#modules/control-panel/samples/create-sample/create-sample.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { EditSampleModalComponent } from '#modules/control-panel/samples/edit-sa
     BlockCardComponent,
     ControlPanelComponent,
     CreateBulkVineComponent,
+    CreateSampleComponent,
     DetailsPanelComponent,
     EditOrCreateFieldComponent,
     EditUserModalComponent,

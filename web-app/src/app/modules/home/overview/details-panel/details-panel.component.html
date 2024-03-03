@@ -1,22 +1,91 @@
-<div class="bg-white border rounded-lg shadow-sm flex flex-col gap-2 overflow-hidden">
-    <div class="p-4 bg-neutral-800 text-white">
-        <h2 class="text-xl font-bold">Details</h2>
+<div class="bg-white border border-t-neutral-800 border-t-4 rounded-lg shadow-sm flex flex-col overflow-hidden">
+    <div class="p-4">
+        <h2 class="text-xl font-bold">Vines</h2>
     </div>
     <div class="p-4 flex flex-col gap-2">
-        <div class="flex justify-center gap-2 mt-4">
-            @if (blockList.length <= 0) { <div class="flex justify-center items-center">
-                <p i18n class="text-neutral-400 font-bold text-lg">no blocks found</p>
-        </div>
-        } @else {
-        @for (block of blockList; track $index) {
-        <app-block-card [block]="block"></app-block-card>
-        }
-        }
-    </div>
-    @if (field) {
-    <div class="h-96">
-        <div class="block w-full overflow-clip h-full">
-            <app-vine-list [parentId]="field.id"></app-vine-list>
+        @if (field) {
+        <div class="h-96">
+            <div class="block w-full overflow-clip h-full">
+                <div class="h-full w-full flex flex-col">
+                    <div class="flex p-2">
+                        <div class="p-2 flex items-center justify-center">
+                            <p i18n>#</p>
+                        </div>
+                        <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                            <p i18n>row</p>
+                        </div>
+                        <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                            <p i18n>variety</p>
+                        </div>
+                        <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                            <p i18n># of Clusters</p>
+                        </div>
+                        <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                            <p i18n>vigor</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full overflow-y-auto p-2">
+                        <div class="flex flex-col gap-2">
+                            @if (loadingVines) {
+                            <div class="flex justify-center items-center">
+                                <ng-icon name="featherLoader" size="2rem" class="animate-spin"></ng-icon>
+                            </div>
+                            } @else {
+                            @if (vines.length <= 0) { <div class="flex justify-center items-center">
+                                <p class="text-xl text-neutral-400 font-bold">no vines found for this field</p>
+                        </div>
+                        } @else {
+                        @for (vine of vines; track $index) {
+                        <div>
+                            <div class="flex p-2 bg-white shadow-md border rounded h-20 group">
+                                <div class="p-2 flex items-center justify-center">
+                                    <p class="text-lg text-neutral-500">{{vine.vineNumber}}</p>
+                                </div>
+                                <div
+                                    class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                                    <p>{{vine.row}}</p>
+                                </div>
+                                <div
+                                    class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                                    <p>{{vine.variety.name}}</p>
+                                </div>
+                                <div
+                                    class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                                    <p>{{vine.clusters | number}}</p>
+                                </div>
+                                <div
+                                    class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                                    <p [ngClass]="{
+                                                  'bg-red-600': vine.vigor === 'dead',
+                                                  'bg-green-600': vine.vigor === 'high',
+                                                  'bg-amber-500': vine.vigor === 'medium',
+                                                  'bg-orange-600': vine.vigor === 'low',
+                                                }" i18n
+                                        class="py-1 px-4 rounded-full text-white font-bold capitalize text-sm">
+                                        {{vine.vigor}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        @if (!noMoreVines) {
+                        <div class="w-full flex justify-center items-center">
+                            <button (click)="loadMore($event)">
+                                <div
+                                    class="flex bg-white shadow-md border-2 border-green-600 rounded-full py-2 px-4 justify-center items-center group hover:bg-green-600 transition-all duration-100 ease-in-out cursor-pointer">
+                                    <p i18n
+                                        class="font-semibold capitalize text-green-600 group-hover:text-white transition-all duration-100 ease-in-out">
+                                        load more</p>
+                                </div>
+                            </button>
+                        </div>
+                        }
+                        }
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     }

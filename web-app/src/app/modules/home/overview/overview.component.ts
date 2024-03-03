@@ -20,10 +20,14 @@ export class OverviewComponent implements OnInit {
   loading = true;
 
   ngOnInit(): void {
-    this.overviewContext.context$.subscribe(ctx => { this.field = ctx.field; });
-    // this.blockService.getAll(this.field.id).subscribe(blocks => {
-    //   this.blocks = blocks;
-    // });
+    this.overviewContext.context$.subscribe(ctx => {
+      this.field = ctx.field;
+      if (ctx.field) {
+        this.blockService.getAll(ctx.field.id).subscribe(blocks => {
+          this.blocks = blocks;
+        });
+      }
+    });
   }
 
   loadField(field: Field): void {

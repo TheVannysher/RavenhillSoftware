@@ -18,6 +18,7 @@ import { TaskboardComponent } from './modules/home/taskboard/taskboard.component
 import { LoginComponent } from './modules/login/login.component';
 import { managerGuard } from './guards/roles/manager.guard';
 import { SamplesComponent } from '#modules/control-panel/samples/samples.component';
+import { CreateSampleComponent } from '#modules/control-panel/samples/create-sample/create-sample.component';
 
 const routes: Routes = [
   {
@@ -63,30 +64,29 @@ const routes: Routes = [
     children: [
       {
         path: '', pathMatch: 'full', redirectTo: 'lists-panel',
-        title: RouteNames.LISTS_PANEL,
-        data: ROUTES_DATA['lists-panel'],
+        title: RouteNames.CONTROL_PANEL,
       },
       {
-        path: 'lists-panel',
-        title: RouteNames.LISTS_PANEL,
+        path: RouteNames.LISTS_PANEL,
+        title: RouteNames.CONTROL_PANEL,
         component: ListsPanelComponent,
         data: ROUTES_DATA['lists-panel'],
       },
       {
-        path: 'field_management',
-        component: FieldListComponent,
-      },
-      {
-        path: 'field_management/create',
+        path: 'field/create',
         component: EditOrCreateFieldComponent,
       },
       {
-        path: 'field_management/edit/:id',
+        path: 'field/edit/:id',
         component: EditOrCreateFieldComponent,
       },
       {
         path: RouteNames.SAMPLES,
         component: SamplesComponent,
+      },
+      {
+        path: `${RouteNames.SAMPLES}/create`,
+        component: CreateSampleComponent,
       },
     ],
   },

@@ -19,7 +19,7 @@ import { Observable, of } from 'rxjs';
 import { Field } from '#types/firebase/models/field';
 import { Vine } from '#types/firebase/models/vine';
 
-import { ListOptions, Model, PaginatedQueryArgs } from '../types';
+import { Model, PaginatedQueryArgs } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -53,7 +53,8 @@ export class FieldService implements Model<Field> {
     const orders = order.map((key) => orderBy(key));
     let fieldQuery;
     if (startAfterItem) {
-      fieldQuery = query(fieldsCollection, ...orders, startAfter(startAfterItem.id), limit(pageSize));
+      const startAfterValues = order.map((key) => startAfterItem[key]);
+      fieldQuery = query(fieldsCollection, ...orders, startAfter(...startAfterValues), limit(pageSize));
     } else {
       fieldQuery = query(fieldsCollection, ...orders, limit(pageSize));
     }

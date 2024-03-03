@@ -12,7 +12,7 @@ import { VineService } from '#services/firebase/models/vine/vine.service';
   templateUrl: './vine-list.component.html',
   styleUrls: ['./vine-list.component.scss'],
 })
-export class VineListComponent implements OnInit, OnDestroy, OnChanges {
+export class VineListComponent implements OnInit, OnDestroy {
   modalService: ModalService = inject(ModalService);
   authService: AuthService = inject(AuthService);
   vineService: VineService = inject(VineService);
@@ -21,13 +21,13 @@ export class VineListComponent implements OnInit, OnDestroy, OnChanges {
   noMoreResults: boolean = false;
   pageSize: number = 10;
 
-  @Input() vines: Vine[] = [];
+  @Input({ required: true }) vines: Vine[] = [];
   @Output() vinesChange: EventEmitter<Vine[]> = new EventEmitter<Vine[]>();
   loading: boolean = true;
   @Input({ required: true }) parentId: string;
 
   ngOnInit(): void {
-    this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: this.pageSize, order: ['id'] }).subscribe((vines) => {
+    this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: this.pageSize, order: ['row', 'vineNumber'] }).subscribe((vines) => {
       this.vines = vines;
       console.log('vines: ', vines);
       this.vinesChange.emit(vines);
@@ -37,14 +37,6 @@ export class VineListComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy(): void {
     this.vinesSubscription.unsubscribe();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.parentId = changes['parentId'].currentValue;
-    this.vinesSubscription = this.vineService.list({ parentId: this.parentId, pageSize: this.pageSize, order: ['id'] }).subscribe((vines) => {
-      this.vines = vines;
-      this.vinesChange.emit(vines);
-    });
   }
 
   openModal(event: MouseEvent, id: string) {
@@ -58,7 +50,7 @@ export class VineListComponent implements OnInit, OnDestroy, OnChanges {
     this.vinesSubscription = this.vineService.list({
       parentId: this.parentId,
       pageSize: this.pageSize,
-      order: ['id'],
+      order: ['row', 'vineNumber'],
       startAfterItem: this.vines[this.vines.length - 1],
     }).subscribe((vines) => {
       console.log('vines: ', vines);

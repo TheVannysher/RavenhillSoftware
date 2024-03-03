@@ -39,8 +39,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/ngx-drag-to-select/ngx-drag-to-select.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },

@@ -1,47 +1,66 @@
 <app-page-wrapper [hideBackButton]="true">
-  <div class="flex flex-col p-4">
-    <div class="flex justify-between items-center flex-row-reverse m-4">
-      <div class="min-w-48 h-full flex justify-end items-start">
-        <app-field-selector (selectedFieldChange)="loadField($event)"></app-field-selector>
-      </div>
-      <div>
-        <div class="flex-1 flex gap-4">
-          <div class="bg-white border rounded-lg shadow-sm p-4 flex flex-col gap-2">
-            @if(loading) {
-            <ng-icon name="featherLoader" size="2rem" class="animate-spin"></ng-icon>
-            } @else {
-            <div>
-              <h2 class="text-xl font-bold">{{field && field.name}}</h2>
-            </div>
-            <div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloribus saepe hic voluptate qui
-                laboriosam distinctio at tempore quia voluptates ipsum maiores repellat incidunt, blanditiis dolorem
-                deleniti consequatur pariatur iste!</p>
-            </div>
-            }
-          </div>
-          <!-- principal graphs here (samples) -->
-          <div class="bg-white border rounded-lg shadow-sm p-4 flex flex-col gap-2">
-            @if(loading) {
-            <ng-icon name="featherLoader" size="2rem" class="animate-spin"></ng-icon>
-            } @else {
-            <div>
-              <h2 class="text-xl font-bold">Samples</h2>
-            </div>
-            <div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloribus saepe hic voluptate qui
-                laboriosam distinctio at tempore quia voluptates ipsum maiores repellat incidunt, blanditiis dolorem
-                deleniti consequatur pariatur iste!</p>
-            </div>
-            }
-          </div>
-        </div>
-
+  <div class="flex flex-col p-4 gap-4">
+    <div class="flex items-center m-4">
+      <div class="flex items-center justify-center gap-1">
+        <h1 class="text-base text-neutral-700">Overview</h1>
+        <span>/</span>
+        <p class="text-base text-neutral-700">tasks</p>
+        <span>/</span>
+        <p class="text-neutral-700">Task thread selector (WIP)</p>
       </div>
     </div>
-    <div class="flex">
-      <div class="flex-1">
-        <app-details-panel [field]="field"></app-details-panel>
+    <div class="flex flex-wrap w-full gap-2">
+      <!-- proof of concep -->
+      <!-- TODO: Tasks CRUD -->
+      @for (item of [1,2,3,4,5,6,7,8]; track $index) {
+      <div class="bg-white border shadow-md rounded-lg max-w-xs border-t-4 border-t-green-600">
+        <div class="p-4 flex justify-between items-center">
+          <h2 class="text-xl font-bold">Task</h2>
+          <p class="text-neutral-700">#{{item | number}}</p>
+        </div>
+        <div class="p-4">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nam blanditiis, distinctio impedit
+          voluptatibus error ipsum aspernatur
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex items-center m-4">
+      <div class="flex items-center justify-center gap-1">
+        <h1 class="text-base text-neutral-700">Overview</h1>
+        <span>/</span>
+        <p class="text-base text-neutral-700">Field</p>
+        <span>/</span>
+        <app-field-selector (selectedFieldChange)="loadField($event)"></app-field-selector>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="flex flex-wrap">
+
+      </div>
+      <div class="flex gap-4">
+        <div class="block flex-1">
+          <app-details-panel [field]="field"></app-details-panel>
+        </div>
+        <div class="flex flex-col gap-2">
+          @for (block of blocks; track $index) {
+          <app-block-card [block]="block">
+            @if(block.sample_quantity > 0) {
+              <a routerLink="/block/{{block.id}}">
+                <h2 class="px-2 py-1 text-green-600 rounded-full border-2 border-green-600 hover:bg-green-600 hover:text-white hover:font-bold hover:shadow transition-all ease-in-out duration-100">see samples
+                  ({{block.sample_quantity}})
+                </h2>
+              </a>
+              } @else {
+              <a routerLink="/control-panel/samples/create">
+                <h2 class="px-2 py-1 text-green-600 rounded-full border-2 border-green-600 hover:bg-green-600 hover:text-white hover:font-bold hover:shadow transition-all ease-in-out duration-100">Add samples
+                </h2>
+              </a>
+              }
+            </app-block-card>
+          }
+        </div>
       </div>
     </div>
   </div>

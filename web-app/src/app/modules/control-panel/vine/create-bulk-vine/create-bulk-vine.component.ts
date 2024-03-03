@@ -72,15 +72,13 @@ export class CreateBulkVineComponent implements OnInit {
       vigor,
     } = this.formGroup.value;
     const addedVines = Array.from({ length: +quantity }).map((_, index) => {
-      const vineNumber = this.fieldLayout ? this.fieldLayout.vinesByRow[row] + index + 1 : index + 1;
+      const vineNumber = this.fieldLayout && this.fieldLayout.vinesByRow[row] ? this.fieldLayout.vinesByRow[row] + index + 1 : index + 1;
       return ({
         id: `vine_${row}_${vineNumber}_${uuid()}`,
         field_id: this.parentId,
         block_id: `block_${variety.id}`,
-        position: {
-          row,
-          vine: vineNumber,
-        },
+        row,
+        vineNumber,
         clusters,
         variety,
         vigor,

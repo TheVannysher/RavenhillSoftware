@@ -1,19 +1,19 @@
 <div class="relative inline-block text-left w-full">
     <div>
         <button (click)="toggleOpen()" type="button"
-            class="flex justify-end overflow-hidden items-center w-full rounded-md  px-4 py-2  text-sm font-medium text-gray-700 hover:text-green-600"
+            class="flex justify-end overflow-hidden items-center w-full rounded-md  text-sm font-medium text-neutral-700 hover:text-green-600"
             id="options-menu" aria-haspopup="true" aria-expanded="true">
-            <ng-icon size="1.25rem" class="-ml-1 mr-2 h-5 w-5 transition-transform duration-200 ease-in-out"
-                [ngClass]="open ? '' : '-rotate-90'" name="featherChevronDown"></ng-icon>
-            <p class="text-ellipsis overflow-hidden text-xl" i18n>
+            <p class="text-ellipsis overflow-hidden text-base" i18n>
                 {{selectedField ? selectedField.name : 'Select a field'}}
             </p>
+            <ng-icon size="1.25rem" class="-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-in-out"
+                [ngClass]="open ? '-rotate-180' : ''" name="featherChevronDown"></ng-icon>
         </button>
     </div>
 
     @if (open) {
     <div
-        class=" origin-top-left absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        class=" origin-center absolute -right-1/2 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
         <div class="py-1 flex flex-col items-start" role="menu" aria-orientation="vertical"
             aria-labelledby="options-menu">
             @for (field of fields; track $index) {

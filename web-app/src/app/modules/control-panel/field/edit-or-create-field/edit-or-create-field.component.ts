@@ -1,6 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   ValidationErrors,
   Validators,
@@ -17,6 +18,7 @@ import { AddVinesSideEffectArgs } from '#modules/control-panel/vine/create-bulk-
 import { BlockService } from '#services/firebase/models/block/block.service';
 import { Subscription } from 'rxjs';
 import { Field } from '#types/firebase/models/field';
+import { Vine } from '#types/firebase/models/vine';
 
 @Component({
   selector: 'app-edit-or-create-field',
@@ -49,20 +51,16 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
 
   };
 
-  constructor() {
-    this.fieldForm = this.formBuilder.group({
-      id: [this.field.id],
-      name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-_]+$/), Validators.maxLength(20)]],
-      layout: [this.field.layout],
-      updatedAt: [],
-      blocks: [[]],
-      vines: [[]],
-    });
-  }
-
   ngOnInit(): void {
     this.getInitialFormValue();
-    this.fieldForm.valueChanges.subscribe((value) => { console.log('fieldForm value: ', value) });
+    this.fieldForm = this.formBuilder.group({
+      id: [this.field.id],
+      name: [this.field.name, [Validators.required, Validators.pattern(/^[a-zA-Z0-9-_]+$/), Validators.maxLength(20)]],
+      layout: [this.field.layout],
+      updatedAt: [],
+      blocks: new FormControl<Block[]>([]),
+      vines: new FormControl<Vine[]>([]),
+    });
   }
 
   ngOnDestroy(): void {
@@ -74,14 +72,15 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
 
   getInitialFormValue() {
     this.routeParamsSubscription = this.route.params.subscribe(({ id }) => {
-      this.field.id = id;
       if (id) {
+        this.field.id = id;
         this.fieldSubscription = this.fieldService.get(id).subscribe((field) => {
           if (field) {
-            this.field = {
-              ...this.field,
+            this.fieldForm.setValue({
+              ...this.fieldForm.value,
               ...field,
-            };
+            });
+            this.field = field;
             this.blocksSubscription = this.blockService.getAll(id).subscribe((blocks) => {
               this.fieldForm.setValue({
                 ...this.fieldForm.value,
@@ -109,8 +108,10 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
           ta: 0,
           ph: 0,
           brix: 0,
+          cluster_quantity: formValue.clusters,
         },
-        samples: [],
+        sample_quantity: 0,
+        vine_quantity: formValue.quantity,
       }
       this.fieldForm.setValue({
         ...this.fieldForm.value,
@@ -118,6 +119,22 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
           ...this.fieldForm.value.blocks,
           newBlock,
         ],
+      })
+    } else {
+      const blocks = this.fieldForm.value.blocks.map((block: Block) => {
+        if (block.name === variety.name) {
+          const vq = block.vine_quantity;
+          const cq = block.average.cluster_quantity;
+          const nvq  = formValue.quantity;
+          const ncq = formValue.clusters;
+          block.average.cluster_quantity += (vq * cq + ncq * nvq) / vq + nvq;
+          block.vine_quantity += formValue.quantity;
+        }
+        return block;
+      });
+      this.fieldForm.setValue({
+        ...this.fieldForm.value,
+        blocks,
       })
     }
     Object.entries(vinesByRow).forEach(([row, quantity]: [string, number]) => {

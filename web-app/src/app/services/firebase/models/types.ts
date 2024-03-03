@@ -1,4 +1,3 @@
-import { DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 export type ListOptions = {
@@ -8,7 +7,7 @@ export type ListOptions = {
 };
 
 export interface Model<T> {
-  get?: (id: string,) => Observable<T | null>;
+  get?: (id: string, parentId?: string) => Observable<T | null>;
   getAll?: (id: string) => Observable<T[] | null>;
   list?: (options?: PaginatedQueryArgs<T>) => Observable<T[]>;
   set?: (id: string, data: Partial<T>) => Promise<void>;

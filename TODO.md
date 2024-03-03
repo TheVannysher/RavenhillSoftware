@@ -13,7 +13,7 @@
         [x] - Roles edition
         [ ] - Filter / search by username or email
 
-## Field_management 🌍🌱🍇
+## FIELD 🌍🌱🍇
     [ ] - CRUD
         [X] - create
         [ ] - Read Only component (Widget for overview ?)

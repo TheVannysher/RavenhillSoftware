@@ -3,7 +3,8 @@ export interface Vine {
   field_id: string,
   block_id: string,
   clusters?: number,
-  position: Position,
+  row: number,
+  vineNumber: number,
   variety: Variety,
   vigor?: VineVigor
 }
@@ -11,14 +12,10 @@ export interface Vine {
 export interface VineInput {
   id: string,
   clusters?: number,
-  position?: Position,
+  row: number,
+  vineNumber: number,
   variety: Variety,
   vigor?: VineVigor
-}
-
-export interface Position {
-  row: number,
-  vine: number,
 }
 
 export interface Variety {

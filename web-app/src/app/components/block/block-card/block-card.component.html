@@ -1,12 +1,9 @@
 <div class="w-full flex flex-col justify-center items-center">
-  <div class="bg-white rounded-lg border px-4 pt-4 pb-8 text-center w-5/6 shadow-lg">
+  <div class="bg-white rounded-lg border px-4 pt-4 pb-8 text-center w-5/6 shadow-lg border-t-4 border-t-neutral-900">
     <div class="flex justify-center p-4">
       <h1 class="text-gray-900 font-bold text-2xl capitalize">{{block.name}}</h1>
     </div>
-    <a routerLink="/block/{{block.id}}">
-      <h2 class="text-gray-700 text-xl ml-2 hover:underline hover:text-green-600 cursor-pointer">see samples
-        ({{block.samples.length}})</h2>
-    </a>
+    <ng-content></ng-content>
   </div>
   <div class="px-4 py-2 -mt-4">
     <div class="flex overflow-clip border rounded-lg shadow">
