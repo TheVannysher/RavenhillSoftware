@@ -29,7 +29,7 @@
           <div
             class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white hover:font-bold cursor-pointer transition-all duration-100 ease-in-out">
             <div class="p-2 flex items-center justify-center">
-              <p class="text-lg text-neutral-500 group-hover:text-neutral-100">{{$index}}</p>
+              <p class="text-lg text-neutral-500 group-hover:text-neutral-100">{{$index + 1}}</p>
             </div>
             <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
               <p>{{vine.position.row}}</p>
@@ -52,6 +52,14 @@
           <app-vine [userRoles]="userRoles" [vine]="vine" />
         </button>
         }
+        <button (click)="loadMore($event)">
+          <div
+            class="flex bg-white shadow-lg border rounded py-4 w-full justify-center items-center group hover:bg-blue-600 transition-all duration-100 ease-in-out cursor-pointer">
+            <p i18n
+              class="font-semibold capitalize text-blue-600 group-hover:text-white transition-all duration-100 ease-in-out">
+              load more</p>
+          </div>
+        </button>
       </div>
     </div>
   </ng-template>

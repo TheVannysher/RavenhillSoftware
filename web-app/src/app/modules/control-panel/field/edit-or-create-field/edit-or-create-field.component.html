@@ -44,7 +44,7 @@
     </div>
     <div
       class="block col-span-full row-start-4 lg:col-span-4 lg:row-start-2 lg:row-span-4 overflow-clip max-h-[45.5rem]">
-      <app-vine-list [vines]="fieldForm.value.vines" />
+      <app-vine-list [parentId]="id" [vines]="fieldForm.value.vines" />
     </div>
     <div class="col-span-6 row-start-3 lg:row-span-2 lg:col-span-2 block">
       <app-create-bulk-vine (valueChangeSideEffect)="addVineBulkSideEffect($event)" [(value)]="fieldForm.value.vines"

@@ -1,14 +1,8 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import {
-  DocumentSnapshot,
-} from '@angular/fire/firestore';
-import { Observable, of, Subscription } from 'rxjs';
-import { NGIcons } from 'src/app/icons';
+import { Subscription } from 'rxjs';
 
-import { HeaderInfo } from '#components/page-wrapper/page-wrapper.component';
 import { FieldService } from '#services/firebase/models/field/field.service';
 import { Field } from '#types/firebase/models/field';
-import { RouteIconTypes } from '#types/navigation/routes.types';
 
 @Component({
   selector: 'app-field-list',
@@ -22,7 +16,7 @@ export class FieldListComponent implements OnInit, OnDestroy {
   data: Field[] = [];
 
   ngOnInit(): void {
-    this.dataSubscription = this.fieldService.listAll().subscribe((data) => { this.data = data; });
+    this.dataSubscription = this.fieldService.getAll().subscribe((data) => { this.data = data; });
   }
 
   ngOnDestroy(): void {

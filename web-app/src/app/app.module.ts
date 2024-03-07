@@ -33,6 +33,8 @@ import { HomeComponent } from './modules/home/home.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 import { VineComponent } from '#modules/control-panel/vine/vine.component';
 import environment from 'src/environments/environment';
+import { UserListComponent } from '#modules/control-panel/user/user-list/user-list.component';
+import { EditUserModalComponent } from '#modules/control-panel/user/edit-user-modal/edit-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import environment from 'src/environments/environment';
     CreateBulkVineComponent,
     BlockCardComponent,
     EditOrCreateFieldComponent,
+    EditUserModalComponent,
     FieldListComponent,
     FieldItemComponent,
     HeaderComponent,
@@ -55,6 +58,7 @@ import environment from 'src/environments/environment';
     PageWrapperComponent,
     ProfileComponent,
     TaskboardComponent,
+    UserListComponent,
     VineListComponent,
     VineComponent,
   ],

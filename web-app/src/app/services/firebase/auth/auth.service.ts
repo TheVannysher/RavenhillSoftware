@@ -12,7 +12,6 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  BehaviorSubject,
   Observable,
   of,
   switchMap,
@@ -66,7 +65,7 @@ export default class AuthService {
         email,
         photoURL,
         uid,
-        roles: ['defaultAccess'],
+        roles: 'defaultAccess',
       });
       this.router.navigate([RouteFullPaths.OVERVIEW]);
     }

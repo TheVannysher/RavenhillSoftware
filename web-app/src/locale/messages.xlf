@@ -70,6 +70,10 @@
           <context context-type="linenumber">4</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/user/user-list/user-list.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
@@ -88,11 +92,11 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3375385596440618633" datatype="html">
-        <source> add field</source>
+      <trans-unit id="4735004048618614144" datatype="html">
+        <source> Add field</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/field/field-list/field-list.component.html</context>
-          <context context-type="linenumber">22,23</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3304726875780709038" datatype="html">
@@ -100,6 +104,45 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/control-panel/lists-panel/lists-panel.component.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2158603839674065077" datatype="html">
+        <source>Users 👤</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/lists-panel/lists-panel.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2409672154570643758" datatype="html">
+        <source>Display name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/user/user-list/user-list.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7315714079098881460" datatype="html">
+        <source>email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/user/user-list/user-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5584623107240304279" datatype="html">
+        <source>roles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/user/user-list/user-list.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4954511713447002201" datatype="html">
+        <source> load more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/user/user-list/user-list.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/control-panel/vine/vine-list/vine-list.component.html</context>
+          <context context-type="linenumber">53,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6701660465551371033" datatype="html">

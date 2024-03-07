@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
         this.headerInfos = {
           ...ROUTES_DATA.profile,
           title: user.displayName || user.email!,
-          category: user.roles.join(','),
+          category: user.roles,
         };
       }
     });

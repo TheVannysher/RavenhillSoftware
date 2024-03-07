@@ -8,9 +8,9 @@
         [ ] rolesGuard
 
 ## Control-panel
-    [ ] - user list for admin
-        [ ] - lazy loading / infinite scroll / pagination
-        [ ] - Roles edition
+    [x] - user list for admin
+        [x] - lazy loading / infinite scroll / pagination
+        [x] - Roles edition
         [ ] - Filter / search by username or email
 
 ## Field_management 🌍🌱🍇
@@ -64,9 +64,13 @@
 ## Task 📝
 
 ## MVP 👑
+    [ ] - Vine position `(x,y)` `(row, vine#)`
     [ ] - lazy loading / pagination
         [ ] - samples data list
         [ ] - vine list
+    [ ] - filtering
+     [ ] - search in user-list
+     [ ] - filter by row in vine-list (once position is added)
     [ ] - basic CRUD
         [ ] - vine
         [x] - field

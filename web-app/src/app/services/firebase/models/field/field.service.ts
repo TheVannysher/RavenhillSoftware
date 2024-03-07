@@ -19,13 +19,14 @@ import { Observable, of } from 'rxjs';
 import { Field } from '#types/firebase/models/field';
 import { Vine } from '#types/firebase/models/vine';
 
-import { ListOptions, Model } from '../types';
+import { ListOptions, Model, PaginatedQueryArgs } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FieldService implements Model<Field> {
   private store: Firestore = inject(Firestore);
+  private defaultListQueryArg: PaginatedQueryArgs<Field> = { pageSize: 10, order: 'id', startAfterItem: undefined };
 
   private collectionPath = 'fields';
 
@@ -38,31 +39,25 @@ export class FieldService implements Model<Field> {
     return docData(doc(this.store, this.collectionPath, id)) as Observable<Field>;
   }
 
-  listAll(): Observable<Field[]> {
+  getAll(): Observable<Field[]> {
     return collectionData(collection(this.store, this.collectionPath)) as Observable<Field[]>;
   }
 
-  list(options: ListOptions | undefined = { order: 'createdAt', itemByPage: 10 }) {
-    const collectionRef = collection(this.store, this.collectionPath);
-    const { itemByPage, order } = options;
-    return {
-      first: () => (collectionData(
-        query(
-          collectionRef,
-          orderBy(order),
-          limit(itemByPage),
-        ),
-      ) as Observable<Field[]>),
-      next: (lastResponse: DocumentSnapshot) => (lastResponse ? (collectionData(
-        query(
-          collectionRef,
-          orderBy(order),
-          limit(itemByPage),
-          startAfter(lastResponse),
-        ),
-      ) as Observable<Field[]>) : (of(null))),
-    };
-  }
+  list(options: PaginatedQueryArgs<Field> = this.defaultListQueryArg): Observable<Field[]> {
+    const {
+      pageSize = 10,
+      order = 'id',
+      startAfterItem = undefined,
+    } = options;
+    const fieldsCollection = collection(this.store, this.collectionPath);
+    let fieldQuery;
+    if (startAfterItem) {
+      fieldQuery = query(fieldsCollection, orderBy(order), startAfter(startAfterItem[order]), limit(pageSize));
+    } else {
+      fieldQuery = query(fieldsCollection, orderBy(order), limit(pageSize));
+    }
+    return collectionData(fieldQuery) as Observable<Field[]>;
+  };
 
   async set(id: string, data: Partial<Field>) {
     await setDoc(doc(this.store, this.collectionPath, id), {
