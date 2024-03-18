@@ -1,0 +1,35 @@
+<div class="flex h-20 overflow-hidden">
+    <div class="p-2 flex items-center justify-center">
+        <p i18n>#</p>
+    </div>
+    @for(key of keys; track $index) {
+        <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+            <p i18n>{{key.colName}}</p>
+        </div>
+    }
+</div>
+<div class="flex flex-col gap-2">
+    @for (item of data; track $index) {
+    <button type="button" (click)="onClick($event, item)">
+        <div
+            class="flex p-2 bg-white shadow-lg border rounded h-20 group hover:bg-blue-600 hover:text-white hover:font-bold cursor-pointer transition duration-100 ease-in-out">
+            <div class="p-2 flex items-center justify-center">
+                <p class="text-lg text-neutral-500 group-hover:text-neutral-100">{{$index + 1}}</p>
+            </div>
+            @for(key of keys; track $index) {
+                <div class="flex flex-1 justify-center items-center overflow-x-auto overflow-y-hidden p-2">
+                    <p>{{item[key.key]}}</p>
+                </div>
+            }
+        </div>
+        <!-- <app-edit-user-modal [editable]="currentUser !== null && currentUser.uid !== user.uid" [user]="user" /> -->
+    </button>
+    }
+    <button (click)="loadMore($event)">
+        <div
+            class="flex bg-white shadow-lg border rounded py-4 w-full justify-center items-center group hover:bg-blue-600 transition-all duration-100 ease-in-out cursor-pointer">
+            <p i18n
+                class="font-semibold capitalize text-blue-600 group-hover:text-white transition-all duration-100 ease-in-out">
+                load more</p>
+        </div>
+    </button>

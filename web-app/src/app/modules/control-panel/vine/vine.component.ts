@@ -1,5 +1,6 @@
 import { Roles } from '#lib/enum/roles';
 import { VIGOR_LIST } from '#lib/enum/vine';
+import { PositiveNumberRegExp } from '#lib/validator/patterns';
 import AuthService from '#services/firebase/auth/auth.service';
 import { VineService } from '#services/firebase/models/vine/vine.service';
 import { ModalService } from '#services/modal/modal.service';
@@ -32,7 +33,7 @@ export class VineComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.modalSubscription = this.modalService.showModal$.subscribe((open: string) => this.open = open === this.vine.id);
     this.vineEditForm = this.formBuilder.group({
-      clusters: [this.vine.clusters, [Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(40)]],
+      clusters: [this.vine.clusters, [Validators.pattern(PositiveNumberRegExp), Validators.min(0), Validators.max(40)]],
       vigor: [this.vine.vigor, [Validators.required, Validators.pattern(new RegExp(Object.values(VIGOR_LIST).join('|')))]],
     });
     this.userRolesSubscription = this.authService.getUser().subscribe((user) => {

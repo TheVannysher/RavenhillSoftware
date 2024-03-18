@@ -14,6 +14,7 @@ import { v4 as uuid } from 'uuid';
 import { Variety, Vine } from '#types/firebase/models/vine';
 import { VIGOR_LIST } from '#lib/enum/vine';
 import { Field, FieldLayout } from '#types/firebase/models/field';
+import { PositiveNumberRegExp } from '#lib/validator/patterns';
 
 
 export interface BulkVineFormValue {
@@ -54,9 +55,9 @@ export class CreateBulkVineComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      clusters: [0, [Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(40)]],
-      row: [null, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.min(1), Validators.max(60)]],
-      quantity: [null, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.min(1), Validators.max(60)]],
+      clusters: [0, [Validators.pattern(PositiveNumberRegExp), Validators.min(0), Validators.max(40)]],
+      row: [null, [Validators.required, Validators.pattern(PositiveNumberRegExp), Validators.min(1), Validators.max(60)]],
+      quantity: [null, [Validators.required, Validators.pattern(PositiveNumberRegExp), Validators.min(1), Validators.max(60)]],
       variety: [null, [Validators.required]],
       vigor: [null, [Validators.required, Validators.pattern(new RegExp(Object.values(VIGOR_LIST).join('|')))]],
     });

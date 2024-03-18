@@ -40,6 +40,8 @@ import { DetailsPanelComponent } from '#modules/home/overview/details-panel/deta
 import { SamplesComponent } from '#modules/control-panel/samples/samples.component';
 import { EditSampleModalComponent } from '#modules/control-panel/samples/edit-sample-modal/edit-sample-modal.component';
 import { CreateSampleComponent } from '#modules/control-panel/samples/create-sample/create-sample.component';
+import { VarietyListComponent } from '#modules/control-panel/variety/variety-list/variety-list.component';
+import { ListComponent } from '#components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { CreateSampleComponent } from '#modules/control-panel/samples/create-sam
     HeaderComponent,
     HomeComponent,
     ItemComponent,
+    ListComponent,
     ListsPanelComponent,
     LoginComponent,
     MenuItemComponent,
@@ -69,6 +72,7 @@ import { CreateSampleComponent } from '#modules/control-panel/samples/create-sam
     SamplesComponent,
     TaskboardComponent,
     UserListComponent,
+    VarietyListComponent,
     VineListComponent,
     VineComponent,
   ],

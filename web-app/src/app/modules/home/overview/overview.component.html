@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="flex flex-wrap w-full gap-2">
-      <!-- proof of concep -->
+      <!-- proof of concep TaskCard-->
       <!-- TODO: Tasks CRUD -->
       @for (item of [1,2,3,4,5,6,7,8]; track $index) {
       <div class="bg-white border shadow-md rounded-lg max-w-xs border-t-4 border-t-green-600">
@@ -35,33 +35,36 @@
         <app-field-selector (selectedFieldChange)="loadField($event)"></app-field-selector>
       </div>
     </div>
-    <div class="flex flex-col">
-      <div class="flex flex-wrap">
-
-      </div>
-      <div class="flex gap-4">
-        <div class="block flex-1">
-          <app-details-panel [field]="field"></app-details-panel>
+    @if(field) {
+      <div class="flex flex-col">
+        <div class="flex flex-wrap">
+  
         </div>
-        <div class="flex flex-col gap-2">
-          @for (block of blocks; track $index) {
-          <app-block-card [block]="block">
-            @if(block.sample_quantity > 0) {
-              <a routerLink="/block/{{block.id}}">
-                <h2 class="px-2 py-1 text-green-600 rounded-full border-2 border-green-600 hover:bg-green-600 hover:text-white hover:font-bold hover:shadow transition-all ease-in-out duration-100">see samples
-                  ({{block.sample_quantity}})
-                </h2>
-              </a>
-              } @else {
-              <a routerLink="/control-panel/samples/create">
-                <h2 class="px-2 py-1 text-green-600 rounded-full border-2 border-green-600 hover:bg-green-600 hover:text-white hover:font-bold hover:shadow transition-all ease-in-out duration-100">Add samples
-                </h2>
-              </a>
-              }
-            </app-block-card>
-          }
+        <div class="flex gap-4">
+          <div class="block flex-1">
+            <app-details-panel [field]="field"></app-details-panel>
+          </div>
+          <div class="flex flex-col gap-2">
+            @for (block of blocks; track $index) {
+            <app-block-card [block]="block">
+              @if(block.sample_quantity > 0) {
+                <a routerLink="/block/{{block.id}}">
+                  <h2 class="px-2 py-1 text-green-600 rounded-full border-2 border-green-600 hover:bg-green-600 hover:text-white hover:font-bold hover:shadow transition-all ease-in-out duration-100">see samples
+                    ({{block.sample_quantity}})
+                  </h2>
+                </a>
+                } @else {
+                <a [routerLink]="['/control-panel/samples/create', { block_id: block.id, field_id: field.id }]">
+                  <h2 class="px-2 py-1 text-green-600 rounded-full border-2 border-green-600 hover:bg-green-600 hover:text-white hover:font-bold hover:shadow transition-all ease-in-out duration-100">
+                    Add samples
+                  </h2>
+                </a>
+                }
+              </app-block-card>
+            }
+          </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 </app-page-wrapper>

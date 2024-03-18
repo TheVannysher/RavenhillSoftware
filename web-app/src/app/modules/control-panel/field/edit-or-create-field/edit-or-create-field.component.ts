@@ -19,6 +19,7 @@ import { BlockService } from '#services/firebase/models/block/block.service';
 import { Subscription } from 'rxjs';
 import { Field } from '#types/firebase/models/field';
 import { Vine } from '#types/firebase/models/vine';
+import { AlphaNumericRegExp } from '#lib/validator/patterns';
 
 @Component({
   selector: 'app-edit-or-create-field',
@@ -55,7 +56,7 @@ export class EditOrCreateFieldComponent implements OnInit, OnDestroy {
     this.getInitialFormValue();
     this.fieldForm = this.formBuilder.group({
       id: [this.field.id],
-      name: [this.field.name, [Validators.required, Validators.pattern(/^[a-zA-Z0-9-_]+$/), Validators.maxLength(20)]],
+      name: [this.field.name, [Validators.required, Validators.pattern(AlphaNumericRegExp), Validators.maxLength(20)]],
       layout: [this.field.layout],
       updatedAt: [],
       blocks: new FormControl<Block[]>([]),

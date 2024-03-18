@@ -19,6 +19,7 @@ export enum RouteNames {
   SAMPLES = 'samples',
   TASKBOARD = 'taskboard',
   USER_PROFILE = 'profile',
+  VARIETY = ' variety',
 }
 
 export enum RouteCategories {
